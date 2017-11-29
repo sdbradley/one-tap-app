@@ -8,7 +8,6 @@
   margin: 2rem auto;
   color: $Color-black;
   background: $Color-white;
-  border: 2px solid $Color-catskillWhite;
   border-radius: $BorderRadius-standard;
 }
 
@@ -26,9 +25,9 @@
 }
 
 .LoginForm-section {
-  padding: $Margin-rhythm * 0.75 $Margin-rhythm;
+  padding: $Margin-rhythm * 0.75;
   @include breakpoint(tablet) {
-    padding: $Margin-rhythm $Margin-rhythm--double;
+    padding: $Margin-rhythm $Margin-rhythm * 1.25;
   }
 
   &:not(:last-child) {
@@ -38,7 +37,7 @@
   &:first-child {
     padding-top: $Margin-rhythm;
     @include breakpoint(tablet) {
-      padding-top: $Margin-rhythm--double;
+      padding-top: $Margin-rhythm * 1.5;
     }
   }
 
