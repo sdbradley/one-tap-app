@@ -47,7 +47,7 @@ function LoginForm ({ errors, login, message, slug }) {
 export default connect(
   state => ({
     message: state.authentication.message || {
-      title: 'Login',
+      title: 'Login to 1Tap',
       description: null
     },
     errors: state.authentication.errors.toJS()

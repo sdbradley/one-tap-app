@@ -1,4 +1,5 @@
-$Type-fontFamily--body: "Montserrat", sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+$Type-fontFamily--body: "Open Sans", sans-serif;
 
 $Type-fontSize--jumbo: 6.4rem;
 $Type-fontSize--alpha: 4.8rem;
@@ -28,10 +29,11 @@ $Color-catskillWhite: #DDEAF1;
 $Color-catskillBlue: #9AC1D5;
 $Color-darkCatskillBlue: #C4DBE7;
 $Color-curiousBlue: #2595E4;
-$Color-denim: #1779B2;
-$Color-darkDenim: #0C618E;
+$Color-denim: #555555;
+$Color-darkDenim: #4C4C4C;
 $Color-dodgerBlue: #31AAF5;
 $Color-gallery: #EFEFEF;
+$Color-gray: #EEE;
 $Color-silver: #BFBFBF;
 $Color-silverChalice: #A6A6A6;
 $Color-white: #FFFFFF;
@@ -50,7 +52,8 @@ $Margin-rhythm: 2rem;
 $Margin-rhythm--half: $Margin-rhythm / 2;
 $Margin-rhythm--double: 2 * $Margin-rhythm;
 
-$BorderRadius-standard: 0.8rem;
+$BorderRadius-standard: 0.2rem;
 
-$Field-height: 4.2rem;
+$Field-height: 3.2rem;
 $Header-height: 6rem;
+$Button-height: 4rem;

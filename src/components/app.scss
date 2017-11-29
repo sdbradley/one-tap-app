@@ -5,7 +5,7 @@
   height: 100vh;
   overflow: auto;
   position: relative;
-  background: $Color-alabaster;
+  background: $Color-gray;
   color: $Color-black;
   border-top: solid transparent $Header-height;
 
@@ -95,7 +95,7 @@
   }
 /* END HERE */
   &--minimal {
-    background: $Color-alabaster;
+    background: $Color-gray;
     padding-top: 0;
 
     .App-body {
