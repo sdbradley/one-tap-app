@@ -7,10 +7,6 @@ import Routes from 'components/Routes';
 import { ROOT_ELEMENT, APP_ROOT } from 'constants';
 import Cookies from "cookies-js";
 
-if (window.location.href.indexOf("https://www.") !== 0) {
-  window.location.replace(APP_ROOT + window.location.hash.replace(/^#\//, ''));
-}
-
 let token = Cookies.get('userToken');
 if (token) {
   store.dispatch(receiveToken(token));
