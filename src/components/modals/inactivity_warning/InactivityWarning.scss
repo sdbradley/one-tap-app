@@ -1,0 +1,25 @@
+@import '~css/bootstrap';
+
+.InactivityWarning-section {
+  @include content();
+  border-bottom: 1px solid $Color-gallery;
+  text-align: center;
+}
+
+.InactivityWarning-section:last-child {
+  border-bottom: none;
+  padding-top: $Margin-rhythm;
+  padding-bottom: $Margin-rhythm;
+}
+
+.InactivityWarning-button {
+  margin: $Margin-rhythm $Margin-rhythm--half 0;
+}
+
+.InactivityWarning-title {
+  @include modalTitle();
+}
+
+.InactivityWarning-info {
+  font-size: $Type-fontSize--theta;
+}

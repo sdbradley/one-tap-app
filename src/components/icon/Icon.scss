@@ -1,0 +1,168 @@
+@import '~css/bootstrap';
+
+.Icon {
+    display: inline-block;
+    vertical-align: middle;
+    fill: $Color-denim;
+    fill-rule: evenOdd;
+    height: 100%;
+}
+
+.Icon-svg {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+}
+
+.Icon--inline {
+    height: 3rem;
+    margin-right: 0.75rem;
+    margin-left: 0;
+    @include breakpoint(desktop) {
+        margin-right: 1rem;
+        margin-left: 1rem;
+    }
+}
+
+.Icon--interactive {
+    cursor: pointer;
+    &:hover {
+        fill: $Color-darkDenim;
+    }
+}
+
+.Icon--grey {
+    fill: $Color-silver;
+
+    &.Icon--encircled {
+        background-color: $Color-silver;
+    }
+}
+
+.Icon--green {
+    fill: $Color-green;
+
+    &.Icon--encircled {
+        background-color: $Color-green;
+    }
+}
+
+.Icon--white {
+    fill: $Color-white;
+
+    &.Icon--interactive:hover {
+      fill: $Color-white;
+      opacity: 0.8;
+    }
+
+    &.Icon--encircled {
+        background-color: $Color-white;
+        color: $Color-denim;
+    }
+}
+
+.Icon--black {
+    fill: $Color-black;
+
+    &.Icon--encircled {
+        background-color: $Color-black;
+    }
+}
+
+.Icon--red {
+    fill: $Color-red;
+
+    &.Icon--encircled {
+        background-color: $Color-red;
+    }
+}
+
+.Icon--grey.Icon--interactive:hover {
+    fill: $Color-silverChalice;
+}
+
+.Icon--off {
+    opacity: 0.5;
+}
+
+.Icon--eye {
+    max-width: 32px;
+}
+
+.Toggle-knob {
+    transform: translateX(-353.72px);
+    transition: transform 0.1s ease-in-out;
+
+    .Toggle--toggled & {
+        transform: translateX(0);
+    }
+}
+
+.Toggle-knobColor {
+    fill: $Color-white;
+}
+
+.Toggle-border {
+    fill: $Color-gallery;
+}
+
+.Icon--encircled {
+    background: $Color-denim;
+    border-radius: 50%;
+    padding: 0.6rem;
+    fill: $Color-white;
+    vertical-align: middle;
+
+    &.Icon--inverse {
+        fill: $Color-denim;
+        background: $Color-white;
+        border: 1px solid $Color-denim;
+    }
+}
+
+.Quote path {
+  transform-origin: 500px 500px;
+}
+
+.Sort-ascending, .Sort-descending,
+.Sort--none .Sort-ascending,
+.Sort--none .Sort-descending {
+    opacity: 0.2;
+}
+
+.Sort--ascending .Sort-ascending,
+.Sort--descending .Sort-descending {
+    opacity: 1;
+}
+
+.Spinner-stroke {
+  fill: transparent;
+  stroke: $Color-denim;
+  stroke-width: 40px;
+  stroke-linecap: round;
+  stroke-alignment: inner;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 900;
+  transform: rotate(0deg);
+  transform-origin: 200px 200px;
+  animation: dash 1.3s ease-in-out alternate infinite, spin 0.9s linear infinite;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 900;
+  }
+  to {
+    stroke-dashoffset: 300;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}

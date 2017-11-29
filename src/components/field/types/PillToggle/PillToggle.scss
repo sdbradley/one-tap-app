@@ -1,0 +1,50 @@
+@import '~css/bootstrap';
+
+.PillToggle-option {
+    display: inline-block;
+    background: $Color-white;
+    color: $Color-denim;
+    width: 50%;
+    text-align: center;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-right-width: 0;
+    border-left-width: 0;
+    border-style: solid;
+    border-color: $Color-silver;
+    height: $Field-height;
+    line-height: $Field-height;
+    cursor: pointer;
+
+    &:hover {
+        border-color: $Color-denim;
+        background-color: rgba($Color-denim, 0.1);
+    }
+
+    &:first-of-type {
+        border-left-width: 1px;
+        border-radius: 100px 0 0 100px
+    }
+
+    &:last-of-type {
+        border-right-width: 1px;
+        border-radius: 0 100px 100px 0
+    }
+
+    @include breakpoint(desktop) {
+        width: auto;
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+}
+
+.PillToggle-option--selected {
+    cursor: default;
+    background-color: $Color-denim;
+    color: $Color-white;
+    border-color: $Color-denim;
+
+    &:hover {
+        background-color: $Color-denim;
+    }
+}

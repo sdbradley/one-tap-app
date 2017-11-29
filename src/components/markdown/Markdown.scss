@@ -1,0 +1,211 @@
+@import '~css/bootstrap';
+
+.Markdown {
+  @include content(h);
+  @include content(t);
+  line-height: 1.4;
+  font-size: $Type-fontSize--epsilon;
+
+  @include breakpoint(hd) {
+    font-size: $Type-fontSize--delta;
+  }
+
+  &-heading {
+    font-weight: $Type-weight--bold;
+    margin-bottom: $Margin-rhythm;
+
+    &--1 {
+      font-size: $Type-fontSize--beta;
+      @include breakpoint(hd) {
+        font-size: $Type-fontSize--alpha;
+      }
+    }
+
+    &--2 {
+      font-size: $Type-fontSize--gamma;
+      @include breakpoint(hd) {
+        font-size: $Type-fontSize--beta;
+      }
+    }
+
+    &--3 {
+      font-size: $Type-fontSize--delta;
+      @include breakpoint(hd) {
+        font-size: $Type-fontSize--gamma;
+      }
+    }
+
+    &--4 {
+      font-size: $Type-fontSize--epsilon;
+      @include breakpoint(hd) {
+        font-size: $Type-fontSize--delta;
+      }
+    }
+
+    &--5, &--6 {
+      text-transform: uppercase;
+      font-size: $Type-fontSize--epsilon;
+      letter-spacing: 0.08em;
+      @include breakpoint(hd) {
+        font-size: $Type-fontSize--epsilon;
+      }
+    }
+
+    &--6 {
+      font-weight: $Type-weight--regular;
+    }
+  }
+
+  &-paragraph {
+    margin-bottom: $Margin-rhythm--double;
+  }
+
+  &-list {
+    margin-bottom: $Margin-rhythm--double;
+    padding-left: $Margin-rhythm;
+
+    &Item {
+      display: list-item;
+    }
+
+    &--ordered &Item {
+      list-style: decimal;
+    }
+
+    &--unordered &Item {
+      list-style: disc;
+    }
+  }
+
+  &-emph {
+    &--italic {
+      font-style: italic;
+    }
+
+    &--blue {
+      color: $Color-denim;
+    }
+
+    &--green {
+      color: $Color-green;
+    }
+    
+    &--red, &--fipf {
+      color: $Color-red;
+    }
+
+    &--teal, &--fie {
+      color: $Color-teal;
+    }
+
+    &--college {
+      color: $Color-brand--college;
+    }
+    
+    &--ms {
+      color: $Color-brand--middleSchool;
+    }
+
+    &--brightRed {
+      color: $Color-brightRed;
+    }
+
+    &--name {
+      margin-top: -$Margin-rhythm--double;
+      display: block;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: $Type-fontSize--epsilon;
+      font-weight: $Type-weight--bold;
+      letter-spacing: 0.08em;
+      line-height: 1.4;
+      margin-top: 1em;
+    }
+
+    &--title {
+      display: block;
+      text-align: center;
+      font-size: $Type-fontSize--epsilon;
+      line-height: 1.4;
+    }
+  }
+
+  &-bold, &-link {
+    font-weight: $Type-weight--bold;
+  }
+
+  &-link {
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  &-image {
+    display: block;
+    margin: 0 auto $Margin-rhythm--double;
+    text-align: center;
+
+    @include breakpoint(desktop) {
+      &--left {
+        float: left;
+        max-width: 25%;
+        margin-right: $Margin-rhythm--double;
+      }
+
+      &--right {
+        float: right;
+        max-width: 25%;
+        margin-left: $Margin-rhythm--double;
+      }
+
+      &--blockLeft {
+        text-align: left;
+      }
+
+      &--blockRight {
+        text-align: right;
+      }
+    }
+  }
+
+  &-blockQuote {
+    position: relative;
+    font-size: $Type-fontSize--delta;
+    line-height: 1.6;
+    text-align: center;
+    padding-top: $Margin-rhythm;
+
+    &Icon {
+      width: 8rem;
+      height: 8rem;
+      fill: $Color-catskillWhite;
+      opacity: 0.5;
+      position: absolute;
+      left: -3rem;
+      top: -1rem;
+
+      &--close {
+        left: initial;
+        top: initial;
+        right: -3rem;
+        bottom: -3rem;
+      }
+    }
+
+    &Content {
+      position: relative;
+      z-index: 1;
+    }
+
+    @include breakpoint(hd) {
+      font-size: $Type-fontSize--gamma;
+      padding-left: $Margin-rhythm;
+      padding-right: $Margin-rhythm;
+    }
+  }
+
+  &-blockQuoteContent > &-paragraph {
+    margin-bottom: 0;
+  }
+}

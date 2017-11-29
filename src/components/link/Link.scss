@@ -1,0 +1,47 @@
+@import '~css/bootstrap';
+
+.Link {
+    cursor: pointer;
+}
+
+.Link--icon {
+    display: inline-block;
+    min-height: 3rem;
+    line-height: 3;
+}
+
+.Link--full {
+    display: block;
+    width: 100%;
+}
+
+.Link--classic {
+    text-decoration: underline;
+    font-weight: $Type-weight--bold;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.Link--black {
+    color: $Color-black;
+
+    .Link-icon {
+        fill: $Color-black;
+    }
+}
+
+.Link--blue {
+    color: $Color-denim;
+    .Link-icon {
+        fill: $Color-denim;
+    }
+
+    &:hover {
+        color: $Color-darkDenim;
+        .Link-icon {
+            fill: $Color-darkDenim;
+        }
+    }
+}

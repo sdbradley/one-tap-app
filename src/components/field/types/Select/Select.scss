@@ -1,0 +1,111 @@
+@import '~css/bootstrap';
+
+.Select {
+  position: relative;
+  background: $Color-alto;
+  border: 1px solid $Color-alto;
+  padding-right: $Field-height;
+  cursor: pointer;
+
+  &:focus,
+  &--open {
+    outline: none;
+    background: $Color-white;
+    border: 1px solid $Color-silver;
+  }
+}
+
+.Select-option {
+  font-size: $Type-fontSize--eta;
+  line-height: 1.8;
+  padding: ($Field-height - $Type-fontSize--eta * 1.8)/2 1rem;
+  user-select: none;
+
+  &:not(&--label) {
+    border-top: 1px solid $Color-alabaster;
+    &:hover {
+      background-color: $Color-catskillWhite;
+    }
+  }
+}
+
+.Select-option--selected {
+  font-weight: 700;
+  cursor: default;
+}
+
+.Select-options {
+  box-sizing: content-box;
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  width: 100%;
+  height: auto;
+  max-height: 30rem;
+  background: $Color-white;
+  z-index: 1;
+  border: 1px solid $Color-silver;
+  border-top: none;
+  overflow-y: scroll;
+  &--teachers {
+    max-height: 18rem;
+  }
+}
+
+.Select-toggle {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: $Field-height;
+  width: $Field-height;
+  background-color: $Color-catskillWhite;
+}
+
+.Select-chevron {
+  @include center();
+  width: 60%;
+  height: 60%;
+}
+
+.Select--open .Select-toggle {
+  background-color: transparent;
+}
+
+.Select--dropLink {
+  padding-right: 0;
+  text-align: center;
+  background-color: $Color-gallery;
+
+  &:focus:not(.Select--open) {
+    background-color: transparent;
+    border-color: $Color-alto;
+  }
+}
+
+.Select--dropLink .Select{
+  &-option--label {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+    color: $Color-denim;
+  }
+
+  &-option {
+    font-size: $Type-fontSize--zeta;
+  }
+
+  &-toggle {
+    display: inline-block;
+    position: relative;
+    background-color: transparent;
+    height: 1em;
+    width: 1em;
+    vertical-align: middle;
+  }
+
+  &-chevron {
+    width: 100%;
+    height: 100%;
+  }
+}

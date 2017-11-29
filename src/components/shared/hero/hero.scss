@@ -1,0 +1,38 @@
+@import "../../../css/vars";
+
+.Hero {
+  min-height: 122px;
+  display: flex;
+  align-items: center;
+  background-image: radial-gradient($Color-dodgerBlue, $Color-curiousBlue);
+  margin-bottom: 2rem;
+
+  @media screen and (min-width: $Media-breakPoint--desk) {
+    min-height: 140px;
+  }
+
+  &.Hero--foundations {
+    background: $Color-brand--highSchool;
+  }
+
+  &.Hero--contentItem {
+    min-height: 140px;
+    background: $Color-alto;
+    margin-bottom: 0;
+  }
+}
+
+.Hero-headline {
+  font-family: $Type-fontFamily--body;
+  font-size: $Type-fontSize--beta;
+  color: $Color-white;
+
+  @media screen and (min-width: $Media-breakPoint--desk) {
+    font-size: $Type-fontSize--beta;
+  }
+
+  .Hero--contentItem & {
+    font-size: $Type-fontSize--beta;
+    color: $Color-black;
+  }
+}

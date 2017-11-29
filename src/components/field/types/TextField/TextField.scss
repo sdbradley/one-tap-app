@@ -1,0 +1,63 @@
+@import '~css/vars';
+
+.TextField {
+  display: block;
+  width: 100%;
+  font-size: $Type-fontSize--eta;
+  position: relative;
+  text-align: left;
+
+  &-input {
+    background: $Color-gallery;
+    border: 1px solid $Color-gallery;
+
+    &:focus {
+      outline: none;
+      background: $Color-white;
+      border-color: $Color-silver;
+    }
+  }
+
+  &-placeholder,
+  &-input {
+    display: block;
+    width: 100%;
+    padding: 0 1rem;
+    height: $Field-height;
+    line-height: calc(#{$Field-height} - 2px);
+  }
+
+  &-placeholder {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    cursor: text;
+    opacity: 0.8;
+  }
+
+  &-toggle {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    height: 50%;
+    transform: translateY(-50%);
+  }
+
+  &--error &-input {
+    border: 1px solid red;
+  }
+
+  &--readOnly &-input {
+    color: $Color-silverChalice;
+  }
+
+  &--center &-input {
+    text-align: center;
+  }
+
+  &--large &-input {
+    font-size: $Type-fontSize--gamma;
+    font-weight: $Type-weight--bold;
+  }
+}

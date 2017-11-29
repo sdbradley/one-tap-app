@@ -1,0 +1,29 @@
+@import '~css/bootstrap';
+
+.Image {
+    position: relative;
+    min-height: 10rem;
+    height: 100%;
+    width: 100%;
+    border: 1px solid $Color-catskillWhite;
+    background: $Color-alto;
+    overflow: hidden;
+    padding: 0 2rem;
+}
+
+.Image-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+}
+
+.Image-title {
+    @include center()
+    font-size: $Type-fontSize--epsilon;
+    min-width: 100%;
+    text-align: center;
+}

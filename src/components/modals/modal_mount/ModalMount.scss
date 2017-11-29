@@ -1,0 +1,29 @@
+@import '~css/bootstrap';
+
+.ModalMount-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+    z-index: 2;
+    border-top: $Header-height solid transparent;
+}
+
+.ModalMount-content {
+    position: absolute;
+    display: inline-block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &:focus {
+        outline: none;
+    }
+}

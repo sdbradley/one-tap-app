@@ -1,0 +1,75 @@
+@import '~css/vars';
+
+$breakpoints: (
+    tablet: $Media-breakPoint--tab,
+    desktop: $Media-breakPoint--desk,
+    large: $Media-breakPoint--large,
+    xlarge: $Media-breakPoint--xlarge,
+    hd: $Media-breakPoint--hd
+);
+
+@mixin breakpoint($name) {
+    @if map-has-key($breakpoints, $name) {
+        @media all and (min-width: #{map-get($breakpoints, $name)}) {
+            @content;
+        }
+    }
+    @else {
+        @warn "Attempted to set an scss breakpoint, but #{$name} is not a valid breakpoint name.";
+    }
+}
+
+@mixin bold() {
+    font-weight: $Type-weight--bold;
+}
+
+@mixin center() {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin modalTitle() {
+    font-size: $Type-fontSize--epsilon;
+    color: $Color-black;
+    text-align: center;
+    margin-bottom: $Margin-rhythm;
+}
+
+@mixin content($variant: 'auto') {
+    @if $variant == 'auto' {
+        padding: $Margin-rhythm;
+        @include breakpoint(tablet) {
+            padding: $Margin-rhythm--double;
+        }
+    }
+
+    @if $variant == h or $variant == l {
+        padding-left: $Margin-rhythm;
+        @include breakpoint(tablet) {
+            padding-left: $Margin-rhythm--double;
+        }
+    }
+
+    @if $variant == h or $variant == r {
+        padding-right: $Margin-rhythm;
+        @include breakpoint(tablet) {
+            padding-right: $Margin-rhythm--double;
+        }
+    }
+
+    @if $variant == v or $variant == t {
+        padding-top: $Margin-rhythm;
+        @include breakpoint(tablet) {
+            padding-top: $Margin-rhythm--double;
+        }
+    }
+
+    @if $variant == v or $variant == b {
+        padding-bottom: $Margin-rhythm;
+        @include breakpoint(tablet) {
+            padding-bottom: $Margin-rhythm--double;
+        }
+    }
+}

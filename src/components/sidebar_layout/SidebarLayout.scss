@@ -1,0 +1,77 @@
+@import '~css/bootstrap';
+
+.SidebarLayout {
+  $SidebarSize: 40rem;
+  $SidebarSizeLarge: 50rem;
+  position: relative;
+  height: 100%;
+  background: $Color-white;
+
+  &-image {
+    display: none;
+  }
+
+  &-main {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+
+  @include breakpoint(large) {
+    border-left: $SidebarSize solid transparent;
+
+    &-image {
+      display: block;
+      height: 15rem;
+      border-bottom: 1px solid $Color-white;
+    }
+
+    &-left {
+      height: 100%;
+      width: $SidebarSize;
+      position: absolute;
+      right: 100%;
+      top: 0;
+      background: $Color-alto;
+      border-right: 1px solid $Color-silver;
+      overflow: auto;
+
+      @include breakpoint(hd) {
+       width: $SidebarSizeLarge;
+      }
+    }
+  }
+
+  @include breakpoint(hd) {
+    border-left-width: $SidebarSizeLarge;
+  }
+
+  &--mobileMenu &-left {
+    background: $Color-alto;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    right: 100%;
+    transform: translateX(0);
+    transition: transform 0.2s ease-in-out;
+
+    @include breakpoint(large) {
+      transition: none;
+      width: $SidebarSize;
+    }
+
+    @include breakpoint(hd) {
+      width: $SidebarSizeLarge
+    }
+  }
+
+  &--mobileMenu.SidebarLayout--open &-left {
+    transform: translateX(100%);
+    @include breakpoint(large) {
+      transform: translateX(0);;
+    }
+  }
+}
+
+

@@ -1,0 +1,48 @@
+@import "~css/bootstrap";
+
+.Radio {
+  $Size: 3rem;
+  font-weight: $Type-weight--medium;
+
+  &-option {
+    position: relative;
+    margin: 1rem 0 1rem $Margin-rhythm--double;
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+
+    &--withMetadata {
+      margin-left: $Margin-rhythm--double + 3rem;
+    }
+
+    &--disabled {
+      cursor: default;
+    }
+  }
+
+  &-icon {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: $Size;
+    width: $Size;
+    border-radius: $Size;
+    margin-right: 1rem;
+    border: 2px solid $Color-catskillWhite;
+  }
+
+  &-metadata {
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: $Size + 2rem;
+    font-weight: $Type-weight--bold;
+    color: $Color-catskillBlue;
+  }
+
+  &-option:not(&-option--disabled):hover &-icon {
+    background: rgba($Color-denim, 0.1);
+  }
+}

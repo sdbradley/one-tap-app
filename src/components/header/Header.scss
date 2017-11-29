@@ -1,0 +1,185 @@
+@import '~css/bootstrap';
+
+.Header {
+  width: 100%;
+  height: $Header-height;
+  display: flex;
+  position: relative;
+}
+
+.Header:before {
+  content: '';
+  display: block;
+  width: calc(100% + 4rem);
+  height: 100%;
+  position: absolute;
+  left: -2rem;
+  bottom: 1px;
+  background-color: $Color-white;
+  z-index: 2
+}
+
+.Header > * {
+  position: relative;
+  z-index: 3;
+}
+
+.Header-logo {
+  height: 1.2rem;
+  margin-top: 2.6rem;
+  @include breakpoint(desktop) {
+    height: 1.8rem;
+    margin-top: 1.25rem;
+  }
+}
+.Header-school {
+  color: $Color-denim;
+  font-size:1.3rem;
+  display: none;
+  @include breakpoint(desktop) {
+    display: block;
+    margin-top: -0.5rem;
+  }
+}
+.Header-right {
+  right: 0;
+  height: 100%;
+  line-height: $Header-height;
+  color: $Color-denim;
+  font-size: $Type-fontSize--theta;
+  padding-left: 0;
+  margin-right: -2rem;
+
+  @include breakpoint(desktop) {
+    padding-left: 10rem;
+    margin-right: 0;
+  }
+}
+.Header-center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.Header-greeting {
+  display: none;
+  @include breakpoint(desktop) {
+    display: inline;
+  }
+}
+
+.Header-navToggle {
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  background: transparent;
+  padding-left: 2rem;
+  padding-right: 1.4rem;
+
+  @include breakpoint(desktop) {
+    padding-left: 1rem;
+    padding-right: 0;
+  }
+
+  &:hover {
+    color: $Color-darkDenim;
+    & .Header-icon {
+      fill: $Color-darkDenim;
+    }
+  }
+}
+
+.Header-icon {
+  vertical-align: middle;
+  width: 3rem;
+}
+
+.Header-chevron {
+  display: inline-block;
+  margin-left: 0.2rem;
+  transform: rotate(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+.Header-nav {
+  position: absolute;
+  top: 100%;
+  right: -2rem;
+  width: calc(100% + 4rem);
+  border-bottom: 1px solid $Color-silver;
+  line-height: 2rem;
+  transform: translateY(-100%);
+  transition: margin-top 0.2s ease-in-out, transform 0.2s ease-in-out;
+  z-index: 1;
+  background: $Color-denim;
+  color: $Color-white;
+
+  @include breakpoint(desktop) {
+    right: 0;
+    width: auto;
+    border-left: 1px solid $Color-silver;
+    border-right: 1px solid $Color-silver;
+    background: $Color-white;
+    color: $Color-denim;
+  }
+}
+
+.Header-navItem > * {
+  display: block;
+  padding: 2rem;
+  font-size: $Type-fontSize--zeta;
+
+  @include breakpoint(desktop) {
+    padding: 1rem 2rem;
+    font-size: $Type-fontSize--eta;
+  }
+}
+
+.Header--open {
+  .Header-chevron {
+    transform: rotate(-90deg);
+  }
+
+  .Header-icon {
+    fill: $Color-white;
+    @include breakpoint(desktop) {
+      fill: $Color-denim;
+    }
+  }
+
+  .Header-navToggle {
+    background: $Color-denim;
+    color: $Color-white;
+
+    &:hover .Header-icon {
+      fill: $Color-white;
+    }
+
+    @include breakpoint(desktop) {
+      color: $Color-denim;
+      background: $Color-white;
+      &:hover .Header-icon {
+        fill: $Color-darkDenim;
+      }
+    }
+  }
+
+  .Header-nav {
+    margin-top: -1px;
+    transform: translateY(0%);
+  }
+}
+
+.Header--withContent .Header-logo {
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.Header-content {
+  line-height: $Header-height;
+  font-size: $Type-fontSize--theta;
+  min-width: 4rem;
+  @include breakpoint(desktop) {
+    width: 20rem;
+  }
+}

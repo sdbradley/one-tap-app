@@ -1,0 +1,25 @@
+@import '~css/bootstrap';
+
+.SG-bodyText {
+  @extend %SG-bodyText;
+}
+
+.SG-heading {
+  @extend %SG-heading;
+}
+
+.SG-heading--alpha {
+  @extend %SG-heading--alpha;
+}
+
+.SG-heading--beta {
+  @extend %SG-heading--beta;
+}
+
+.SG-heading--gamma {
+  @extend %SG-heading--gamma;
+}
+
+.SG-heading--delta {
+  @extend %SG-heading--delta;
+}

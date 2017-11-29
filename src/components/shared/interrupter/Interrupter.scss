@@ -1,0 +1,77 @@
+@import '~css/mixins';
+
+.Interrupter{
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    &--top {
+        bottom: auto;
+        &.is-hidden {
+            transform: translateY(-100%);
+        }
+    }
+
+    &--bottom {
+        top: auto;
+        &.is-hidden {
+            transform: translateY(100%);
+        }
+    }
+
+    &--left {
+        right: 30%;
+        @include breakpoint(tablet) {
+            right: 50%;
+        }
+        @include breakpoint(desktop) {
+            right: 60%;
+        }
+        @include breakpoint(xlarge) {
+            right: 80%;
+        }
+        &.is-hidden {
+            transform: translateX(-100%);
+        }
+    }
+
+    &--right {
+        left: 30%;
+        @include breakpoint(tablet) {
+            left: 50%;
+        }
+        @include breakpoint(desktop) {
+            left: 60%;
+        }
+        @include breakpoint(xlarge) {
+            left: 80%;
+        }
+        &.is-hidden {
+            transform: translateX(100%);
+        }
+    }
+
+    &--alert {
+        background-color: $Color-alert;
+        color: $Color-white;
+    }
+    
+    &.animatedIn {
+        &:not(.is-hidden) {
+            transition: transform 1s;
+        }
+    }
+
+    &.animatedOut {
+        &.is-hidden {
+            transition: transform 1s;
+        }
+    }
+
+    &-dismiss {
+        cursor: pointer;
+    }
+}

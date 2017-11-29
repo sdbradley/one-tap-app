@@ -1,0 +1,20 @@
+@import '~css/bootstrap';
+
+.Errors-error {
+    border-left: 2px solid red;
+    background: rgba(red, 0.1);
+    color: red;
+    font-style: italic;
+    font-size: $Type-fontSize--eta;
+    font-size: 1rem;
+    padding: 1.4em;
+    text-align: left;
+
+    &:not(:last-child) {
+        margin-bottom: 1px;
+    }
+}
+
+.Form-errors {
+    margin: $Margin-rhythm--half 0;
+}

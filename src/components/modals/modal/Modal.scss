@@ -1,0 +1,23 @@
+@import '~css/bootstrap';
+
+.Modal {
+    position: relative;
+    display: block;
+    background: $Color-white;
+    width: 40rem;
+    height: auto;
+    min-height: 4rem;
+    max-width: calc(100% - #{$Margin-rhythm--double});
+    margin: $Margin-rhythm--double auto;
+    border: 1px solid $Color-silver;
+    border-radius: $BorderRadius-standard;
+}
+
+.Modal-close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    width: 2rem;
+    height: 2rem;
+    z-index: 1;
+}

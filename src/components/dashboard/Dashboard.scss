@@ -1,0 +1,40 @@
+@import '~css/bootstrap';
+
+.Dashboard-header {
+    overflow: auto;
+    font-size: $Type-fontSize--zeta;
+}
+
+.Dashboard-body {
+    @include content(t);
+}
+
+.Dashboard-add {
+    padding-left: 4rem;
+    padding-right: 4rem;
+    border-color: $Color-silver;
+    width: 100%;
+    text-align: center;
+
+    @include breakpoint(desktop) {
+        display: inline-block;
+        width: auto;
+        float: right;
+    }
+}
+
+.Dashboard-add > * {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.Dashboard-addIcon {
+    height: 60%;
+    margin-right: 1rem;
+}
+
+.Dashboard-filter {
+    @include breakpoint(desktop) {
+        float: left;
+    }
+}

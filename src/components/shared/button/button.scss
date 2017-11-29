@@ -1,0 +1,82 @@
+@import '~css/bootstrap';
+
+.SGButton {
+  border: none;
+  box-shadow: none;
+  color: $Color-white;
+  font-size: $Type-fontSize--zeta;
+  background-color: $Color-denim;
+  font-weight: $Type-weight--regular;
+  padding: 0 2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  height: $Field-height;
+  text-decoration: none;
+
+  &:focus {
+    outline: none;
+    text-decoration: underline;
+  }
+
+  &:not(&--inverse):hover {
+    background-color: $Color-darkDenim;
+  }
+
+  &--inverse {
+    background-color: $Color-white;
+    border: 1px solid $Color-denim;
+    color: $Color-denim;
+  }
+
+  &--inverse:hover {
+    border-color: $Color-darkDenim;
+    color: $Color-darkDenim;
+    background: rgba($Color-darkDenim, 0.05);
+    text-decoration: none;
+  }
+
+  &--fullWidth {
+    width: 100%;
+    display: block;
+    margin: auto;
+  }
+
+  &--disabled {
+    background-color: $Color-alto;
+    cursor: not-allowed;
+  }
+
+  &--container {
+    padding-top: 1rem;
+  }
+
+  &--container-bottom {
+    padding-bottom: 3rem;
+  }
+
+  &--small {
+    height: ($Field-height * 0.6);
+  }
+
+  &--large {
+    font-size: $Type-fontSize--gamma;
+    height: $Field-height * 1.2;
+  }
+
+  &--action-sm {
+    width: 45px;
+    padding: 0;
+    height: $Field-height * .75;
+    font-size: 1rem;
+    margin-right: 0.1rem;
+  }
+
+  &--action {
+    margin-right: 1rem;
+  }
+
+  &--action-cancel {
+    background-color: $Color-silverChalice;
+    margin-left: 1rem;
+  }
+}

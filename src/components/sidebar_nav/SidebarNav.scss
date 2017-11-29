@@ -1,0 +1,75 @@
+@import '~css/bootstrap';
+
+.SidebarNav {
+  @include content(h);
+  padding-top: $Margin-rhythm;
+  @include breakpoint(large) {
+    padding: 0;
+  }
+}
+
+.SidebarNav-item {
+  display: inline-block;
+
+  @include breakpoint(large) {
+    display: block;
+    line-height: 6rem;
+    color: $Color-denim;
+    font-size: $Type-fontSize--epsilon;
+
+    .SidebarNav-link.Link--active {
+      border-left: .4rem solid $Color-denim;
+      font-weight: $Type-weight--bold;
+      background: $Color-gallery;
+    }
+  }
+}
+
+.SidebarNav-link {
+  padding-right: $Margin-rhythm;
+
+  @include breakpoint(large) {
+    padding: 0 $Margin-rhythm;
+  }
+
+  &.Link--active,
+  &.Link--active .Link-icon {
+    color: $Color-darkDenim;
+    cursor: default;
+    fill: $Color-darkDenim;
+  }
+}
+
+.SidebarNav-label {
+  display: none;
+  @include breakpoint(large) {
+    display: inline;
+  }
+}
+
+.SidebarNav--showLabels {
+  padding: 0;
+
+  .SidebarNav {
+    &-item {
+      display: block;
+      line-height: 6rem;
+      color: $Color-denim;
+      font-size: $Type-fontSize--epsilon;
+
+      .SidebarNav-link.Link--active {
+        border-left: .4rem solid $Color-denim;
+        font-weight: $Type-weight--bold;
+        background: $Color-gallery;
+      }
+    }
+
+    &-link {
+      padding: 0 $Margin-rhythm;
+    }
+
+    &-label {
+      display: inline;
+    }
+  }
+}

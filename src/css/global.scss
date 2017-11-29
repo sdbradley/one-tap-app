@@ -1,0 +1,33 @@
+@import 'bootstrap';
+@import 'reset';
+@import '~css/mixins';
+
+html {
+  font-size: 62.5%;
+  font-family: $Type-fontFamily--body;
+}
+
+body {
+  @extend %SG-bodyText;
+  color: $Color-black;
+}
+
+.bold {
+  @include bold;
+}
+
+.SG-input {
+    padding: 1rem;
+    border-radius: 6px;
+    border: solid 1px $Color-silverChalice;
+    max-width: 600px;
+    width: 100%;
+    display: block;
+    margin: auto;
+    font-size: 1.5rem;
+}
+.SG--link {
+    cursor: pointer;
+    text-decoration: underline;
+    color: blue;
+}

@@ -1,0 +1,25 @@
+@import '~css/bootstrap';
+
+.Loader {
+  @include center();
+  text-align: center;
+  width: 100%;
+
+  &-title {
+    color: $Color-denim;
+    font-size: $Type-fontSize--beta;
+    margin-bottom: $Margin-rhythm--half;
+  }
+
+  &-content {
+    color: $Color-silverChalice;
+    font-size: $Type-fontSize--delta;
+  }
+
+  &-spinner {
+    display: inline-block;
+    width: 4rem;
+    height: 4rem;
+    margin: $Margin-rhythm--double;
+  }
+}

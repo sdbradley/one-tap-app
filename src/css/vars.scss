@@ -1,0 +1,56 @@
+$Type-fontFamily--body: "Montserrat", sans-serif;
+
+$Type-fontSize--jumbo: 6.4rem;
+$Type-fontSize--alpha: 4.8rem;
+$Type-fontSize--beta: 3.6rem;
+$Type-fontSize--gamma: 2.4rem;
+$Type-fontSize--delta: 2.0rem;
+$Type-fontSize--epsilon: 1.8rem;
+$Type-fontSize--zeta: 1.6rem;
+$Type-fontSize--eta: 1.4rem;
+$Type-fontSize--theta: 1.2rem;
+
+$Type-weight--regular: 400;
+$Type-weight--medium: 500;
+$Type-weight--bold: 600;
+
+$Media-breakPoint--hd: 1920px;
+$Media-breakPoint--xlarge: 1200px;
+$Media-breakPoint--large: 1000px;
+$Media-breakPoint--desk: 757px;
+$Media-breakPoint--tab: 655px;
+
+$Color-alabaster: #FAFAFA;
+$Color-alto: #F2F2F2;
+$Color-black: #595959;
+$Color-brightTurquoise: #0DCAF2;
+$Color-catskillWhite: #DDEAF1;
+$Color-catskillBlue: #9AC1D5;
+$Color-darkCatskillBlue: #C4DBE7;
+$Color-curiousBlue: #2595E4;
+$Color-denim: #1779B2;
+$Color-darkDenim: #0C618E;
+$Color-dodgerBlue: #31AAF5;
+$Color-gallery: #EFEFEF;
+$Color-silver: #BFBFBF;
+$Color-silverChalice: #A6A6A6;
+$Color-white: #FFFFFF;
+$Color-green: #00CC44;
+$Color-red: #E24301;
+$Color-brightRed: #FF0000;
+$Color-teal: #5EC4B7;
+$Color-alert: darken($Color-brightRed, 5%);
+
+$Color-brand--entre: #F3CF45;
+$Color-brand--highSchool: #E04726;
+$Color-brand--middleSchool: #1fb9e2;
+$Color-brand--college: #8ec449;
+
+$Margin-rhythm: 2rem;
+$Margin-rhythm--half: $Margin-rhythm / 2;
+$Margin-rhythm--double: 2 * $Margin-rhythm;
+
+$BorderRadius-standard: 0.8rem;
+
+$Field-height: 4.2rem;
+$Header-height: 6rem;

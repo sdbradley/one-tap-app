@@ -1,0 +1,41 @@
+@import '~css/vars';
+@import '~css/mixins';
+
+%SG-bodyText {
+  font-size: $Type-fontSize--zeta;
+  @include breakpoint(desktop) {
+    font-size: $Type-fontSize--epsilon;
+  }
+}
+
+%SG-heading {
+  font-family: $Type-fontFamily--body;
+}
+
+%SG-heading--alpha {
+  @extend %SG-heading;
+  font-size: $Type-fontSize--beta;
+
+  @include breakpoint(desktop) {
+    font-size: $Type-fontSize--alpha;
+  }
+}
+
+%SG-heading--beta {
+  @extend %SG-heading;
+  font-size: $Type-fontSize--gamma;
+
+  @include breakpoint(desktop) {
+    font-size: $Type-fontSize--beta;
+  }
+}
+
+%SG-heading--gamma {
+  @extend %SG-heading;
+  font-size: $Type-fontSize--gamma;
+}
+
+%SG-heading--delta {
+  @extend %SG-heading;
+  font-size: $Type-fontSize--zeta;
+}

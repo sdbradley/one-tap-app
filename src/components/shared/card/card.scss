@@ -1,0 +1,110 @@
+@import "../../../css/vars";
+
+.Card {
+  width: 100%;
+  background: $Color-white;
+  border: 0.5px solid $Color-alto;
+  font-weight: $Type-weight--regular;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  padding: 4rem;
+  border: 2px solid $Color-catskillWhite;
+  border-radius: $BorderRadius-standard;
+
+  @media screen and (min-width: $Media-breakPoint--tab) {
+    width: 45%;
+  }
+
+  &.Card--withHint {
+    padding: 0;
+  }
+}
+
+.Card-contentContainer {
+  padding: 4rem;
+}
+
+.Card--admin {
+    width: 30%;
+    display: inline-block;
+}
+
+.Card-container {
+  padding: 3.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* Need to subtract the progress bar from this */
+  height: calc(100% - 20px);
+}
+
+.Card-title {
+  font-size: $Type-fontSize--gamma;
+  font-weight: $Type-weight--regular;
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  /* Fill unused space */
+  flex: 1;
+}
+
+.Card-title--admin {
+    text-align: center;
+}
+
+.Card-infoItem {
+  display: block;
+  font-size: $Type-fontSize--theta;
+
+  &:last-child {
+    margin-bottom: 1rem;
+  }
+}
+
+.Card-sponsoredBy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  color: $Color-silver;
+  font-size: $Type-fontSize--zeta;
+  font-weight: 600;
+
+  span {
+    margin-right: 0.5rem;
+  }
+}
+
+.Card-sponsorLogo {
+  height: 30px;
+  max-width: 188px;
+}
+
+.Card-textInput {
+  font-size: $Type-fontSize--gamma;
+  font-weight: $Type-weight--regular;
+  text-align: center;
+  background-color: $Color-gallery;
+  border: none;
+  box-shadow: none;
+  padding: 2rem;
+  margin: 2rem auto;
+}
+
+.Card-hint {
+  padding: 2rem;
+  border-top: 1px solid $Color-catskillWhite;
+}
+
+.Card-hintTitle {
+  margin-top: 0;
+  font-size: $Type-fontSize--eta;
+  margin-bottom: 0.5rem;
+}
+
+.Card-hintText {
+  font-size: $Type-fontSize--eta;
+  margin-top: 0;
+}
+

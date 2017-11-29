@@ -1,0 +1,64 @@
+@import '~css/bootstrap';
+
+.ToggleField {
+  position: relative;
+  float: right;
+  display: block;
+  width: 5.5rem;
+  height: 3rem;
+  text-align: right;
+  white-space: nowrap;
+  line-height: 1;
+  text-align: center;
+}
+
+.ToggleField-icon {
+  display: inline-block;
+  height: 100%;
+  width: auto;
+  fill: $Color-black;
+  user-select: none;
+
+  &:hover {
+    fill: $Color-black;
+  }
+}
+
+.ToggleField-label {
+  position: absolute;
+  color: $Color-black;
+  font-size: $Type-fontSize--theta;
+  top: 100%;
+  margin-top:0.2rem;
+
+  &--off {
+    left: 0.5rem;
+    font-weight: $Type-weight--bold;
+  }
+
+  &--on {
+    right: 0.5rem;
+  }
+}
+
+.ToggleField--toggled {
+  .ToggleField-icon {
+    fill: $Color-denim;
+
+    &:hover {
+      fill: $Color-darkDenim;
+    }
+  }
+
+  .ToggleField-label {
+    color: $Color-denim;
+    
+    &--on {
+      font-weight: $Type-weight--bold;
+    }
+
+    &--off {
+      font-weight: $Type-weight--regular;
+    }
+  }
+}

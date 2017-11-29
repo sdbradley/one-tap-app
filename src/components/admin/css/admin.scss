@@ -1,0 +1,96 @@
+@import "../../../css/vars";
+@import "../../../css/global";
+
+.Admin-title {
+    margin-bottom: 0;
+    margin-top: 2rem;
+}
+.Admin-title--normal {
+    font-weight: 200;
+}
+.Admin-title--school {
+    margin-bottom: 0rem;
+}
+.Admin-subtitle {
+    margin: 0;
+    margin-bottom: 1rem;
+    font-weight: 200;
+    color:#aaa;
+    font-size: 1.2rem;
+}
+.Button {
+    width: 200px;
+    display: inline-block;
+    margin: auto;
+}
+.Button--admin {
+    margin: 0;
+}
+.SG-input--admin {
+    margin: 0;
+}
+.SG-input--textarea {
+    height: 60px;
+}
+.SG-input--content {
+    min-width: 100%;
+    height: 400px;
+    overflow: scroll;
+}
+.SG-input--transcript {
+    min-width: 100%;
+    height: 200px;
+    overflow: scroll;
+}
+.SG-input--small {
+    max-width: 60px;
+}
+.SG-input--select {
+    height: 40px;
+    background-color: $Color-white;
+}
+.Container--form {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    max-width: 600px;
+    font-family: $Type-fontFamily--body, sans-serif;
+}
+.Container--form-input {
+    margin-top: 2rem;
+}
+.Container--admin {
+    margin: 0;
+    max-width: 100%;
+}
+.SG-Admin--ListTable {
+    padding: 1rem;
+    width: 100%;
+}
+.SG-Admin--ListRow {
+    font-size: 1.4rem;
+    text-align: left;
+    color: $Color-black;
+    min-height: 2rem;
+}
+.SG-Admin--ListHeader {
+    background-color: $Color-alto;
+    height: 40px;
+}
+.SG-Admin--ListCell {
+    vertical-align: top;
+}
+.Admin-school--logo {
+    margin-top: 1rem;
+}
+.Admin-school--name {
+    margin-bottom: 2rem;
+}
+
+.react-datepicker__input-container {
+  display: block !important;
+}
+.ContentItem--flex {
+    display: inline-flex;
+    margin-right: 3rem;
+}

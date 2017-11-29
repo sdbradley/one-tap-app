@@ -1,0 +1,61 @@
+@import "~css/bootstrap";
+
+.Checkbox {
+  $Size: 3rem;
+  font-weight: $Type-weight--regular;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: $Margin-rhythm;
+  position: relative;
+
+  &-control {
+    position: absolute;
+    width: $Size;
+    height: $Size;
+    padding: 1rem;
+    border: 1px solid $Color-silver;
+    display: block;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    &--small {
+      width: 2rem;
+      height: 2rem;
+      left: 1rem;
+      transform: translateY(-90%);
+    }
+  }
+
+  &-label {
+    display: block;
+    padding-left: $Size + $Margin-rhythm;
+    color: $Color-black;
+    text-align: left;
+    font-size: $Type-fontSize--eta;
+  }
+
+  &--checked &-control {
+    background-color: $Color-denim;
+  }
+
+  &:hover &-control {
+    border-color: $Color-silverChalice;
+  }
+
+  &-check {
+    @include center();
+    width: 50%;
+    height: 50%;
+    margin-right: 1rem;
+    fill: $Color-white;
+  }
+
+  &-option:not(&-option--disabled):hover &-icon {
+    background: rgba($Color-denim, 0.1);
+  }
+
+  &--large &-label {
+    color: $Color-denim;
+    font-size: $Type-fontSize--epsilon
+  }
+}

@@ -1,0 +1,85 @@
+@import '~css/bootstrap';
+
+$offset-size: 5rem;
+$label-padding: 1rem;
+$mobile-label-padding: 2.4rem;
+
+.NestedListItem {
+  display: block;
+  position: relative;
+
+
+  &:before {
+    content: '';
+    display: block;
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    float: left;
+    width: $offset-size;
+    border-right: 1px solid $Color-catskillBlue;
+    text-align: center;
+  }
+}
+
+.NestedListItem-label {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid $Color-white;
+  padding: $mobile-label-padding $Margin-rhythm--double $mobile-label-padding $offset-size + $Margin-rhythm--half;
+  cursor: pointer;
+  user-select: none;
+
+  @include breakpoint(desktop) {
+    padding-top: $label-padding;
+    padding-bottom: $label-padding;
+  }
+}
+
+.NestedListItem-left {
+  height: 2rem;
+  width: $offset-size;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.NestedListItem-right {
+  height: 2rem;
+  width: 2rem;
+  position: absolute;
+  right: $Margin-rhythm--half;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.NestedListItem-icon {
+  height: 100%;
+  width: 100%;
+}
+
+.NestedListItem-title {
+  float: left;
+}
+
+.NestedListItem-content {
+  display: block;
+  clear: both;
+  padding-left: $offset-size;
+}
+
+.Link--active .NestedListItem {
+  font-weight: $Type-weight--bold;
+}
+
+.NestedListItem .NestedListItem .NestedListItem-label {
+  background: $Color-catskillWhite;
+}
+
+.NestedListItem--active .NestedListItem-label {
+  background: $Color-darkCatskillBlue;
+}

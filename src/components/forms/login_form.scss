@@ -1,0 +1,90 @@
+@import "~css/bootstrap";
+
+.LoginForm {
+  display: block;
+  text-align: center;
+  max-width: 38rem;
+  width: 100%;
+  margin: 2rem auto;
+  color: $Color-black;
+  background: $Color-white;
+  border: 2px solid $Color-catskillWhite;
+  border-radius: $BorderRadius-standard;
+}
+
+.LoginForm-title {
+  background: $Color-denim;
+  color: white;
+  height:30px;
+  border-radius: 6px 6px 0 0;
+  margin-bottom: 1rem;
+}
+
+.LoginForm-logo {
+  height: 20px;
+  margin-top: 0.5rem;
+}
+
+.LoginForm-section {
+  padding: $Margin-rhythm * 0.75 $Margin-rhythm;
+  @include breakpoint(tablet) {
+    padding: $Margin-rhythm $Margin-rhythm--double;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 2px solid $Color-catskillWhite;
+  }
+
+  &:first-child {
+    padding-top: $Margin-rhythm;
+    @include breakpoint(tablet) {
+      padding-top: $Margin-rhythm--double;
+    }
+  }
+
+  &:last-child {
+    padding-bottom: $Margin-rhythm;
+    @include breakpoint(tablet) {
+      padding-bottom: $Margin-rhythm--double;
+    }
+  }
+}
+
+.LoginForm-heading {
+  @extend %SG-heading--beta;
+  margin-top: 0;
+  margin-bottom: 2rem;
+
+  @include breakpoint(desktop) {
+    font-size: $Type-fontSize--gamma;
+  }
+}
+
+.LoginForm-field, .LoginForm-button {
+  position: relative;
+  margin: 1.4rem 0;
+}
+
+.LoginForm-input {
+  display: block;
+  width: 100%;
+  font-size: $Type-fontSize--eta;
+  color: $Color-denim;
+  padding: 1rem;
+  background: $Color-gallery;
+  border: none;
+  box-shadow: none;
+}
+
+.LoginForm-helpText {
+  font-family: $Type-fontFamily--body;
+  font-size: $Type-fontSize--theta;
+
+  &:last-child {
+    margin-top: 0.5rem;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+}

@@ -1,0 +1,125 @@
+@import '~css/global';
+
+.App {
+  text-align: left;
+  height: 100vh;
+  overflow: auto;
+  position: relative;
+  background: $Color-alabaster;
+  color: $Color-black;
+  border-top: solid transparent $Header-height;
+
+  &-header {
+    height: $Header-height;
+    background: $Color-white;
+    border-bottom: 1px solid $Color-silver;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+  }
+
+  &-body,
+  &-headerContent {
+    width: calc(100% - 4rem);
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    overflow: visible;
+  }
+
+  &-body {
+    @include content(t);
+    height: 100%;
+  }
+/* START HERE */
+  &-alert {
+    padding: $Margin-rhythm;
+    width: 80%;
+    margin: 0 auto;
+    @include breakpoint(desktop) {
+      display: flex;
+    }
+    @include breakpoint(large) {
+      padding-left: $Margin-rhythm+$Field-height;
+    }
+
+    &Message{
+      text-align: center;
+      margin: 0 0 $Margin-rhythm;
+
+      @include breakpoint(desktop) {
+        font-size: $Type-fontSize--zeta;
+        text-align: left;
+        width: 80%;
+        margin: 0 $Margin-rhythm--half 0 0;
+      }
+
+      &::before {
+        content: ' ';
+        background-image: url(https://cdn.ramseysolutions.net/media/b2b/edu/foundations_digital/app/AlertDialog.svg);
+        position: absolute;
+        visibility: hidden;
+        height: $Field-height;
+        width: $Field-height;
+        @include breakpoint(large) {
+          visibility: visible;
+          left: 10%;
+          top: auto;
+          bottom: auto;
+        }
+      }
+    }
+    
+    &Button {
+      position: relative;
+      padding: $Margin-rhythm--half $Margin-rhythm--double;
+      margin: 0 auto;
+      background-color: transparent;
+      border: 2px solid $Color-white;
+      border-radius: 30px;
+      max-width: 150px;
+
+      @include breakpoint(desktop) {
+        margin: auto 0;
+      }
+      
+      &:hover {
+          background-color: $Color-white;
+          color: $Color-alert;
+      }
+      
+    }
+  }
+/* END HERE */
+  &--minimal {
+    background: $Color-alabaster;
+    padding-top: 0;
+
+    .App-body {
+      @include center();
+      max-width: initial;
+      display: block;
+      width: 100%;
+      max-height: 100%;
+      overflow-y: auto;
+      padding-top: 0;
+      height: auto;
+    }
+  }
+
+  &--edgeless &-body,
+  &--edgeless &-headerContent {
+    max-width: initial;
+  }
+
+  &--edgeless &-body {
+    width: 100%;
+    padding-top: 0;
+  }
+  &--login, &--forgotPassword, &--resetPassword {
+      background-size: cover;
+  }
+}
