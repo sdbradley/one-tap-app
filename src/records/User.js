@@ -74,17 +74,11 @@ User.NULL = User({
 
 User.fromApi = function deserialize(data, school_id) {
   let _roles = List(data.roles && data.roles.map(role => role.name));
-  let _rights = List(data.permissions && data.permissions.map(permission => `${permission.noun}.${permission.verb}`))
-  let _schools = (school_id ? [school_id] : []).concat(data.schools ? data.schools.map(school => school.id) : []);
   return User({
     id: data.id,
     firstName: data.first_name,
     lastName: data.last_name,
-    email: data.email,
-    isValidated: data.is_validated,
-    schools: List(_schools),
-    _rights: _roles.reduce((rights, role) => RIGHTS[role] ? rights.concat(RIGHTS[role]) : rights, _rights),
-    _roles
+    email: data.email_address
   });
 };
 

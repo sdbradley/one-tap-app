@@ -36,7 +36,7 @@ const authetication = (auth = Authentication().set('token', Cookies.get("userTok
       // TODO: This assumption won't always be true, add better error management.
       return auth.set('errors', List(['Email or password is incorrect']));
     case AUTHENTICATION_FETCH_DATA_SUCCESS:
-      return auth.set('user', User.fromApi(action.payload.user));
+      return auth.set('user', User.fromApi(action.payload));
     case AUTHENTICATION_NEW_AUTH:
       return auth.merge({
         authFormErrors: List(),
