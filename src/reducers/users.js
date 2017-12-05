@@ -58,7 +58,7 @@ const users = (usersList = INITIAL_STATE, action) => {
     case CLEAR_USERS_SEARCH:
       return usersList.setMeta('searchResults', List());
     case RECEIVED_NORMAL_API_RESPONSE:
-      if(action.payload.users){
+      if(action.payload && action.payload.users){
         return usersList.saveAll(action.payload.users.map(data => User.fromApi(data, action.payload.school_id)));
       }
       return usersList;
