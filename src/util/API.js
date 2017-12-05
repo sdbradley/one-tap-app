@@ -85,9 +85,7 @@ class API {
 export const V1 = new API(API_LOCATION, 'v1')
 
 export const V2 = new API(API_LOCATION, 'v2')
-  .scope('teacher', 'instructor')
-  .scope('student', 'student')
-  .scope('Admin', 'admin')
+  .scope('admin', 'admin')
   .scope('public', 'public');
 
 V2.admin = V1;

@@ -31,7 +31,7 @@ export function login({ email, password }) {
   }
 
   return dispatch => {
-    API.public.post('auth', { email, password }, { accept: 'text/plain' })
+    API.post('authentication', { email, password }, { accept: 'text/plain' })
       .then(token => dispatch(receiveToken(token)))
       .catch(err => dispatch(currentUserLoginFailed(err)));
   };
