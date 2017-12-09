@@ -3,12 +3,14 @@ import authentication from './authentication';
 import users from './users';
 import roles from './roles';
 import modal from './modal';
+import navigation from './navigation';
 
 const appReducer = combineReducers({
   authentication,
   users,
   roles,
-  modal
+  modal,
+  navigation
 });
 
 const rootReducer = (state, action) => {
