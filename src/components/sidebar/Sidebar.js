@@ -62,38 +62,38 @@ class Sidebar extends React.Component {
           }
         )}      
       >
-        <header className='Sidebar-logo'>
+        <header className='logo'>
           <Link to="/app">1Tap</Link>
         </header>
-        <h5 className='Sidebar-navTitle'>
+        <h5 className='navTitle'>
           LABELS
-          <a className='Sidebar-actionLink'>
-            <i className='Sidebar-glyphiconSm glyphicon glyphicon-plus float-right' />
+          <a className='actionLink'>
+            <i className='glyphiconSm glyphicon glyphicon-plus float-right' />
           </a>
         </h5>
         {/* eslint-disable */}
-        <ul className='Sidebar-sidebarLabels'>
+        <ul className='sidebarLabels'>
           <li>
             <a href="#">
               <i className="fa fa-circle text-warning mr-2"/>
-              <span className='Sidebar-labelName'>My Recent</span>
+              <span className='labelName'>My Recent</span>
             </a>
           </li>
           <li>
             <a href="#">
               <i className="fa fa-circle text-gray mr-2"/>
-              <span className='Sidebar-labelName'>Starred</span>
+              <span className='labelName'>Starred</span>
             </a>
           </li>
           <li>
             <a href="#">
               <i className="fa fa-circle text-danger mr-2"/>
-              <span className='Sidebar-labelName'>Background</span>
+              <span className='labelName'>Background</span>
             </a>
           </li>
         </ul>
         {/* eslint-enable */}
-        <h5 className='Sidebar-navTitle'>
+        <h5 className='navTitle'>
           PROJECTS
         </h5>
       </nav>

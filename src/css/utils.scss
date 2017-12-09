@@ -193,7 +193,7 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 // ----------------------------
 
 //copy bg classes after bootstrap so it's possible to overload other bootstrap classes
-/*
+
 @include bg-variant('.bg-primary', theme-color('primary'));
 @include bg-variant('.bg-success', theme-color('success'));
 @include bg-variant('.bg-info', theme-color('info'));
@@ -210,7 +210,7 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 @include bg-variant('.bg-transparent', rgba(0,0,0,0));
 @include bg-variant('.bg-white', $white);
 @include bg-variant('.bg-sidebar', $sidebar-bg-color);
-*/
+
 .bg-body,
 .bg-body-light,
 .bg-gray,
@@ -225,7 +225,7 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 }
 
 //override bs .text-* classes so they use $brand-* variables
-/*
+
 @include text-emphasis-variant('.text-primary', theme-color('primary'));
 @include text-emphasis-variant('.text-success', theme-color('success'));
 @include text-emphasis-variant('.text-info', theme-color('info'));
@@ -240,7 +240,7 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 @include text-emphasis-variant('.text-gray-darker', $gray-900);
 @include text-emphasis-variant('.text-gray-lighter', $gray-200);
 @include text-emphasis-variant('.text-bg-sidebar', $sidebar-bg-color);
-*/
+
 .text-ellipsis {
   display: block;
   white-space: nowrap;
@@ -250,12 +250,12 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 
 .deemphasize {
   font-size: $font-size-mini;
-  /*color: $text-muted;*/
+  color: $text-muted;
 }
 
 .help {
   font-size: $font-size-mini;
-  /*color: $text-muted;*/
+  color: $text-muted;
 }
 
 .text-light {
@@ -305,7 +305,7 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
 .help-block {
   margin-top: 5px;
   font-size: $font-size-mini;
-  /*color: $text-muted;*/
+  color: $text-muted;
   display: block;
 }
 
@@ -324,7 +324,7 @@ $z-index-variants: (more: 1, less: -1, '10': 10, '-10': -10);
     border: none;
     background-color: rgba(0, 0, 0, 0.2);
 
-    /*@include box-shadow(inset 1px 1px 0 rgba(0, 0, 0, 0.1));*/
+    @include box-shadow(inset 1px 1px 0 rgba(0, 0, 0, 0.1));
   }
 
   &::-webkit-scrollbar-thumb:hover {
