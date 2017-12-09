@@ -12,6 +12,7 @@ export default function App({
   className,
   page,
   slug,
+  showNav = true,
   children
 } = {}) {
   let header = minimal ? null : (
@@ -20,6 +21,10 @@ export default function App({
         <Header content={headerContent}/>
       </div>
     </div>
+  );
+
+  let sidebar = !showNav ? null : (
+    <Sidebar />
   );
 
   return (
@@ -33,9 +38,9 @@ export default function App({
         'App--edgeless': edgeless
       }
     )}>
-      <Sidebar />
-      {header}
+      {sidebar}
       <div className='App-body'>
+        {header}
         {children}
       </div>
       <ModalMount />

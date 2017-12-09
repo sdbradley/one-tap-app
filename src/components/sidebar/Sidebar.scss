@@ -11,6 +11,7 @@
   color: $sidebar-color;
   overflow-y: hidden;
   transition: width $sidebar-transition-time ease-in-out;
+  z-index: 999;
 
   @include scroll-bar($gray-600);
 

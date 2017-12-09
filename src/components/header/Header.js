@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { currentUserLogout } from 'actions/authentication';
+import { openSidebar, toggleSidebar } from '../../actions/navigation';
 import classNames from 'classnames';
 import Icon from 'components/icon';
 import Link from 'components/link';
@@ -12,6 +13,7 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.handleNavToggle = this.handleNavToggle.bind(this);
+    this.toggleSidebar = this.toggleSidebar.bind(this);
     this.closeNav = this.closeNav.bind(this);
     this.state = { open: false };
   }
@@ -32,11 +34,25 @@ class Header extends Component {
     this.setState({ open: !this.state.open });
   }
 
+  toggleSidebar() {
+    this.props.openSidebar();
+    this.props.toggleSidebar();
+    //if (this.props.sidebarStatic) {
+    //  this.props.dispatch(changeActiveSidebarItem(null));
+    //} else {
+      //const paths = this.props.location.pathname.split('/');
+      //paths.pop();
+      //this.props.dispatch(changeActiveSidebarItem(paths.join('/')));
+    //}
+  }
+
   render() {
     return(
       <div className={classNames('Header', { 'Header--open': this.state.open, 'Header-withContent': this.props.content })}>
         <div className="Header-content">
-          {this.props.content}
+          <Link className="d-md-down-none" href="#" id="toggleSidebar" onClick={this.toggleSidebar}>
+            <i className={'fa fa-bars fa-lg'} />
+          </Link>
         </div>
         <div className="Header-center">
           {this.renderLogo()}
@@ -73,6 +89,10 @@ const mapStateToProps = (state) => ({
   name: state.authentication.user.fullName()
 })
 
-const mapDispatchToProps = { logout: currentUserLogout };
+const mapDispatchToProps = { 
+  logout: currentUserLogout,
+  toggleSidebar: toggleSidebar,
+  openSidebar: openSidebar
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

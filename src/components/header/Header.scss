@@ -14,7 +14,6 @@
   height: 100%;
   position: absolute;
   left: -2rem;
-  bottom: 1px;
   background-color: $Color-white;
   z-index: 2
 }
@@ -165,8 +164,8 @@
   }
 
   .Header-nav {
-    margin-top: -1px;
     transform: translateY(0%);
+    border-top: 1px solid $Color-silver;
   }
 }
 
@@ -181,5 +180,6 @@
   min-width: 4rem;
   @include breakpoint(desktop) {
     width: 20rem;
+    margin-left: 2rem;
   }
 }

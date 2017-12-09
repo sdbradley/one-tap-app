@@ -5,7 +5,7 @@ import App from 'components/App';
 class ResetPassword extends Component {
   render() {
     return (
-      <App page="resetPassword" minimal>
+      <App page="resetPassword" showNav={false} minimal>
         <ResetPasswordForm email={decodeURIComponent(this.props.params.email)} token={this.props.params.token}/>
       </App>
     );

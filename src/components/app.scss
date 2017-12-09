@@ -1,19 +1,19 @@
 @import '~css/global';
+@import '~css/theme';
 
 .App {
   text-align: left;
   height: 100vh;
   overflow: auto;
   position: relative;
-  background: $Color-gray;
+  background: $Color-white;
   color: $Color-black;
-  border-top: solid transparent $Header-height;
 
   &-header {
     height: $Header-height;
     background: $Color-white;
     border-bottom: 1px solid $Color-silver;
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -23,7 +23,6 @@
   &-body,
   &-headerContent {
     width: calc(100% - 4rem);
-    max-width: 1200px;
     margin: 0 auto;
     position: relative;
     z-index: 1;
@@ -33,6 +32,7 @@
   &-body {
     @include content(t);
     height: 100%;
+    padding-top: 0 !important;
   }
 /* START HERE */
   &-alert {

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Link from 'components/link';
+import Icon from 'components/icon';
 import s from './Sidebar.scss';
 import classNames from 'classnames';
 
@@ -65,6 +66,13 @@ class Sidebar extends React.Component {
         <header className='logo'>
           <Link to="/app">1Tap</Link>
         </header>
+        <ul className={s.nav}>
+          <Link className="LoginForm-helpText" classic to={`/login/${this.props.slug}`}>Dashboard</Link>
+          <Link blue to='/'>
+            <Icon className='Enrollment-headerIcon' type='chevron' left inline encircled interactive={false}/>
+            <span className="Enrollment-headerLabel">Another Page</span>
+          </Link>
+        </ul>
         <h5 className='navTitle'>
           LABELS
           <a className='actionLink'>

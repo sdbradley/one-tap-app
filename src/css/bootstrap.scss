@@ -1,11 +1,11 @@
 // This file outputs nothing, but includes
 // all of the variables and functions needed
 // by the rest of the app
-@import '../../node_modules/bootstrap/scss/functions';
+@import '../../node_modules/bootstrap/scss/_functions';
 @import '~css/vars';
 @import '../../node_modules/bootstrap/scss/variables';
 @import '../../node_modules/bootstrap/scss/mixins';
 @import '~css/mixins';
 @import '~css/extendables';
 @import '~css/utils';
-@import '~css/theme';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');

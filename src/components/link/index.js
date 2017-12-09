@@ -1,2 +1,2 @@
-export { default as default } from './Link'; // eslint-disable-line
+export { default } from './Link'; // eslint-disable-line
 import './Link.scss';

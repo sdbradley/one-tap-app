@@ -8,7 +8,7 @@ class Login extends Component {
     var slug = Cookies.get('slug') || (this.props.params && this.props.params.slug) ? this.props.params.slug : '';
     Cookies.set("slug", slug, { expires: Infinity });
     return (
-      <App page='login' slug={slug} minimal>
+      <App page='login' showNav={false} slug={slug} minimal>
         <LoginForm slug={slug} />
       </App>
     );
