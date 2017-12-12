@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Link from 'components/link';
+import { NavLink } from 'react-router-dom';
 import Icon from 'components/icon';
 import s from './Sidebar.scss';
 import classNames from 'classnames';
@@ -63,18 +64,25 @@ class Sidebar extends React.Component {
           }
         )}      
       >
-        <header className='logo'>
+        <header className='Sidebar-logo'>
           <Link to="/app">1Tap</Link>
         </header>
-        <ul className={s.nav}>
-          <Link className="LoginForm-helpText" classic to={`/login/${this.props.slug}`}>Dashboard</Link>
-          <Link blue to='/'>
-            <Icon className='Enrollment-headerIcon' type='chevron' left inline encircled interactive={false}/>
-            <span className="Enrollment-headerLabel">Another Page</span>
+        <ul className='Sidebar-nav'>
+          <Link to={this.props.headerLink} className='headerLink' exact>
+            <span className={s.icon}>
+              <i className={`fa ${this.props.iconName}`} />
+            </span>
+            Dashboard
           </Link>
+          <NavLink to={this.props.headerLink} className='headerLink' exact>
+            <span className='Sidebar-icon'>
+              <i className={`fa fa-child`} />
+            </span>
+            Dashboard 2
+          </NavLink>
         </ul>
         <h5 className='navTitle'>
-          LABELS
+          RECENT
           <a className='actionLink'>
             <i className='glyphiconSm glyphicon glyphicon-plus float-right' />
           </a>
@@ -89,20 +97,20 @@ class Sidebar extends React.Component {
           </li>
           <li>
             <a href="#">
-              <i className="fa fa-circle text-gray mr-2"/>
+              <i className="fa fa-circle text-warning mr-2"/>
               <span className='labelName'>Starred</span>
             </a>
           </li>
           <li>
             <a href="#">
-              <i className="fa fa-circle text-danger mr-2"/>
+              <i className="fa fa-circle text-warning mr-2"/>
               <span className='labelName'>Background</span>
             </a>
           </li>
         </ul>
         {/* eslint-enable */}
         <h5 className='navTitle'>
-          PROJECTS
+          CAMPAIGNS
         </h5>
       </nav>
     );

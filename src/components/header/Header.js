@@ -50,9 +50,6 @@ class Header extends Component {
     return(
       <div className={classNames('Header', { 'Header--open': this.state.open, 'Header-withContent': this.props.content })}>
         <div className="Header-content">
-          <Link className="d-md-down-none" href="#" id="toggleSidebar" onClick={this.toggleSidebar}>
-            <i className={'fa fa-bars fa-lg'} />
-          </Link>
         </div>
         <div className="Header-center">
           {this.renderLogo()}
