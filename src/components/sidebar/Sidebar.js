@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Link from 'components/link';
-import { NavLink } from 'react-router-dom';
 import Icon from 'components/icon';
 import s from './Sidebar.scss';
 import classNames from 'classnames';
@@ -74,12 +73,6 @@ class Sidebar extends React.Component {
             </span>
             Dashboard
           </Link>
-          <NavLink to={this.props.headerLink} className='headerLink' exact>
-            <span className='Sidebar-icon'>
-              <i className={`fa fa-child`} />
-            </span>
-            Dashboard 2
-          </NavLink>
         </ul>
         <h5 className='navTitle'>
           RECENT
