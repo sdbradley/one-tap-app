@@ -1,26 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import Link from 'components/link';
-import Icon from 'components/icon';
-import s from './Sidebar.scss';
+import LinkItem from 'components/link_item';
 import classNames from 'classnames';
-
 import { openSidebar, closeSidebar, changeActiveSidebarItem } from 'actions/navigation';
+import './Sidebar.scss';
 
 class Sidebar extends React.Component {
-
-  /*
-  static propTypes = {
-    sidebarStatic: PropTypes.bool,
-    sidebarOpened: PropTypes.bool,
-    dispatch: PropTypes.func.isRequired,
-    activeItem: PropTypes.string.isRequired, //eslint-disable-line
-    location: PropTypes.shape({
-      pathname: PropTypes.string,
-    }).isRequired,
-  };
-  */
 
   static defaultProps = {
     sidebarStatic: false,
@@ -64,46 +50,43 @@ class Sidebar extends React.Component {
         )}      
       >
         <header className='Sidebar-logo'>
-          <Link to="/app">1Tap</Link>
+          <Link to="/">1Tap</Link>
         </header>
         <ul className='Sidebar-nav'>
-          <Link to={this.props.headerLink} className='headerLink' exact>
-            <span className={s.icon}>
-              <i className={`fa ${this.props.iconName}`} />
-            </span>
-            Dashboard
-          </Link>
+          <LinkItem to="/" iconName="fa-bar-chart" title="Dashboard" />
+          <LinkItem to="/scorecard" iconName="fa-dashboard" title="Scorecard" />
+          <LinkItem to="/admin" iconName="fa-gear" title="Admin" />
         </ul>
         <h5 className='navTitle'>
-          RECENT
-          <a className='actionLink'>
-            <i className='glyphiconSm glyphicon glyphicon-plus float-right' />
-          </a>
+          CAMPAIGNS
         </h5>
         {/* eslint-disable */}
         <ul className='sidebarLabels'>
           <li>
             <a href="#">
-              <i className="fa fa-circle text-warning mr-2"/>
-              <span className='labelName'>My Recent</span>
+              <i className="fa fa-circle text-primary mr-2"/>
+              <span className='labelName'>AMC Dell</span>
             </a>
           </li>
           <li>
             <a href="#">
-              <i className="fa fa-circle text-warning mr-2"/>
-              <span className='labelName'>Starred</span>
+              <i className="fa fa-circle text-primary mr-2"/>
+              <span className='labelName'>EC2 Standard</span>
             </a>
           </li>
           <li>
             <a href="#">
-              <i className="fa fa-circle text-warning mr-2"/>
-              <span className='labelName'>Background</span>
+              <i className="fa fa-circle text-primary mr-2"/>
+              <span className='labelName'>Dell USA</span>
             </a>
           </li>
         </ul>
         {/* eslint-enable */}
         <h5 className='navTitle'>
-          CAMPAIGNS
+          RECENT
+          <a className='actionLink'>
+            <i className='glyphiconSm glyphicon glyphicon-plus float-right' />
+          </a>
         </h5>
       </nav>
     );

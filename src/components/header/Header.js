@@ -75,7 +75,7 @@ class Header extends Component {
   renderNav() {
     return (
       <ul className="Header-nav">
-        <li className="Header-navItem"><Link to='/'>Dashboard</Link></li>
+        <li className="Header-navItem"><Link to='/profile'>Profile</Link></li>
         <li className="Header-navItem"><Link onClick={this.props.logout}>Logout</Link></li>
       </ul>
     );

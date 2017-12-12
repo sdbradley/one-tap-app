@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import store from 'store';
 import { receiveToken, activity } from 'actions/authentication';
 import Routes from 'components/Routes';
-import { ROOT_ELEMENT, APP_ROOT } from 'constants';
+import { ROOT_ELEMENT } from 'constants';
 import Cookies from "cookies-js";
 
 let token = Cookies.get('userToken');

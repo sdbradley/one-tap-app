@@ -269,6 +269,19 @@
     }
   }
 
+  &--Active {
+    color: $sidebar-item-active-color;
+
+    .icon {
+      border-radius: 50%;
+      background-color: $sidebar-item-active-color;
+
+      i {
+        color: #242424;
+      }
+    }
+  }
+
   .badge {
     float: right;
     line-height: 8px;
@@ -278,7 +291,10 @@
     border-radius: 0.2rem;
   }
 }
-
+.headerLink-item {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
 .collapsed .caret {
   transform: rotate(-90deg);
 }
@@ -289,19 +305,6 @@
   line-height: 35px;
 
   @include transition(transform 0.3s ease-in-out);
-}
-
-a.headerLinkActive {
-  color: $sidebar-item-active-color;
-
-  .icon {
-    border-radius: 50%;
-    background-color: $sidebar-item-active-color;
-
-    i {
-      color: #242424;
-    }
-  }
 }
 
 .panel {
