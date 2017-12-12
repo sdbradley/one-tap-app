@@ -6,7 +6,7 @@ class ForgotPassword extends Component {
   render() {
     var slug = (this.props.params && this.props.params.slug) ? this.props.params.slug : '';
     return (
-      <App page='forgotPassword' slug={slug} minimal>
+      <App page='forgotPassword' showNav={false} slug={slug} minimal>
         <ForgotPasswordForm slug={slug} />
       </App>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Header from 'components/header';
-import Interrupter from 'components/shared/interrupter';
+import Sidebar from 'components/sidebar';
 import ModalMount from 'containers/modal_mount';
 import './app.scss';
 
@@ -12,6 +12,7 @@ export default function App({
   className,
   page,
   slug,
+  showNav = true,
   children
 } = {}) {
   let header = minimal ? null : (
@@ -21,33 +22,10 @@ export default function App({
       </div>
     </div>
   );
-  let compatible = (
-                    (!!window.chrome && !!window.chrome.webstore) ||
-                    navigator.userAgent.indexOf("Safari") > -1 ||
-                    typeof InstallTrigger !== 'undefined'
-                   ) &&
-                   !(
-                     !!window.StyleMedia ||
-                     !!document.documentMode ||
-                     /*@cc_on!@*/false
-                   );
-  let browserWarning =
-    <Interrupter  className='Interrupter--alert'
-                  name='compatibilityMessage'
-                  position={Interrupter.POSITION_TOP}
-                  animateOut={true}
-                  animateIn={false}
-                  delay={0}
-    >
-      <div className='App-alert'>
-        <div className='App-alertMessage'>
-          <span className="bold">Oops!</span> The browser you are currently using may not work properly with FoundationsDigital. For the best experience, please consider using the most recent version of Google Chrome, Mozilla Firefox, or Apple Safari
-        </div>
-        <div className='App-alertButton Interrupter-dismiss'>
-          Dismiss
-        </div>
-      </div>
-    </Interrupter>
+
+  let sidebar = !showNav ? null : (
+    <Sidebar />
+  );
 
   return (
     <div className={classNames(
@@ -60,9 +38,9 @@ export default function App({
         'App--edgeless': edgeless
       }
     )}>
-      {!compatible && browserWarning}
-      {header}
+      {sidebar}
       <div className='App-body'>
+        {header}
         {children}
       </div>
       <ModalMount />

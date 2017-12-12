@@ -1,0 +1,350 @@
+@import '~css/bootstrap';
+
+.Sidebar {
+
+  width: $sidebar-width-open;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: $sidebar-bg-color;
+  color: $sidebar-color;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  transition: width $sidebar-transition-time ease-in-out;
+  z-index: 999;
+
+  @include scroll-bar($gray-600);
+
+  &-nav {
+    padding: 30px 0 10px;
+    overflow-y: auto;
+    font-size: 1.25rem;
+  }
+
+  &-logo {
+    margin: 11px 0 19px;
+    font-size: 18px;
+    width: 100%;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    transition: width $sidebar-transition-time ease-in-out;
+
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+
+  &-sidebarClose {
+
+    width: $sidebar-width-closed;
+
+    .logo {
+      width: 50px;
+    }
+    .navTitle {
+      opacity: 0;
+    }
+    .labelName {
+      opacity: 0;
+    }
+    .sidebarLabels > li > a > i {
+      margin-left: 8px;
+      transition: margin-left $sidebar-transition-time ease-in-out;
+    }
+    .sidebarAlerts {
+      opacity: 0;
+    }
+  }
+
+  &-staticSidebar .logo {
+    width: 100%;
+    transition: none;
+  }
+
+  &-nav {
+    padding: 30px 0 10px;
+    overflow-y: auto;
+    font-size: $font-size-lg;
+  }
+
+  &-staticSidebar .navTitle {
+    opacity: 1;
+    transition: none;
+  }
+
+  &-actionLink {
+    color: #aaa;
+    float: right;
+    margin-right: 15px;
+    margin-top: -1px;
+  }
+
+  &-labelName {
+    opacity: 1;
+    transition: opacity $sidebar-transition-time ease-in-out;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-left: 6px;
+  }
+
+  &-staticSidebar .labelName {
+    transition: none;
+    opacity: 1;
+  }
+
+  &-glyphiconSm {
+    font-size: 9px;
+  }
+
+  &-sidebarLabels {
+    list-style-type: none;
+    padding: 11px;
+    padding-right: 15px;
+    width: 200px;
+
+    > li + li {
+      margin-top: 0px;
+    }
+
+    > li > a {
+      color: #eee;
+      text-decoration: none;
+      font-weight: normal;
+
+      > i {
+        font-size: 11px;
+        vertical-align: 1px;
+        transition: margin-left $sidebar-transition-time ease-in-out;
+      }
+    }
+  }
+
+  &-staticSidebar {
+    .sidebarLabels > li > a > i {
+      transition: none;
+      margin-left: 0;
+    }
+  }
+
+  &-sidebarAlerts {
+    transition: opacity $sidebar-transition-time ease-in-out;
+    opacity: 1;
+  }
+
+  &-staticSidebar .sidebarAlerts {
+    opacity: 1;
+    transition: none;
+  }
+
+  &-sidebarAlert {
+    background: transparent;
+    margin-bottom: 0;
+    padding: 0.5rem 11px;
+    padding-right: 15px;
+  }
+
+  &-sidebarProgress {
+    background: lighten($sidebar-bg-color, 10%);
+  }
+}
+
+.navTitle {
+  margin: 35px 0 5px 11px;
+  font-size: $font-size-larger;
+  transition: opacity $sidebar-transition-time ease-in-out;
+
+  @media (min-width: breakpoint-min(lg)) {
+    opacity: 1;
+  }
+}
+
+.actionLink {
+  color: #aaa;
+  float: right;
+  margin-right: 15px;
+  margin-top: -1px;
+}
+
+.labelName {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-left: 6px;
+}
+
+.glyphiconSm {
+  font-size: 9px;
+}
+
+.sidebarLabels {
+  list-style-type: none;
+  padding: 11px;
+  padding-right: 15px;
+  width: 200px;
+}
+.sidebarLabels li > a {
+  color: #eee;
+  text-decoration: none;
+  font-weight: normal;
+}
+.sidebarLabels li > a > i {
+  font-size: 11px;
+  vertical-align: 1px;
+  transition: margin-left 0.3s ease-in-out;
+}
+.sidebarClose .sidebarLabels > li > a > i {
+  margin-left: 8px;
+  transition: margin-left 0.3s ease-in-out;
+}
+.staticSidebar .sidebarLabels > li > a > i {
+  transition: none;
+  margin-left: 0;
+}
+.sidebarAlerts {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}
+.sidebarClose .sidebarAlerts {
+  opacity: 0;
+}
+.staticSidebar .sidebarAlerts {
+  opacity: 1;
+  transition: none;
+}
+.sidebarAlert {
+  background: transparent;
+  margin-bottom: 0;
+  padding: 0.5rem 11px;
+  padding-right: 15px;
+}
+.sidebarProgress {
+  background: #3e3e3e;
+}
+
+/* Linksgroup.scss */
+.headerLink {
+  span {
+    display: block;
+    color: $sidebar-color;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &:last-child > span {
+    border-bottom: 1px solid $sidebar-item-border-color;
+  }
+
+  > span {
+    position: relative;
+    padding-left: 50px;
+    line-height: 35px;
+    border-top: 1px solid $sidebar-item-border-color;
+
+    &:hover {
+      background-color: $sidebar-item-hover-bg-color;
+    }
+
+    > i {
+      margin-right: 7px;
+    }
+  }
+
+  .icon {
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 11px;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+
+    i {
+      color: rgba(170, 170, 170, 0.7);
+    }
+  }
+
+  &--Active {
+    color: $sidebar-item-active-color;
+
+    .icon {
+      border-radius: 50%;
+      background-color: $sidebar-item-active-color;
+
+      i {
+        color: #242424;
+      }
+    }
+  }
+
+  .badge {
+    float: right;
+    line-height: 8px;
+    margin-top: 7px;
+    margin-right: 15px;
+    padding: 7px;
+    border-radius: 0.2rem;
+  }
+}
+.headerLink-item {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.collapsed .caret {
+  transform: rotate(-90deg);
+}
+
+.caret {
+  float: right;
+  margin-right: 18px;
+  line-height: 35px;
+
+  @include transition(transform 0.3s ease-in-out);
+}
+
+.panel {
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  border-radius: 0;
+  background-color: lighten($sidebar-bg-color, 5%);
+
+  &::before {
+    content: '';
+    display: block;
+    padding-top: $spacer/2;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    padding-bottom: $spacer/2;
+  }
+
+  a.headerLinkActive {
+    color: $white;
+    font-weight: $font-weight-thin;
+  }
+
+  ul {
+    padding-left: 0;
+    font-size: $font-size-sm;
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      padding: 4px 20px 4px 36px;
+
+      &:hover {
+        background-color: $sidebar-item-hover-bg-color;
+      }
+    }
+  }
+}
