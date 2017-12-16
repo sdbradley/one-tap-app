@@ -9,81 +9,86 @@
   color: $Color-black;
   background: $Color-white;
   border-radius: $BorderRadius-standard;
-}
 
-.LoginForm-title {
-  background: $Color-denim;
-  color: white;
-  height:30px;
-  border-radius: 6px 6px 0 0;
-  margin-bottom: 1rem;
-}
-
-.LoginForm-logo {
-  height: 20px;
-  margin-top: 0.5rem;
-}
-
-.LoginForm-section {
-  padding: $Margin-rhythm * 0.75;
-  @include breakpoint(tablet) {
-    padding: $Margin-rhythm $Margin-rhythm * 1.25;
+  &--logoContainer {
+    padding-top: 3rem;
   }
 
-  &:not(:last-child) {
-    border-bottom: 2px solid $Color-catskillWhite;
+  &--logo {
+    width: 180px;
+    margin: auto;
+    border: none;
   }
 
-  &:first-child {
-    padding-top: $Margin-rhythm;
+  &-title {
+    background: $Color-denim;
+    color: white;
+    height:30px;
+    border-radius: 6px 6px 0 0;
+    margin-bottom: 1rem;
+  }
+
+  &-section {
+    padding: $Margin-rhythm * 0.75;
     @include breakpoint(tablet) {
-      padding-top: $Margin-rhythm * 1.5;
+      padding: $Margin-rhythm $Margin-rhythm * 1.25;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 2px solid $Color-catskillWhite;
+    }
+
+    &:first-child {
+      padding-top: $Margin-rhythm;
+      @include breakpoint(tablet) {
+        padding-top: $Margin-rhythm * 1.5;
+      }
+    }
+
+    &:last-child {
+      padding-bottom: $Margin-rhythm;
+      @include breakpoint(tablet) {
+        padding-bottom: $Margin-rhythm--double;
+      }
     }
   }
 
-  &:last-child {
-    padding-bottom: $Margin-rhythm;
-    @include breakpoint(tablet) {
-      padding-bottom: $Margin-rhythm--double;
+  &-heading {
+    @extend %SG-heading--beta;
+    margin-top: 0;
+    margin-bottom: 2rem;
+
+    @include breakpoint(desktop) {
+      font-size: $Type-fontSize--gamma;
     }
   }
-}
 
-.LoginForm-heading {
-  @extend %SG-heading--beta;
-  margin-top: 0;
-  margin-bottom: 2rem;
-
-  @include breakpoint(desktop) {
-    font-size: $Type-fontSize--gamma;
-  }
-}
-
-.LoginForm-field, .LoginForm-button {
-  position: relative;
-  margin: 1.4rem 0;
-}
-
-.LoginForm-input {
-  display: block;
-  width: 100%;
-  font-size: $Type-fontSize--eta;
-  color: $Color-denim;
-  padding: 1rem;
-  background: $Color-gallery;
-  border: none;
-  box-shadow: none;
-}
-
-.LoginForm-helpText {
-  font-family: $Type-fontFamily--body;
-  font-size: $Type-fontSize--theta;
-
-  &:last-child {
-    margin-top: 0.5rem;
+  &-field, &-button {
+    position: relative;
+    margin: 1.4rem 0;
   }
 
-  &:not(:last-child) {
-    margin-bottom: 0.5rem;
+  &-input {
+    display: block;
+    width: 100%;
+    font-size: $Type-fontSize--eta;
+    color: $Color-denim;
+    padding: 1rem;
+    background: $Color-gallery;
+    border: none;
+    box-shadow: none;
+  }
+
+  &-helpText {
+    font-family: $Type-fontFamily--body;
+    font-size: $Type-fontSize--theta;
+
+    &:last-child {
+      margin-top: 0.5rem;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
   }
 }
