@@ -4,6 +4,7 @@ import Link from 'components/link';
 import Form from 'components/Form';
 import Field from 'components/field';
 import Button from 'components/shared/button/button';
+import Image from 'components/image';
 import { forgotPassword, newAuthForm } from 'actions/authentication';
 
 import './login_form.scss';
@@ -38,6 +39,10 @@ class ForgotPasswordForm extends Component {
   renderForm() {
     let { forgotPassword, errors } = this.props;
     return (
+      <div>
+      <div className="LoginForm--logoContainer">
+        <Image image={`https://s3.amazonaws.com/cdn.ontappipeline.com/images/otp-logo.png`} className="LoginForm--logo" title={`1Tap logo`}/>
+      </div>
       <Form
         className="LoginForm-section"
         onSubmit={forgotPassword}
@@ -58,6 +63,7 @@ class ForgotPasswordForm extends Component {
           <Link className="LoginForm-helpText" classic to={`/login/${this.props.slug}`}>Return to Sign-in.</Link>
         </p>
       </Form>
+      </div>
     );
   }
 

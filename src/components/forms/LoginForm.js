@@ -4,6 +4,7 @@ import Link from 'components/link';
 import Form from 'components/Form';
 import Field from 'components/field';
 import Button from 'components/shared/button/button';
+import Image from 'components/image';
 import { login } from 'actions/authentication';
 
 import './login_form.scss';
@@ -11,12 +12,14 @@ import './login_form.scss';
 function LoginForm ({ errors, login, message, slug }) {
   return (
     <div className="LoginForm">
+      <div className="LoginForm--logoContainer">
+        <Image image={`https://s3.amazonaws.com/cdn.ontappipeline.com/images/otp-logo.png`} className="LoginForm--logo" title={`1Tap logo`}/>
+      </div>
       <Form
         className="LoginForm-section"
         onSubmit={login}
         errors={errors}
       >
-        <h1 className="LoginForm-heading">{ message.title }</h1>
         {
           message.description
             ? <p className="LoginForm-helpText">{message.description}</p>
