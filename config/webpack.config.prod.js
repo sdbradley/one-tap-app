@@ -137,7 +137,7 @@ module.exports = {
       {
         test: /\.scss$/,
         include: paths.appSrc,
-        loader: ExtractTextPlugin.extract([ 'css?sourceMap', 'postcss?sourceMap', 'sass?sourceMap' ])
+        loader: ExtractTextPlugin.extract([ 'css', 'postcss', 'sass' ])
       },
       // The notation here is somewhat confusing.
       // "postcss" loader applies autoprefixer to our CSS.
