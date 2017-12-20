@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FetchOpportunities from 'containers/fetchers/fetch_opportunities';
+import Widget from 'components/widget';
 import Opportunities from 'components/opportunities';
 
 class PartnerDashboard extends Component {
@@ -8,7 +9,9 @@ class PartnerDashboard extends Component {
   render() {
     return (
       <FetchOpportunities partner_id="0014000001WQZcQAAX" stage="Upcoming" start_date="1312139600" end_date="1612139600">
-        <Opportunities data={this.props.opportunities} />
+        <Widget title="Upcoming Opportunities">
+          <Opportunities data={this.props.opportunities} />
+        </Widget>
       </FetchOpportunities>
     )
   }
