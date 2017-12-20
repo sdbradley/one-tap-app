@@ -1,0 +1,32 @@
+@import "~css/bootstrap";
+
+.Table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: $Margin-rhythm 0 $Margin-rhythm--double;
+  border-bottom: 1rem solid $Color-white;
+
+  &-row {
+    background: $Color-white;
+    border-bottom: 1px solid $Color-alto;
+
+    &--header {
+      background: $Color-alto;
+      font-size: $Type-fontSize--eta;
+    }
+  }
+
+  &-cell {
+    position: relative;
+    padding: 1rem;
+
+    &--header {
+      border: 2px solid $Color-alabaster;
+    }
+
+    &--empty, &--empty:last-of-type {
+      text-align: center;
+      padding: $Margin-rhythm--double
+    }
+  }
+}
