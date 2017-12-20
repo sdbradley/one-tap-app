@@ -8,7 +8,7 @@ class PartnerDashboard extends Component {
 
   render() {
     return (
-      <FetchOpportunities partner_id="0014000001WQZcQAAX" stage="Upcoming" start_date="1312139600" end_date="1612139600">
+      <FetchOpportunities partner_id={this.props.partner_id} stage={this.props.stage} start_date={this.props.start_date} end_date={this.props.end_date}>
         <Widget title="Upcoming Opportunities">
           <Opportunities data={this.props.opportunities} />
         </Widget>
@@ -26,7 +26,11 @@ export default connect(
   (state, props) => {
     let opportunities = state.opportunities.all();
     return {
-      opportunities: opportunities
+      opportunities: opportunities,
+      partner_id: '0014000001WQZcQAAX',
+      stage: 'Upcoming',
+      start_date: 1312139600,
+      end_date: 1612139600
     };
   }
 )(PartnerDashboard);
