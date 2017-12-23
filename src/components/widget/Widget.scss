@@ -74,4 +74,13 @@
             }
         }
     }
+
+    &-full {
+        display: block;
+        width: 100%;
+    }
+    &-half {
+        display: inline-block;
+        width: 50%;
+    }
 }

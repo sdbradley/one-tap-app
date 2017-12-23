@@ -5,6 +5,7 @@ import roles from './roles';
 import modal from './modal';
 import navigation from './navigation';
 import opportunities from './opportunities';
+import statistics from './statistics';
 
 const appReducer = combineReducers({
   authentication,
@@ -12,7 +13,8 @@ const appReducer = combineReducers({
   roles,
   modal,
   navigation,
-  opportunities
+  opportunities,
+  statistics
 });
 
 const rootReducer = (state, action) => {
