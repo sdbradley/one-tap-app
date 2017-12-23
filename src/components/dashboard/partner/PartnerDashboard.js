@@ -11,16 +11,22 @@ class PartnerDashboard extends Component {
   render() {
     return (
       <div>
-        <FetchStatistics partner_id={this.props.partner_id} start_date={this.props.start_date} end_date={this.props.end_date}>
-          <Widget title="Campaign Statistics">
-            <Statistics data={this.props.statistics} />
-          </Widget>
-        </FetchStatistics>
-        <FetchOpportunities partner_id={this.props.partner_id} stage={this.props.stage} start_date={this.props.start_date} end_date={this.props.end_date}>
-          <Widget title="Upcoming Opportunities">
-            <Opportunities data={this.props.opportunities} />
-          </Widget>
-        </FetchOpportunities>
+        <div className="Widget-full">
+          <div className="Widget-half">
+            <FetchStatistics partner_id={this.props.partner_id} start_date={this.props.start_date} end_date={this.props.end_date}>
+              <Widget title="Campaign Statistics">
+                <Statistics data={this.props.statistics} />
+              </Widget>
+            </FetchStatistics>
+          </div>
+        </div>
+        <div className="Widget-full">
+          <FetchOpportunities partner_id={this.props.partner_id} stage={this.props.stage} start_date={this.props.start_date} end_date={this.props.end_date}>
+            <Widget title="Upcoming Opportunities">
+              <Opportunities data={this.props.opportunities} />
+            </Widget>
+          </FetchOpportunities>
+        </div>
       </div>
     )
   }
