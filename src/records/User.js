@@ -32,6 +32,7 @@ const User = Record({
   lastName: '',
   email: '',
   id: '',
+  accountId: '',
   schools: List(),
   _rights: List(),
   _roles: List()
@@ -62,6 +63,7 @@ Object.assign(
         last_name: this.lastName,
         email: this.email,
         id: this.id,
+        account_id: this.accountId,
         is_validated: this.isValidated
       };
     }
@@ -76,6 +78,7 @@ User.fromApi = function deserialize(data, school_id) {
   let _roles = List(data.roles && data.roles.map(role => role.name));
   return User({
     id: data.id,
+    accountId: data.account_id,
     firstName: data.first_name,
     lastName: data.last_name,
     email: data.email_address
