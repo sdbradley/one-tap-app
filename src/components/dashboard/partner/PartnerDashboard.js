@@ -41,10 +41,12 @@ export default connect(
   (state, props) => {
     let opportunities = state.opportunities.all();
     let statistics = state.statistics.all();
+    let user = state.authentication.user;
+    let accountId = user && user.accountId;
     return {
       opportunities: opportunities,
       statistics: statistics,
-      partner_id: '00140000012M9ACAA0',
+      partner_id: accountId,
       stage: 'Upcoming',
       start_date: 1506834000,
       end_date: 1612139600
