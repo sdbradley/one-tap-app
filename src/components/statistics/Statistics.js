@@ -29,16 +29,20 @@ class Statistics extends Component {
         return <div>{pct}%</div>;
     }
     renderProgress(data) {
-        let num_sent = data.number_sent;
-        let opportunities = data.number_of_opportunities;
-        let progress = (opportunities / num_sent);
-        let pct = setPrecision(progress * 100, 2)
-        let title = `${pct}% Completed`;
-        return (
-            <div className="Statistics-progress" title={title}>
-                <div className="Statistics-progressBar" style={{ width: `${pct}%` }}>{' '}</div>
-            </div>
-        );
+        if(data) {
+            let num_sent = data.number_sent;
+            let opportunities = data.number_of_opportunities;
+            let progress = (opportunities / num_sent);
+            let pct = setPrecision(progress * 100, 2)
+            let title = `${pct}% Completed`;
+            return (
+                <div className="Statistics-progress" title={title}>
+                    <div className="Statistics-progressBar" style={{ width: `${pct}%` }}>{' '}</div>
+                </div>
+            );
+        } else {
+            return null;
+        }
     }
 }
 

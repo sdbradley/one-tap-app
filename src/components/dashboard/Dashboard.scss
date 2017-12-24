@@ -1,40 +1,56 @@
 @import '~css/bootstrap';
 
-.Dashboard-header {
-    overflow: auto;
-    font-size: $Type-fontSize--zeta;
-}
+.Dashboard {
 
-.Dashboard-body {
-    @include content(t);
-}
+    &-header {
+        overflow: auto;
+        font-size: $Type-fontSize--zeta;
+    }
 
-.Dashboard-add {
-    padding-left: 4rem;
-    padding-right: 4rem;
-    border-color: $Color-silver;
-    width: 100%;
-    text-align: center;
+    &-body {
+        @include content(t);
+    }
 
-    @include breakpoint(desktop) {
+    &-date {
+        display: inline-block !important;
+        width: 50% !important;
+        &--container {
+            display: inline-flex;
+        }
+        &--button {
+            height: 3rem;
+            margin-top: 2rem;
+        }
+    }
+
+    &-add {
+        padding-left: 4rem;
+        padding-right: 4rem;
+        border-color: $Color-silver;
+        width: 100%;
+        text-align: center;
+
+        @include breakpoint(desktop) {
+            display: inline-block;
+            width: auto;
+            float: right;
+        }
+    }
+
+    &-add > * {
+        vertical-align: middle;
         display: inline-block;
-        width: auto;
-        float: right;
     }
-}
 
-.Dashboard-add > * {
-    vertical-align: middle;
-    display: inline-block;
-}
-
-.Dashboard-addIcon {
-    height: 60%;
-    margin-right: 1rem;
-}
-
-.Dashboard-filter {
-    @include breakpoint(desktop) {
-        float: left;
+    &-addIcon {
+        height: 60%;
+        margin-right: 1rem;
     }
+
+    &-filter {
+        @include breakpoint(desktop) {
+            float: left;
+        }
+    }
+
 }
