@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import FetchOpportunities from 'containers/fetchers/fetch_opportunities';
 import FetchStatistics from 'containers/fetchers/fetch_statistics';
 import FetchCampaignNews from 'containers/fetchers/fetch_campaign_news';
+import FetchAccount from 'containers/fetchers/fetch_account';
 import Field from 'components/field';
 import Widget from 'components/widget';
 import Button from 'components/shared/button/button';
 import Opportunities from 'components/opportunities';
 import Statistics from 'components/statistics';
 import CampaignNews from 'components/campaign_news';
+import Account from 'components/dashboard/account';
 import { changeStartDate, changeEndDate } from 'actions/navigation';
 
 class PartnerDashboard extends Component {
@@ -38,6 +40,9 @@ class PartnerDashboard extends Component {
       <div>
         <div className="Widget-full">
           <div className="Widget-half">
+            <FetchAccount accountId={this.props.partner_id}>
+              <Account accountId={this.props.partner_id} />
+            </FetchAccount>
           </div>
           <div className="Widget-half Dashboard-date--container">
             <Field
