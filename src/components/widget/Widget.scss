@@ -26,7 +26,7 @@
     &-title {
         margin-top: 0;
         color: $widget-title-color;
-
+        font-weight: bold;
         @include clearfix();
     }
 
@@ -80,7 +80,7 @@
         width: 100%;
     }
     &-half {
-        display: inline-block;
+        display: inline-grid;
         width: 50%;
     }
 }

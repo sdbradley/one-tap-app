@@ -7,10 +7,12 @@ export const FETCHING_OPPORTUNITIES = 'FETCHING_OPPORTUNITIES';
 export function fetchOpportunities(partner, stage, start, end) {
   return (dispatch, getState) => {
     let key = `partner:${partner}-stage:${stage}`;
-    dispatch(fetchingOpportunities(key));
-    return API.get(`opportunities?partner_id=${partner}&stage_name=${stage}&start_date=${start}&end_date=${end}`)
-      .then((res) => dispatch(receivedNormalAPIResponse(res)))
-      .then(() => dispatch(fetchOpportunitiesSuccess(key)));
+    if(partner) {
+      dispatch(fetchingOpportunities(key));
+      return API.get(`opportunities?partner__c=${partner}&stage_name=${stage}&start_date=${start}&end_date=${end}`)
+        .then((res) => dispatch(receivedNormalAPIResponse(res)))
+        .then(() => dispatch(fetchOpportunitiesSuccess(key)));
+    }
   }
 }
 

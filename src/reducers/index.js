@@ -6,6 +6,7 @@ import modal from './modal';
 import navigation from './navigation';
 import opportunities from './opportunities';
 import statistics from './statistics';
+import campaign_news from './campaign_news';
 
 const appReducer = combineReducers({
   authentication,
@@ -14,7 +15,8 @@ const appReducer = combineReducers({
   modal,
   navigation,
   opportunities,
-  statistics
+  statistics,
+  campaign_news
 });
 
 const rootReducer = (state, action) => {
