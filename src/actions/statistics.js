@@ -6,7 +6,7 @@ export const FETCHING_STATISTICS = 'FETCHING_STATISTICS';
 
 export function fetchStatistics(partner, start, end) {
   return (dispatch, getState) => {
-    let key = `partner:${partner}`;
+    let key = `partner:${partner}:start_date:${start}`;
     if(partner) {
       dispatch(fetchingStatistics(key));
       return API.get(`statistics?partner__c=${partner}&start_date=${start}&end_date=${end}`)

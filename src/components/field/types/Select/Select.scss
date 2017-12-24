@@ -5,6 +5,10 @@
   background: $Color-alto;
   border: 1px solid $Color-alto;
   padding-right: $Field-height;
+  height: $Field-height;
+  margin-left: auto;
+  margin-right: 2rem;
+  width: 40rem;
   cursor: pointer;
 
   &:focus,

@@ -6,7 +6,7 @@ export const FETCHING_OPPORTUNITIES = 'FETCHING_OPPORTUNITIES';
 
 export function fetchOpportunities(partner, stage, start, end) {
   return (dispatch, getState) => {
-    let key = `partner:${partner}-stage:${stage}`;
+    let key = `partner:${partner}:stage:${stage}:start_date:${start}`;
     if(partner) {
       dispatch(fetchingOpportunities(key));
       return API.get(`opportunities?partner__c=${partner}&stage_name=${stage}&start_date=${start}&end_date=${end}`)
