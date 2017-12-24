@@ -11,9 +11,9 @@ class Statistics extends Component {
           <div className="Statistics">
             <Table className="Statistics-table"
               columns={[
-                { name: 'Num Sent', property: 'number_sent' },
-                { name: 'Opportunities', property: 'number_of_opportunities'},
-                { name: '% complete', renderer: this.renderPercent}
+                { name: 'Lead Goal', property: 'number_sent' },
+                { name: 'Lead Actual', property: 'number_of_opportunities'},
+                { name: '% To Goal', renderer: this.renderPercent}
               ]}
               data={this.props.data}
               emptyState='No results'
