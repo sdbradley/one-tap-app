@@ -9,7 +9,11 @@ export function fetchOpportunities(partner, stage, start, end) {
     let key = `partner:${partner}:stage:${stage}:start_date:${start}`;
     if(partner) {
       dispatch(fetchingOpportunities(key));
-      return API.get(`opportunities?partner__c=${partner}&stage_name=${stage}&start_date=${start}&end_date=${end}`)
+      let url = `opportunities?partner__c=${partner}`;
+      url += (stage && `&stage_name=${stage}`) || '';
+      url += (start && `&start_date=${start}`) || '';
+      url += (end && `&end_date=${end}`) || '';
+      return API.get(url)
         .then((res) => dispatch(receivedNormalAPIResponse(res)))
         .then(() => dispatch(fetchOpportunitiesSuccess(key)));
     }

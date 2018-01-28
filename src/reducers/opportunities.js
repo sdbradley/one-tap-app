@@ -3,10 +3,9 @@ import { RECEIVED_NORMAL_API_RESPONSE } from 'actions/api';
 import EntityCollection from 'util/EntityCollection';
 import { List } from 'immutable';
 
-const INITIAL_STATE = EntityCollection().setMeta({
-  fetching: List(),
-  fetched: List()
-});
+const INITIAL_STATE = EntityCollection({
+  nullEntity: null
+}).setMeta('fetched', List());
 
 const opportunities = (list = INITIAL_STATE, action) => {
   switch (action.type) {
