@@ -53,9 +53,9 @@ class Sidebar extends React.Component {
           <Link to="/">1Tap</Link>
         </header>
         <ul className='Sidebar-nav'>
-          <LinkItem to="/" iconName="fa-bar-chart" title="Dashboard" />
-          <LinkItem to="/scorecard" iconName="fa-dashboard" title="Scorecard" />
-          <LinkItem to="/admin" iconName="fa-gear" title="Admin" />
+          <LinkItem headerLink="/" to="/" iconName="fa-bar-chart" title="Dashboard" />
+          <LinkItem headerLink="/scorecard" to="/scorecard" iconName="fa-dashboard" title="Scorecard" />
+          <LinkItem headerLink="/admin" to="/admin" iconName="fa-gear" title="Admin" />
         </ul>
         <h5 className='navTitle'>
           CAMPAIGNS

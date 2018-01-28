@@ -6,7 +6,7 @@ import FetchCampaignNews from 'containers/fetchers/fetch_campaign_news';
 import FetchAccount from 'containers/fetchers/fetch_account';
 import Field from 'components/field';
 import Widget from 'components/widget';
-import Button from 'components/shared/button/button';
+import Link from 'components/link';
 import Opportunities from 'components/opportunities';
 import Statistics from 'components/statistics';
 import CampaignNews from 'components/campaign_news';
@@ -82,11 +82,7 @@ class PartnerDashboard extends Component {
           </div>
         </div>
         <div className="Widget-full">
-          <FetchOpportunities partner_id={this.props.partner_id} stage={this.props.stage} start_date={this.props.start_date} end_date={this.props.end_date}>
-            <Widget title="Upcoming Opportunities">
-              <Opportunities data={this.props.opportunities} />
-            </Widget>
-          </FetchOpportunities>
+
         </div>
       </div>
     )

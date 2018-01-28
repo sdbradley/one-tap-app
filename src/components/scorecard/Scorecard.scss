@@ -1,0 +1,41 @@
+@import '~css/bootstrap';
+
+.BigStats {
+    
+    width: 100%;
+    display: table;
+    margin-top: .5em;
+    margin-bottom: 1em;
+
+    &-container {
+        padding: 25px 15px 15px;
+        background: #FFF;
+        border: 1px solid #D5D5D5;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        background: #F2F2F2;
+    }
+    &-stat {
+        width: 14%;
+        height: 90px;
+        text-align: center;
+        display: table-cell;
+        padding: 0;
+        position: relative;
+        border-right: 1px solid #CCC;
+        border-left: 1px solid #FFF;
+        &:first-child {
+            border-left: none;
+        }
+        &:last-child {
+            border-right: none;
+        }
+    }
+    &-value {
+        font-size: 56px;
+        font-weight: bold;
+        color: #333;
+        line-height: 1em;
+    }
+}

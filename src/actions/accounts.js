@@ -5,6 +5,7 @@ export const FETCH_ACCOUNT_SUCCESS = 'FETCH_ACCOUNT_SUCCESS';
 export const FETCHING_ACCOUNT = 'FETCHING_ACCOUNT';
 
 export function fetchAccount(id) {
+  console.log('fetchAccount: ' + id);
   return (dispatch, getState) => {
     let key = `id:${id}`;
     if(id) {

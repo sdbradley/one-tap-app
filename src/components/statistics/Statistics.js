@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Table from 'components/table';
-import Moment from 'react-moment';
 import { setPrecision } from 'util/funcs';
 
 class Statistics extends Component {

@@ -50,16 +50,18 @@ export default function runtime(state = initialState, action) {
           });
         }
       }
+      break;
     case CHANGE_END_DATE:
       if(action.value) {
-        var d = new Date(action.value);
-        if (!isNaN(d.getTime())) {
-          var t = Math.round(d.getTime() / 1000);
+        var de = new Date(action.value);
+        if (!isNaN(de.getTime())) {
+          var te = Math.round(de.getTime() / 1000);
           return Object.assign({}, state, {
-            endDate: t,
+            endDate: te,
           });
         }
       }
+      break;
     default:
       return state;
   }
