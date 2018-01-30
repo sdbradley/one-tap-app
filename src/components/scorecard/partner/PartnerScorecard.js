@@ -59,7 +59,7 @@ class PartnerScorecard extends Component {
         <div className="Widget-full">
           <FetchOpportunities partner_id={this.props.partner_id} stage={this.props.stage} start_date={this.props.start_date} end_date={this.props.end_date}>
             <Widget title="Partner Scorecard">
-              <Opportunities data={this.props.opportunities} />
+              <Opportunities data={this.props.opportunities.all()} />
             </Widget>
           </FetchOpportunities>
         </div>
