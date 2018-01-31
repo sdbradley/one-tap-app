@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import FetchOpportunities from 'containers/fetchers/fetch_opportunities';
-import Opportunities from 'components/opportunities';
+import FetchScorecard from 'containers/fetchers/fetch_scorecard';
+import ScorecardTable from 'components/scorecard/scorecard_table';
 import Scorecard from 'components/scorecard';
 import Field from 'components/field';
 import Widget from 'components/widget';
@@ -53,15 +53,15 @@ class PartnerScorecard extends Component {
         </div>
         <div className="Widget-full">
           <Widget title="Scorecard">
-            <Scorecard opportunities={this.props.opportunities} />
+            <Scorecard data={this.props.scorecard} />
           </Widget>
         </div>
         <div className="Widget-full">
-          <FetchOpportunities partner_id={this.props.partner_id} stage={this.props.stage} start_date={this.props.start_date} end_date={this.props.end_date}>
+          <FetchScorecard partner_id={this.props.partner_id} start_date={this.props.start_date} end_date={this.props.end_date}>
             <Widget title="Partner Scorecard">
-              <Opportunities data={this.props.opportunities.all()} />
+              <ScorecardTable data={this.props.scorecard} />
             </Widget>
-          </FetchOpportunities>
+          </FetchScorecard>
         </div>
       </div>
     )
@@ -74,7 +74,7 @@ export default connect(
     let accountId = user && user.accountId;
     return {
       partner_id: accountId,
-      opportunities: state.opportunities,
+      scorecard: state.scorecard.all(),
       start_date: state.navigation && state.navigation.startDate,
       end_date: state.navigation && state.navigation.endDate
     };

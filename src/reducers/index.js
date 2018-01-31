@@ -8,6 +8,7 @@ import opportunities from './opportunities';
 import statistics from './statistics';
 import campaign_news from './campaign_news';
 import accounts from './accounts';
+import scorecard from './scorecard';
 
 const appReducer = combineReducers({
   authentication,
@@ -18,7 +19,8 @@ const appReducer = combineReducers({
   opportunities,
   statistics,
   campaign_news,
-  accounts
+  accounts,
+  scorecard
 });
 
 const rootReducer = (state, action) => {
