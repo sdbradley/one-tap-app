@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Table from 'components/table';
+import Link from 'components/link';
 
 class ScorecardTable extends Component {
 
@@ -9,7 +10,7 @@ class ScorecardTable extends Component {
           <div className="ScorecardTable">
             <Table className="ScorecardTable-table"
               columns={[
-                { name: 'Partner', property: 'account' },
+                { name: 'Partner', property: 'account', renderer: this.renderAccount },
                 { name: 'Upcoming', property: 'prospecting'},
                 { name: 'Occurred', property: 'completed'},
                 { name: 'Next Steps', property: 'nextsteps'},
@@ -23,6 +24,9 @@ class ScorecardTable extends Component {
             />
           </div>
         );
+    }
+    renderAccount(account) {
+      return <Link classic blue to={`${account.id}/opportunities`}>{account.account}</Link>;
     }
 }
 

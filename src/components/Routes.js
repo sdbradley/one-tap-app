@@ -9,6 +9,7 @@ import ResetPassword from 'pages/ResetPassword';
 import Dashboard from 'pages/dashboard';
 import AdminDashboard from 'components/admin/dashboard';
 import Scorecard from 'pages/scorecard';
+import OpportunityDetails from 'pages/opportunity_detail';
 import unauthed from 'components/higher_order_components/unauthed';
 
 // An interface to add and remove route change handlers at runtime.
@@ -28,6 +29,11 @@ const ROUTES = (
       {/* App */}
       <IndexRoute component={Dashboard}/>
       <Route path="scorecard" component={Scorecard} />
+
+      <Route path="scorecard">
+        <IndexRoute component={Scorecard}/>
+        <Route path=':partner_id/opportunities' component={OpportunityDetails}/>
+      </Route>
 
       {/* Admin */}
       <Route path="admin" component={App}>
