@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Table from 'components/table';
+import Moment from 'react-moment';
 
 class CampaignNews extends Component {
 
@@ -10,13 +11,22 @@ class CampaignNews extends Component {
             <Table className="CampaignNews-table"
               columns={[
                 { name: 'Item', property: 'body' },
-                { name: 'Date', property: 'created_at'}
+                { name: 'Date', renderer: this.renderDate}
               ]}
               data={this.props.data}
               emptyState='No results'
             />
           </div>
         );
+    }
+
+    renderDate(item) {
+      if(item.created_at) {
+        return (
+          <div><Moment format="MM/DD/YYYY">{item.created_at}</Moment></div>
+        )
+      }
+      return null;
     }
 }
 

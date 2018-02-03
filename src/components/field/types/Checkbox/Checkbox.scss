@@ -44,10 +44,10 @@
 
   &-check {
     @include center();
-    width: 50%;
+    width: 16px;
     height: 50%;
     margin-right: 1rem;
-    fill: $Color-white;
+    fill: $Color-black;
   }
 
   &-option:not(&-option--disabled):hover &-icon {
