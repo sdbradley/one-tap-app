@@ -4,6 +4,8 @@ import FetchOpportunities from 'containers/fetchers/fetch_opportunities';
 import Field from 'components/field';
 import Widget from 'components/widget';
 import Table from 'components/table';
+import Icon from 'components/icon';
+import Moment from 'react-moment';
 import { changeStartDate, changeEndDate } from 'actions/navigation';
 
 class PartnerScorecard extends Component {
@@ -56,12 +58,12 @@ class PartnerScorecard extends Component {
               <div className="PartnerOpportunityTable">
                 <Table className="PartnerOpportunityTable-table"
                 columns={[
-                    { name: 'Account', property: 'name', renderer: this.renderAccount },
-                    { name: 'Meeting Time', property: 'meeting_date_time__c'},
+                    { name: 'Account', property: 'name' },
+                    { name: 'Meeting Time', renderer: this.renderMeetingTime},
                     { name: 'Status', property: 'stage_name'},
                     { name: 'Feedback', property: 'nextsteps'},
-                    { name: 'Deal Registered', property: 'onsite'},
-                    { name: 'Recording Downloaded', property: 'proposal'}
+                    { name: 'Deal Registered', renderer: this.renderDealRegistered},
+                    { name: 'Recording Downloaded', renderer: this.renderDownloadDate}
                 ]}
                 data={this.props.opportunities}
                 emptyState='No results'
@@ -72,6 +74,33 @@ class PartnerScorecard extends Component {
         </div>
       </div>
     )
+  }
+
+  renderMeetingTime(opp) {
+    if(opp.meeting_date_time__c) {
+      return (
+        <div><Moment unix format="ddd MMM DD, YYYY hh:mm a">{opp.meeting_date_time__c}</Moment></div>
+      )
+    }
+    return null;
+  }
+
+  renderDownloadDate(opp) {
+    if(opp.recording_downloaded_date && opp.recording_downloaded_date > 0) {
+      return (
+        <div><Icon className='Checkbox-check' type='check' interactive={false}/></div>
+      )
+    }
+    return null;
+  }
+
+  renderDealRegistered(opp) {
+    if(opp.is_won && opp.is_won == "true" && opp.registered_deal_num__c) {
+      return (
+        <div><Icon className='Checkbox-check' type='check' interactive={false}/></div>
+      );
+    }
+    return null;
   }
 }
 
