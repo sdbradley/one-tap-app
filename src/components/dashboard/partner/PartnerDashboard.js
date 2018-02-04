@@ -82,7 +82,11 @@ class PartnerDashboard extends Component {
           </div>
         </div>
         <div className="Widget-full">
-
+          <FetchOpportunities partner_id={this.props.partner_id} stage={this.props.stage} start_date={this.props.start_date} end_date={this.props.end_date}>
+              <Widget title="Upcoming Opportunities">
+                <Opportunities data={this.props.opportunities} />
+              </Widget>
+            </FetchOpportunities>
         </div>
       </div>
     )
