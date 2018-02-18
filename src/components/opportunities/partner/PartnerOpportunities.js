@@ -5,6 +5,7 @@ import Field from 'components/field';
 import Widget from 'components/widget';
 import Table from 'components/table';
 import Icon from 'components/icon';
+import Link from 'components/link';
 import Moment from 'react-moment';
 import { changeStartDate, changeEndDate } from 'actions/navigation';
 
@@ -58,7 +59,7 @@ class PartnerScorecard extends Component {
               <div className="PartnerOpportunityTable">
                 <Table className="PartnerOpportunityTable-table"
                 columns={[
-                    { name: 'Account', property: 'name' },
+                    { name: 'Account', renderer: this.renderAccount },
                     { name: 'Meeting Time', renderer: this.renderMeetingTime},
                     { name: 'Status', property: 'stage_name'},
                     { name: 'Feedback', property: 'nextsteps'},
@@ -74,6 +75,15 @@ class PartnerScorecard extends Component {
         </div>
       </div>
     )
+  }
+
+  renderAccount(opportunity) {
+    if(opportunity) {
+      return (
+        <Link className="LoginForm-helpText" classic to={`/account/${opportunity.account_id}/opportunities/${opportunity.opportunity_id}/datasheet`}>{opportunity.name}</Link>
+      )
+    }
+    return null;
   }
 
   renderMeetingTime(opp) {

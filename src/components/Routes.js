@@ -10,7 +10,10 @@ import Dashboard from 'pages/dashboard';
 import AdminDashboard from 'components/admin/dashboard';
 import Scorecard from 'pages/scorecard';
 import OpportunityDetails from 'pages/opportunity_detail';
+import Datasheet from 'pages/datasheet';
 import unauthed from 'components/higher_order_components/unauthed';
+import FetchAccount from 'containers/fetchers/fetch_account';
+import FetchOpportunity from 'containers/fetchers/fetch_opportunity';
 
 // An interface to add and remove route change handlers at runtime.
 let updateHandlers = [];
@@ -33,6 +36,10 @@ const ROUTES = (
       <Route path="scorecard">
         <IndexRoute component={Scorecard}/>
         <Route path=':partner_id/opportunities' component={OpportunityDetails}/>
+      </Route>
+
+      <Route path="account/:accountId/opportunities/:opportunityId/datasheet">
+        <IndexRoute component={Datasheet}/>
       </Route>
 
       {/* Admin */}
