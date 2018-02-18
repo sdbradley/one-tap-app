@@ -1,0 +1,11 @@
+@import '~css/bootstrap';
+
+.IntelligenceQuestions {
+    &-title {
+        font-weight: bold;
+        font-size: 1.4rem;
+    }
+    &-container {
+        margin-bottom: 2rem;
+    }
+}

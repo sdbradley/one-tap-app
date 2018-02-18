@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import jQuery from 'jquery';
 import 'imports-loader?window.jQuery=jquery,this=>window!widgster'; // eslint-disable-line
 import s from './Widget.scss'; // eslint-disable-line css-modules/no-unused-class
+import classNames from 'classnames';
 
 export default class Widget extends Component {
 
@@ -24,8 +25,12 @@ export default class Widget extends Component {
   }
 
   render() {
+    let classes = classNames(
+      'Widget',
+      this.props.className
+    );
     return (
-      <section className="Widget" >
+      <section className={classes} >
         {
           this.props.title && (
             typeof this.props.title === 'string'

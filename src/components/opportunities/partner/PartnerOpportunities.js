@@ -80,7 +80,7 @@ class PartnerScorecard extends Component {
   renderAccount(opportunity) {
     if(opportunity) {
       return (
-        <Link className="LoginForm-helpText" classic to={`/account/${opportunity.partner__c}/opportunities/${opportunity.opportunity_id}/datasheet`}>{opportunity.name}</Link>
+        <Link className="LoginForm-helpText" classic to={`/account/${opportunity.account_id}/opportunities/${opportunity.opportunity_id}/datasheet`}>{opportunity.name}</Link>
       )
     }
     return null;
