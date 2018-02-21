@@ -5,3 +5,9 @@
         margin-bottom: -1rem;
     }
 }
+a {
+  color: #1c7396;
+  &:hover {
+      color: #2390BC;
+  }
+}
