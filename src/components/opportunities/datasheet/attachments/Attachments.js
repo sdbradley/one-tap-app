@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Table from 'components/table';
+import Moment from 'react-moment';
+import { downloadRecording } from 'actions/attachments';
 
 class Attachments extends Component {
+
+  constructor(props) {
+    super(props);
+    this.renderAttachmentLink = this.renderAttachmentLink.bind(this);
+    this.recordingDownloaded = this.recordingDownloaded.bind(this);
+  }
 
   render() {
     return (
@@ -20,21 +28,24 @@ class Attachments extends Component {
   }
 
   renderAttachmentLink(attachment) {
-    /*
     if(attachment) {
-      let url = `/attachments/${attachment.id}`;
+      let url = `https://s3.amazonaws.com/1tap-otp/attachments/${attachment.name}`;
       return (
-        <div><a href={url}>{attachment.name}</a></div>
+        <div><a href={url} download data-id={attachment.id} onClick={this.recordingDownloaded}>{attachment.name}</a></div>
       )
     }
-    */
-    return attachment.name;
+    return null;
+  }
+
+  recordingDownloaded(e) {
+    let id = e.target.getAttribute('data-id');
+    this.props.downloadRecording(id);
   }
 
   renderDownloaded(attachment) {
-    if(attachment && attachment.recorded_downloaded_date > 0) {
+    if(attachment && attachment.recording_downloaded_date > 0) {
       return (
-        <div>{attachment.recorded_downloaded_date}</div>
+        <Moment unix format="ddd MMM DD, YYYY hh:mm a">{attachment.recording_downloaded_date}</Moment>
       )
     }
     return "Not yet downloaded";
@@ -47,5 +58,6 @@ export default connect(
     return {
       attachments: attachments
     };
-  }
+  },
+  { downloadRecording }
 )(Attachments);
