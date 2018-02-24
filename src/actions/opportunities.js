@@ -5,6 +5,8 @@ export const FETCH_OPPORTUNITIES_SUCCESS = 'FETCH_OPPORTUNITIES_SUCCESS';
 export const FETCHING_OPPORTUNITIES = 'FETCHING_OPPORTUNITIES';
 export const FETCH_OPPORTUNITY_SUCCESS = 'FETCH_OPPORTUNITY_SUCCESS';
 export const FETCHING_OPPORTUNITY = 'FETCHING_OPPORTUNITY';
+export const LEAVE_FEEDBACK_SUCCESS = 'LEAVE_FEEDBACK_SUCCESS';
+export const LEAVE_FEEDBACK_FAILED = 'LEAVE_FEEDBACK_FAILED';
 
 export function fetchOpportunities(partner, stage, start, end) {
   return (dispatch, getState) => {
@@ -57,5 +59,24 @@ export function fetchOpportunitySuccess(key) {
   return {
     type: FETCH_OPPORTUNITY_SUCCESS,
     key: key
+  };
+}
+
+export function leaveFeedback({ opportunity_id, feedback, feedback_type }) {
+  return (dispatch) => API.post(`opportunities/${opportunity_id}/feedback`, { opportunity_id, feedback, feedback_type })
+    .then(() => dispatch(leaveFeedbackSuccess()))
+    .catch((response) => dispatch(leaveFeedbackFailed(new Error('An unknown error occured'))));
+}
+
+export function leaveFeedbackSuccess() {
+  return {
+    type: LEAVE_FEEDBACK_SUCCESS
+  };
+}
+
+function leaveFeedbackFailed(error) {
+  return {
+    type: LEAVE_FEEDBACK_FAILED,
+    error
   };
 }

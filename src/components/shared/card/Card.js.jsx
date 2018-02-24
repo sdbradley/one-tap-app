@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './card.scss';
 
-import Button from "../button/button.js.jsx";
+import Button from "components/shared/button";
 import ProgressBar from "../progress_bar/ProgressBar.js.jsx";
 
 class Card extends Component {

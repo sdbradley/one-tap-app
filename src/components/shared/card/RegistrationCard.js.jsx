@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './card.scss';
 
-import Button from "../button/button.js.jsx";
+import Button from "components/shared/button";
 
 class RegistrationCard extends Component {
   constructor(props) {
