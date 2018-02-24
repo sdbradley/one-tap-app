@@ -62,7 +62,7 @@ class PartnerScorecard extends Component {
                     { name: 'Account', renderer: this.renderAccount },
                     { name: 'Meeting Time', renderer: this.renderMeetingTime},
                     { name: 'Status', property: 'stage_name'},
-                    { name: 'Feedback', property: 'nextsteps'},
+                    { name: 'Feedback', renderer: this.renderFeedback},
                     { name: 'Deal Registered', renderer: this.renderDealRegistered},
                     { name: 'Recording Downloaded', renderer: this.renderDownloadDate}
                 ]}
@@ -99,6 +99,15 @@ class PartnerScorecard extends Component {
     if(opp.recording_downloaded_date && opp.recording_downloaded_date > 0) {
       return (
         <div><Icon className='Checkbox-check' type='check' interactive={false}/></div>
+      )
+    }
+    return null;
+  }
+
+  renderFeedback(opportunity) {
+    if(opportunity) {
+      return (
+        <Link className="LoginForm-helpText" classic modal='feedback' opportunityId={opportunity.id}>Leave Feedback</Link>
       )
     }
     return null;
