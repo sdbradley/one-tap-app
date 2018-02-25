@@ -64,13 +64,14 @@ export function fetchOpportunitySuccess(key) {
 
 export function leaveFeedback({ opportunity_id, feedback, feedback_type }) {
   return (dispatch) => API.post(`opportunities/${opportunity_id}/feedback`, { opportunity_id, feedback, feedback_type })
-    .then(() => dispatch(leaveFeedbackSuccess()))
+    .then((res) => dispatch(leaveFeedbackSuccess(res)))
     .catch((response) => dispatch(leaveFeedbackFailed(new Error('An unknown error occured'))));
 }
 
-export function leaveFeedbackSuccess() {
+export function leaveFeedbackSuccess(data) {
   return {
-    type: LEAVE_FEEDBACK_SUCCESS
+    type: LEAVE_FEEDBACK_SUCCESS,
+    data: data
   };
 }
 

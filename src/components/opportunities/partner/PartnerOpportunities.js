@@ -62,7 +62,7 @@ class PartnerScorecard extends Component {
                     { name: 'Account', renderer: this.renderAccount },
                     { name: 'Meeting Time', renderer: this.renderMeetingTime},
                     { name: 'Status', property: 'stage_name'},
-                    { name: 'Feedback', renderer: this.renderFeedback},
+                    { name: 'Feedback', className: "PartnerOpportunities-account", renderer: this.renderFeedback},
                     { name: 'Deal Registered', renderer: this.renderDealRegistered},
                     { name: 'Recording Downloaded', renderer: this.renderDownloadDate}
                 ]}
@@ -80,7 +80,7 @@ class PartnerScorecard extends Component {
   renderAccount(opportunity) {
     if(opportunity) {
       return (
-        <Link className="LoginForm-helpText" classic to={`/account/${opportunity.account_id}/opportunities/${opportunity.opportunity_id}/datasheet`}>{opportunity.name}</Link>
+        <Link classic to={`/account/${opportunity.account_id}/opportunities/${opportunity.opportunity_id}/datasheet`}>{opportunity.name}</Link>
       )
     }
     return null;
@@ -105,12 +105,21 @@ class PartnerScorecard extends Component {
   }
 
   renderFeedback(opportunity) {
-    if(opportunity) {
+    if(opportunity && opportunity.feedback) {
       return (
-        <Link className="LoginForm-helpText" classic modal='feedback' opportunityId={opportunity.id}>Leave Feedback</Link>
+        <div key={opportunity.id}>
+          {opportunity.feedback.map(f => {
+            return (
+              <div key={f.id}>{f.feedback}</div>
+            );
+          })}
+          <Link className="PartnerOpportunities-feedback" classic modal='feedback' opportunityId={opportunity.id}>Leave Feedback</Link>
+        </div>
       )
     }
-    return null;
+    return (
+      <Link className="PartnerOpportunities-feedback" classic modal='feedback' opportunityId={opportunity.id}>Leave Feedback</Link>
+    );
   }
 
   renderDealRegistered(opp) {
@@ -119,7 +128,6 @@ class PartnerScorecard extends Component {
         <div><Icon className='Checkbox-check' type='check' interactive={false}/></div>
       );
     }
-    return null;
   }
 }
 
