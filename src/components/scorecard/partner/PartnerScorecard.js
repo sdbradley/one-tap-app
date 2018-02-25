@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import FetchScorecard from 'containers/fetchers/fetch_scorecard';
 import ScorecardTable from 'components/scorecard/scorecard_table';
 import Scorecard from 'components/scorecard';
+import ConversionRateChart from 'components/charts/conversion_rate';
 import Field from 'components/field';
 import Widget from 'components/widget';
 import { changeStartDate, changeEndDate } from 'actions/navigation';
@@ -62,6 +63,14 @@ class PartnerScorecard extends Component {
               <ScorecardTable data={this.props.scorecard} />
             </Widget>
           </FetchScorecard>
+        </div>
+        <div className="Widget-full">
+          <div className="Widget-half">
+            <Widget title="Partner Conversion Rates">
+              <ConversionRateChart data={this.props.scorecard} />
+            </Widget>
+          </div>
+          <div className="Widget-half"></div>
         </div>
       </div>
     )

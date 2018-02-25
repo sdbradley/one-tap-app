@@ -7129,6 +7129,10 @@ react-router@^4.0.0:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
+react-simple-charts@^0.0.19:
+  version "0.0.19"
+  resolved "https://registry.yarnpkg.com/react-simple-charts/-/react-simple-charts-0.0.19.tgz#b7c3ece36e66fb15c15d24ef5d4d76ba5767dc5a"
+
 react-transition-group@1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-1.1.3.tgz#5e02cf6e44a863314ff3c68a0c826c2d9d70b221"
