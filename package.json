@@ -168,7 +168,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "deploy": "s3cmd sync build/ s3://1tap.ontappipeline.com/",
+    "deploy": "s3cmd --no-mime-magic --guess-mime-type sync build/ s3://1tap.ontappipeline.com/",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
