@@ -1,0 +1,32 @@
+@import '~css/bootstrap';
+
+.PipelineCalculator {
+  h3 {
+    font-size: $Type-fontSize--delta;
+  }
+  .left {
+    text-align: left;
+    float: left;
+  }
+  .right {
+    text-align: right;
+    float: right;
+  }
+  .clearfix {
+    clear: both;
+  }
+  .calcTotal {
+    font-size: $Type-fontSize--gamma;
+    font-weight: $font-weight-semi-bold;
+  }
+  &-container {
+    margin-top: $Margin-rhythm--half;
+    &--equals {
+      margin-top: $Margin-rhythm--half;
+      border-bottom: solid 1px $Color-black;
+    }
+  }
+  &-footnote {
+    font-size: $Type-fontSize--theta;
+  }
+}

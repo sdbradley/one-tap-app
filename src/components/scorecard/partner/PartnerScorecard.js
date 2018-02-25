@@ -4,6 +4,7 @@ import FetchScorecard from 'containers/fetchers/fetch_scorecard';
 import ScorecardTable from 'components/scorecard/scorecard_table';
 import Scorecard from 'components/scorecard';
 import ConversionRateChart from 'components/charts/conversion_rate';
+import PipelineCalculator from 'components/scorecard/pipeline_calculator';
 import Field from 'components/field';
 import Widget from 'components/widget';
 import { changeStartDate, changeEndDate } from 'actions/navigation';
@@ -70,7 +71,11 @@ class PartnerScorecard extends Component {
               <ConversionRateChart data={this.props.scorecard} />
             </Widget>
           </div>
-          <div className="Widget-half"></div>
+          <div className="Widget-half">
+            <Widget title="Pipeline Calculator">
+              <PipelineCalculator data={this.props.opportunities} />
+            </Widget>
+          </div>
         </div>
       </div>
     )
@@ -84,6 +89,7 @@ export default connect(
     return {
       partner_id: accountId,
       scorecard: state.scorecard.all(),
+      opportunities: state.opportunities.all(),
       start_date: state.navigation && state.navigation.startDate,
       end_date: state.navigation && state.navigation.endDate
     };
