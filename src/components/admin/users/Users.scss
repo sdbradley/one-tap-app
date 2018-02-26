@@ -1,25 +1,7 @@
-.UserListCell {
-    position: relative;
-    max-width: 200px;
-    padding: 1rem;
+@import '~css/bootstrap';
 
-    &-fname {
-        width: 25%;
-    }
-    &-lname {
-        width: 30%;
-    }
-    &-sort {
-        position: absolute;
-        height: 2rem;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    &-email {
-        width: 35%;
-    }
-    &-actions {
-        width: 10%;
-    }
+.Users {
+  &-delete {
+    margin-left: $Margin-rhythm--half;
+  }
 }

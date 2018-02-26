@@ -22,6 +22,7 @@ const opportunities = (list = INITIAL_STATE, action) => {
         o.feedback.push(action.data);
         return list.save(o);
       }
+      return list;
     case RECEIVED_NORMAL_API_RESPONSE:
       if (action.payload && action.payload.opportunities) {
         return list.saveAll(action.payload.opportunities);
