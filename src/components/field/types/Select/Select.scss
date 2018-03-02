@@ -8,7 +8,7 @@
   height: $Field-height;
   margin-left: auto;
   margin-right: 2rem;
-  width: 40rem;
+  overflow: hidden;
   cursor: pointer;
 
   &:focus,

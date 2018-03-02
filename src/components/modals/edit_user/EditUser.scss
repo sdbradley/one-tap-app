@@ -1,0 +1,21 @@
+@import '~css/bootstrap';
+
+.EditUser {
+    overflow: hidden;
+    border-radius: $BorderRadius-standard;
+}
+
+.EditUser-image {
+    height: 15rem;
+}
+
+.EditUser-form {
+    padding: $Margin-rhythm--double;
+    @include breakpoint(tablet) {
+        padding-top: $Margin-rhythm;
+    }
+}
+
+.EditUser-title {
+    @include modalTitle();
+}

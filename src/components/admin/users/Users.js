@@ -11,7 +11,7 @@ class Users extends Component {
       return (
         <div className="Users">
           <Widget title="Users">
-            <Link icon='plus' onClick={() => this.props.onDelete()}>Add New User</Link>
+            <Link icon='plus' modal="editUser">Add New User</Link>
             <Table className="Users-table"
             columns={[
               { name: 'User name', property: 'user_name' },
@@ -37,8 +37,8 @@ class Users extends Component {
     renderActions(item) {
       return (
         <div>
-          <Link to={`${item.id}/edit`}>Edit</Link>
-          <Link className="Users-delete" onClick={() => this.props.onDelete(item)}>Delete</Link>
+          <Link modal="editUser" userId={item.id}>Edit</Link>
+          <Link className="Users-delete" modal="deleteUser" userId={item.id}>Delete</Link>
         </div>
       );
     }
