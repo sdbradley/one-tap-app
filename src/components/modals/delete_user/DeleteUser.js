@@ -37,7 +37,6 @@ class DeleteUser extends Component {
   }
 
   deleteUser() {
-    console.log('deleteUser: ' + this.props.user.id);
     this.props.deleteUser(this.props.user.id);
   }
 }
