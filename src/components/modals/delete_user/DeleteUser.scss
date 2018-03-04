@@ -1,0 +1,35 @@
+@import '~css/bootstrap';
+
+.DeleteUser {
+
+    &-form {
+        padding: $Margin-rhythm--double;
+        @include breakpoint(tablet) {
+            padding-top: $Margin-rhythm;
+        }
+    }
+
+    &-section {
+        @include content();
+        border-bottom: 1px solid $Color-gallery;
+        text-align: center;
+        :last-child {
+            border-bottom: none;
+            padding-top: $Margin-rhythm;
+            padding-bottom: $Margin-rhythm;
+        }
+    }
+
+    &-button {
+        margin: $Margin-rhythm $Margin-rhythm--half 0;
+    }
+
+    &-title {
+        @include modalTitle();
+    }
+
+    &-info {
+        font-size: $Type-fontSize--theta;
+        text-align: center;
+    }
+}

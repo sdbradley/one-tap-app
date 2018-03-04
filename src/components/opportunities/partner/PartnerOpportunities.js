@@ -123,7 +123,7 @@ class PartnerScorecard extends Component {
   }
 
   renderDealRegistered(opp) {
-    if(opp.is_won && opp.is_won == "true" && opp.registered_deal_num__c) {
+    if(opp.is_won && opp.is_won === "true" && opp.registered_deal_num__c) {
       return (
         <div><Icon className='Checkbox-check' type='check' interactive={false}/></div>
       );
@@ -133,7 +133,6 @@ class PartnerScorecard extends Component {
 
 export default connect(
   (state, props) => {
-    let user = state.authentication.user;
     return {
       partner_id: props.params.partner_id,
       opportunities: state.opportunities.all(),

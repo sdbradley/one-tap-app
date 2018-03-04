@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Link from 'components/link';
 import { connect } from 'react-redux';
 
 class PipelineCalculator extends Component {
@@ -55,8 +54,8 @@ class PipelineCalculator extends Component {
       avg_deal_size: 0,
       total_deal_amount: 0
     };
-    this.props.data.map(item => {
-      if ((item.stage_name == 'Next Steps Established') || (item.stage_name == 'On-Site Meeting Set') || (item.stage_name == 'Proposal/Price Quote')) {
+    this.props.data.forEach(item => {
+      if ((item.stage_name === 'Next Steps Established') || (item.stage_name === 'On-Site Meeting Set') || (item.stage_name === 'Proposal/Price Quote')) {
         totals.total_deal_amount += item.amount;
         totals.num_deals++;
       }

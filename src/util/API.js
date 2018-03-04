@@ -88,6 +88,4 @@ export const V2 = new API(API_LOCATION, 'v2')
   .scope('admin', 'admin')
   .scope('public', 'public');
 
-V2.admin = V1;
-
 export default V2;

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Link from 'components/link';
 import { connect } from 'react-redux';
 import {CirclePie} from 'react-simple-charts'
 

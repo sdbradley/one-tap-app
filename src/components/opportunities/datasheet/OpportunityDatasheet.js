@@ -60,7 +60,6 @@ class OpportunityDatasheet extends Component {
 
 export default connect(
   (state, props) => {
-    let user = state.authentication.user;
     return {
       accountId: props.params.accountId,
       account: state.accounts.find(props.params.accountId),
