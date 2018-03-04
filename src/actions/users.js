@@ -33,9 +33,10 @@ export function createUser({
   first_name,
   last_name,
   email_address,
-  user_id
+  user_name,
+  account_id
 }) {
-  if (!first_name || !last_name || !email_address) {
+  if (!first_name || !last_name || !email_address || !user_name || !account_id) {
     throw new Error('All fields are required');
   }
 
@@ -45,20 +46,28 @@ export function createUser({
       first_name,
       last_name,
       email_address,
-      user_id
+      user_name,
+      account_id
     }
   )
-    .then(res =>dispatch(receivedNormalAPIResponse(res)))
-    .then(() => dispatch(createUserSuccess()));
+  .then(res => dispatch({ type: USER_CREATE_SUCCESS, user: [{ 
+    first_name, 
+    last_name, 
+    email_address, 
+    user_name, 
+    account_id 
+  }] }));
 }
 
 export function updateUser({
+  user_id,
   first_name,
   last_name,
   email_address,
-  user_id
+  user_name,
+  account_id
 }) {
-  if (!first_name || !last_name || !email_address) {
+  if (!first_name || !last_name || !email_address || !user_name || !account_id) {
     throw new Error('All fields are required');
   }
 
@@ -68,16 +77,19 @@ export function updateUser({
       first_name,
       last_name,
       email_address,
-      user_id
+      user_name,
+      account_id
     })
-    .then(res =>dispatch(receivedNormalAPIResponse(res)))
-    .then(() => dispatch(updateUserSuccess()));
+    .then(res => dispatch({ type: USER_UPDATE_SUCCESS, user: [{ 
+      first_name, 
+      last_name, 
+      email_address, 
+      user_name, 
+      account_id 
+    }] }));
 }
 
-export function deleteUser({
-  user_id
-}) {
-
+export function deleteUser(user_id) {
   return (dispatch, getState) => API.admin.delete(`users/${user_id}`)
     .then(() => dispatch(deleteUserSuccess(user_id)));
 }
@@ -90,10 +102,9 @@ function createUserSuccess(userId, data) {
   };
 }
 
-function updateUserSuccess(userId, data) {
+function updateUserSuccess(data) {
   return {
     type: USER_UPDATE_SUCCESS,
-    userId,
     user: data
   };
 }

@@ -1,4 +1,4 @@
-import { FETCHING_USERS, FETCH_USERS_SUCCESS } from 'actions/users';
+import { FETCHING_USERS, FETCH_USERS_SUCCESS, USER_CREATE_SUCCESS, USER_UPDATE_SUCCESS, DELETE_USER_SUCCESS } from 'actions/users';
 import { RECEIVED_NORMAL_API_RESPONSE } from 'actions/api';
 import { List } from 'immutable';
 import EntityCollection from 'util/EntityCollection';
@@ -12,16 +12,15 @@ const INITIAL_STATE = EntityCollection({
 });
 
 const users = (usersList = INITIAL_STATE, action) => {
-  let fetched = usersList.getMeta('fetched');
   switch (action.type) {
     case FETCHING_USERS:
-      return usersList.setMeta('fetched', fetched.push('*'));
     case FETCH_USERS_SUCCESS:
-      usersList = usersList.setMeta('fetched', usersList.getMeta('fetched'));
-      if (action.payload && action.payload.users) {
-        usersList = usersList.saveAll(action.payload.users);
-      }
-      return usersList;
+      return usersList.setMeta('fetched', usersList.getMeta('fetched').push('*'));
+    case USER_UPDATE_SUCCESS:
+    case USER_CREATE_SUCCESS:
+      return usersList.setMeta('fetched', usersList.getMeta('fetched').clear());
+    case DELETE_USER_SUCCESS:
+      return usersList.delete(action.userId);
     case RECEIVED_NORMAL_API_RESPONSE:
       if(action.payload && action.payload.users){
         return usersList.saveAll(action.payload.users);

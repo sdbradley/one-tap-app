@@ -58,6 +58,8 @@ function EditUser({
                 >
                 {accounts.map(a => <option key={a.id} value={a.id} label={a.name}/>)}
                 </Field>
+                <Field type='checkbox' name='is_stakeholder' value={true}>Stakeholder</Field>
+                <Field type='checkbox' name='is_admin' value={true}>Admin</Field>
                 <Button full submit>{user ? 'Save' : 'Add'}</Button>
             </Form>
             </div>
