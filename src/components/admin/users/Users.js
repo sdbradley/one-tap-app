@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Table from 'components/table';
 import Widget from 'components/widget';
-import Button from 'components/shared/button/button';
 import Link from 'components/link';
 
 class Users extends Component {

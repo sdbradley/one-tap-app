@@ -18,7 +18,6 @@ const notifications = (notificationsList = INITIAL_STATE, action) => {
       return notificationsList.setMeta('fetched', notificationsList.getMeta('fetched').push('*'));
     case RECEIVED_NORMAL_API_RESPONSE:
       if(action.payload && action.payload.notifications){
-        console.log('action.payload.notifications: ' + JSON.stringify(action.payload.notifications));
         return notificationsList.saveAll(action.payload.notifications);
       }
       return notificationsList;

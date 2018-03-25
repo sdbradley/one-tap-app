@@ -1,0 +1,22 @@
+@import '~css/bootstrap';
+
+.ResendNotification {
+    overflow: hidden;
+    border-radius: $BorderRadius-standard;
+
+    &-image {
+        height: 15rem;
+    }
+    &-form {
+        padding: $Margin-rhythm--double;
+        @include breakpoint(tablet) {
+            padding-top: $Margin-rhythm;
+        }
+    }
+    &-title {
+        @include modalTitle();
+    }
+    &-confirm {
+      margin-bottom: 2rem;
+    }
+}
