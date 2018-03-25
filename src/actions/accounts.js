@@ -31,10 +31,11 @@ export function fetchAccountSuccess(key) {
   };
 }
 
-export function fetchAccounts() {
+export function fetchAccounts(otp_client = false) {
   return (dispatch, getState) => {
+    let url = otp_client ? `accounts` : `accounts?otp_client=1`
     dispatch(fetchingAccounts());
-    return API.get(`accounts`)
+    return API.get(url)
       .then((res) => dispatch(receivedNormalAPIResponse(res)))
       .then(() => dispatch(fetchAccountsSuccess()));
   }

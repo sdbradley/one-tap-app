@@ -24,7 +24,7 @@ class Statistics extends Component {
     renderPercent(data) {
         let num_sent = data.number_sent;
         let opportunities = data.number_of_opportunities;
-        let pct = setPrecision((opportunities / num_sent) * 100, 2)
+        let pct = ((num_sent > 0) ? setPrecision((opportunities / num_sent) * 100, 2) : 0);
         return <div>{pct}%</div>;
     }
     renderProgress(data) {
