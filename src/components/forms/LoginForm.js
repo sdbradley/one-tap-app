@@ -13,7 +13,7 @@ function LoginForm ({ errors, login, message, slug }) {
   return (
     <div className="LoginForm">
       <div className="LoginForm--logoContainer">
-        <Image image={`https://s3.amazonaws.com/cdn.ontappipeline.com/images/otp-logo.png`} className="LoginForm--logo" title={`1Tap logo`}/>
+        <Image image={`https://s3.amazonaws.com/test.1tap.ontappipeline.com/cdn/images/otp-logo.png`} className="LoginForm--logo" title={`1Tap logo`}/>
       </div>
       <Form
         className="LoginForm-section"
