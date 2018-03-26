@@ -10,10 +10,12 @@ import Dashboard from 'pages/dashboard';
 import AdminDashboard from 'components/admin/dashboard';
 import Scorecard from 'pages/scorecard';
 import Users from 'pages/users';
+import Notifications from 'pages/notifications';
 import OpportunityDetails from 'pages/opportunity_detail';
 import Datasheet from 'pages/datasheet';
 import unauthed from 'components/higher_order_components/unauthed';
 import FetchUsers from 'containers/fetchers/fetch_users';
+import FetchNotifications from 'containers/fetchers/fetch_notifications';
 
 // An interface to add and remove route change handlers at runtime.
 let updateHandlers = [];
@@ -47,6 +49,9 @@ const ROUTES = (
         <IndexRoute component={AdminDashboard}/>
         <Route path="users" component={FetchUsers}>
           <IndexRoute component={Users}/>
+        </Route>
+        <Route path="notifications" component={FetchNotifications}>
+          <IndexRoute component={Notifications}/>
         </Route>
       </Route>
 

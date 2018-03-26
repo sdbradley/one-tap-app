@@ -94,21 +94,6 @@ export function deleteUser(user_id) {
     .then(() => dispatch(deleteUserSuccess(user_id)));
 }
 
-function createUserSuccess(userId, data) {
-  return {
-    type: USER_CREATE_SUCCESS,
-    userId,
-    user: data
-  };
-}
-
-function updateUserSuccess(data) {
-  return {
-    type: USER_UPDATE_SUCCESS,
-    user: data
-  };
-}
-
 function deleteUserSuccess(userId) {
   return {
     type: DELETE_USER_SUCCESS,
