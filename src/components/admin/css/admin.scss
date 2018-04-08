@@ -20,6 +20,11 @@
     color:#aaa;
     font-size: $Type-fontSize--theta;
 }
+.AdminDashboard {
+  &-item {
+    padding: 1rem;
+  }
+}
 .Button {
     width: 200px;
     display: inline-block;

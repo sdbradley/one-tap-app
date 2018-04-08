@@ -50,9 +50,9 @@ class Header extends Component {
     return(
       <div className={classNames('Header', { 'Header--open': this.state.open, 'Header-withContent': this.props.content })}>
         <div className="Header-content">
+          {this.renderLogo()}
         </div>
         <div className="Header-center">
-          {this.renderLogo()}
         </div>
         <div className="Header-right" onClick={stopProp}>
           <span className="Header-greeting">{this.props.name}</span>
@@ -68,7 +68,7 @@ class Header extends Component {
 
   renderLogo() {
     return (
-      <div></div>
+      <div className="Header-logo"><img className="Header-logo--image" src="https://s3.amazonaws.com/test.1tap.ontappipeline.com/cdn/images/otp-logo.png" /></div>
     )
   }
 
