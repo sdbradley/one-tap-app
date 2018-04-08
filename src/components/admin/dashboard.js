@@ -7,8 +7,8 @@ export default function AdminDashboard () {
     <div className="ContentWrapper ContentWrapper--admin">
       <div className="Container Container--padded">
         <h1 className="Admin-title">Admin Dashboard</h1>
-        <Link to="/admin/users">Users</Link>
-        <Link to="/admin/notifications">Notifications</Link>
+        <div className="AdminDashboard-item"><Link to="/admin/users">Users</Link></div>
+        <div className="AdminDashboard-item"><Link to="/admin/notifications">Notifications</Link></div>
       </div>
     </div>
   );

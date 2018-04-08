@@ -23,13 +23,8 @@
   z-index: 3;
 }
 
-.Header-logo {
-  height: 1.2rem;
-  margin-top: 2.6rem;
-  @include breakpoint(desktop) {
-    height: 1.8rem;
-    margin-top: 1.25rem;
-  }
+.Header-logo--image {
+  height: 10rem;
 }
 .Header-school {
   color: $Color-denim;
@@ -169,7 +164,7 @@
   }
 }
 
-.Header--withContent .Header-logo {
+.Header--withContent {
   left: 50%;
   transform: translate(-50%, -50%);
 }
