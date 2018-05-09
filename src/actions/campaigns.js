@@ -9,7 +9,7 @@ export function fetchCampaignNews(partner, start, end) {
     let key = `partner:${partner}:start_date:${start}`;
     if(partner) {
         dispatch(fetchingCampaignNews(key));
-        return API.get(`news_items?partner__c=${partner}&start_date=${start}&end_date=${end}`)
+        return API.get(`notes?partner__c=${partner}&start_date=${start}&end_date=${end}`)
         .then((res) => dispatch(receivedNormalAPIResponse(res)))
         .then(() => dispatch(fetchCampaignNewsSuccess(key)));
     }

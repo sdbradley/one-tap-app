@@ -1,8 +1,8 @@
 import { join } from 'util/path';
 
-export const SITE_ROOT = (window.location.hostname === 'localhost') ? 'http://localhost:3500' : 'http://1tap.ontappipeline.com.s3-website-us-east-1.amazonaws.com';
+export const SITE_ROOT = (window.location.hostname === 'localhost') ? 'http://localhost:3500' : 'http://test.1tap.ontappipeline.com.s3-website-us-east-1.amazonaws.com';
 export const APP_ROOT = `${SITE_ROOT}/app/#/`;
-export const API_ROOT = (window.location.hostname === 'localhost') ? 'http://localhost:3501' : `http://one-tap-api.us-east-1.elasticbeanstalk.com`;
+export const API_ROOT = (window.location.hostname === 'localhost') ? 'http://localhost:3501' : `http://onetapapi-prod.us-east-1.elasticbeanstalk.com`;
 export const API_LOCATION = join(API_ROOT, 'api') ;
 export const EMAIL_PATTERN = /^[^@]+@[^@]+\.[^@]+$/;
 export const ROOT_ELEMENT = document.getElementById('root');
