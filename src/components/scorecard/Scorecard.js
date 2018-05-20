@@ -5,18 +5,23 @@ class Scorecard extends Component {
 
   renderCount(stage) {
     if(this.props.data && this.props.data.length > 0) {
-      return this.props.data.map(item => item[stage]).reduce((prev, next) => prev + next);
+      let f = this.props.data.filter(item => item.stage_name===stage);
+      if(f.length > 0)
+        return f[0].total;
+      else
+        return 0;
+      //return this.props.data.filter(item => item.stage_name===stage).reduce((prev, next) => prev + next);
     }
     return 0;
   }
   renderTotalCount() {
     if(this.props.data && this.props.data.length > 0) {
-      let prospecting = this.renderCount("prospecting");
-      let completed = this.renderCount("completed");
-      let nextsteps = this.renderCount("nextsteps");
-      let onsite = this.renderCount("onsite");
-      let proposal = this.renderCount("proposal");
-      let closedwon = this.renderCount("closedwon");
+      let prospecting = this.renderCount("Upcoming");
+      let completed = this.renderCount("Occurred");
+      let nextsteps = this.renderCount("Next Steps Established");
+      let onsite = this.renderCount("On-Site Meeting Set");
+      let proposal = this.renderCount("Proposal/Price Quote");
+      let closedwon = this.renderCount("Closed Won");
       return (prospecting + completed + nextsteps + onsite + proposal + closedwon);
     }
     return 0;
@@ -30,32 +35,32 @@ class Scorecard extends Component {
                   <div className="BigStats">
                 <div className="BigStats-stat">								
                   <h4>Upcoming</h4>
-                  <span className="BigStats-value" id="stats_total_prospecting">{this.renderCount("prospecting")}</span>								
+                  <span className="BigStats-value" id="stats_total_prospecting">{this.renderCount("Upcoming")}</span>								
                 </div>
                   
                 <div className="BigStats-stat">								
                   <h4>Occurred</h4>
-                  <span className="BigStats-value" id="stats_total_completed">{this.renderCount("completed")}</span>								
+                  <span className="BigStats-value" id="stats_total_completed">{this.renderCount("Occurred")}</span>								
                 </div>
                   
                 <div className="BigStats-stat">								
                   <h4>Next Steps</h4>
-                  <span className="BigStats-value" id="stats_total_nextsteps">{this.renderCount("nextsteps")}</span>								
+                  <span className="BigStats-value" id="stats_total_nextsteps">{this.renderCount("Next Steps Established")}</span>								
                 </div>
                   
                 <div className="BigStats-stat">								
                   <h4>On-site</h4>
-                  <span className="BigStats-value" id="stats_total_onsite">{this.renderCount("onsite")}</span>								
+                  <span className="BigStats-value" id="stats_total_onsite">{this.renderCount("On-Site Meeting Set")}</span>								
                 </div>
                   
                 <div className="BigStats-stat">								
                   <h4>Proposal</h4>
-                  <span className="BigStats-value" id="stats_total_proposal">{this.renderCount("proposal")}</span>								
+                  <span className="BigStats-value" id="stats_total_proposal">{this.renderCount("Proposal/Price Quote")}</span>								
                 </div>
                   
                 <div className="BigStats-stat">								
                   <h4>Deal Reg / Wins</h4>
-                  <span className="BigStats-value" id="stats_total_closedwon">{this.renderCount("closedwon")}</span>								
+                  <span className="BigStats-value" id="stats_total_closedwon">{this.renderCount("Closed Won")}</span>								
                 </div>
                   
                 <div className="BigStats-stat">								
