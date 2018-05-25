@@ -73,7 +73,7 @@ class PartnerScorecard extends Component {
           </div>
           <div className="Widget-half">
             <Widget title="Pipeline Calculator">
-              <PipelineCalculator data={this.props.opportunities} />
+              <PipelineCalculator data={this.props.scorecard} />
             </Widget>
           </div>
         </div>

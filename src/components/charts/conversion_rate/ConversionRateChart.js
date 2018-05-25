@@ -1,14 +1,44 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {CirclePie} from 'react-simple-charts'
+import jinqJs from 'jinq';
 
 class ConversionRateChart extends Component {
 
+  STAGE = {
+    UPCOMING: "Upcoming",
+    OCCURRED: "Occurred",
+    NEXT_STEPS: "Next Steps Established",
+    ON_SITE: "On-Site Meeting Set",
+    PROPOSAL: "Proposal/Price Quote",
+    CLOSED: "Closed Won"
+  };
+  
+  getScorecardData(){
+    var result = new jinqJs()
+    .from(this.props.data)
+    .distinct("partner__c", "name")
+    .select();
+    return result;
+  }
+  getScorecardClosedWon(partner__c) {
+    return this.getScorecardValue(partner__c, this.STAGE.CLOSED);
+  }
+  getScorecardValue(partner__c, key){
+    var result = new jinqJs()
+    .from(this.props.data)
+    .distinct("partner__c", "stage_name", "total")
+    .where(function(row, index) {
+      return (row.stage_name === key && row.partner__c === partner__c); 
+    })
+    .select();
+    return (result[0] ? result[0].total : 0);
+  }
   render() {
     return (
       <div>
         {this.props.data
-          ? this.props.data.map(item => <div key={item.id} className="ConversionRateChart-container"><CirclePie percent={item.conversionrate*100}/><h3>{item.account}</h3></div>)
+          ? this.getScorecardData().map(item => <div key={item.id} className="ConversionRateChart-container"><CirclePie percent={this.getScorecardClosedWon(item.partner__c)}/><h3>{item.account}</h3></div>)
           : null
         }
       </div>

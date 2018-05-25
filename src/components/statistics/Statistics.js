@@ -10,8 +10,8 @@ class Statistics extends Component {
           <div className="Statistics">
             <Table className="Statistics-table"
               columns={[
-                { name: 'Lead Goal', property: 'number_of_leads' },
-                { name: 'Lead Actual', property: 'number_of_opportunities'},
+                { name: 'Lead Goal', renderer: this.renderNumberOfLeads },
+                { name: 'Lead Actual', renderer: this.renderNumberOfOpportunities},
                 { name: '% To Goal', renderer: this.renderPercent}
               ]}
               data={this.props.data}
@@ -20,6 +20,20 @@ class Statistics extends Component {
             {this.renderProgress(this.props.data[0])}
           </div>
         );
+    }
+    renderNumberOfLeads(data) {
+        let number_of_leads = 0;
+        if(data && data.number_of_leads) {
+          number_of_leads = data.number_of_leads;
+        }
+        return <div>{number_of_leads}</div>;
+    }
+    renderNumberOfOpportunities(data) {
+        let number_of_opportunities = 0;
+        if(data && data.number_of_opportunities) {
+          number_of_opportunities = data.number_of_opportunities;
+        }
+        return <div>{number_of_opportunities}</div>;
     }
     renderPercent(data) {
         let num_sent = data.number_of_leads;

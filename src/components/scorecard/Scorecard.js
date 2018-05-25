@@ -10,7 +10,6 @@ class Scorecard extends Component {
         return f[0].total;
       else
         return 0;
-      //return this.props.data.filter(item => item.stage_name===stage).reduce((prev, next) => prev + next);
     }
     return 0;
   }

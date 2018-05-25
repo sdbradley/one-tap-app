@@ -80,7 +80,7 @@ class PartnerScorecard extends Component {
   renderAccount(opportunity) {
     if(opportunity) {
       return (
-        <Link classic to={`/account/${opportunity.account_id}/opportunities/${opportunity.opportunity_id}/datasheet`}>{opportunity.name}</Link>
+        <Link classic to={`/account/${opportunity.account_id}/opportunities/${opportunity.id}/datasheet`}>{opportunity.name}</Link>
       )
     }
     return null;
@@ -89,7 +89,7 @@ class PartnerScorecard extends Component {
   renderMeetingTime(opp) {
     if(opp.meeting_date_time__c) {
       return (
-        <div><Moment unix format="ddd MMM DD, YYYY hh:mm a">{opp.meeting_date_time__c}</Moment></div>
+        <div><Moment format="ddd MMM DD, YYYY hh:mm a">{opp.meeting_date_time__c}</Moment></div>
       )
     }
     return null;

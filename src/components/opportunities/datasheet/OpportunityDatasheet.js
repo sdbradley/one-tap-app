@@ -21,7 +21,7 @@ class OpportunityDatasheet extends Component {
             <div className="Widget-full">
               <Widget title="Opportunity Datasheet">
                 <Account accountId={this.props.accountId} />
-                <div>Initial Discovery Call scheduled for: <Moment format="MM/DD/YYYY HH:mm a">{this.props.opportunity && this.props.opportunity.meeting_date_time__c * 1000}</Moment></div>
+                <div>Initial Discovery Call scheduled for: <Moment format="MM/DD/YYYY HH:mm a">{this.props.opportunity && this.props.opportunity.meeting_date_time__c}</Moment></div>
               </Widget>
               <div className="Widget-full">
                 <div className="Widget-half">

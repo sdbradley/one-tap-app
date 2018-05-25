@@ -34,7 +34,7 @@ class Opportunities extends Component {
     renderDateTime(opportunity) {
       if(opportunity.meeting_date_time__c) {
         return (
-            <Moment unix format="ddd MMM DD, YYYY hh:mm a">{opportunity.meeting_date_time__c}</Moment>
+            <Moment format="ddd MMM DD, YYYY hh:mm a">{opportunity.meeting_date_time__c}</Moment>
         )
       }
       return null;
