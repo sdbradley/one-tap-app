@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Link from 'components/link';
 import LinkItem from 'components/link_item';
 import classNames from 'classnames';
+import { ROLE } from 'constants';
 import { openSidebar, closeSidebar, changeActiveSidebarItem } from 'actions/navigation';
 import './Sidebar.scss';
 
@@ -37,6 +38,13 @@ class Sidebar extends React.Component {
     }
   }
 
+  renderPartnersLink() {
+    if(this.props.user.hasRole(ROLE.STAKEHOLDER)) {
+      return <LinkItem headerLink="/stakeholder" to="/stakeholder" iconName="fa-users" title="Partners" />;
+    }
+    return null;
+  }
+
   render() {
     return (
       <nav
@@ -53,6 +61,7 @@ class Sidebar extends React.Component {
           <Link to="/">1Tap</Link>
         </header>
         <ul className='Sidebar-nav'>
+          {this.renderPartnersLink()}
           <LinkItem headerLink="/" to="/" iconName="fa-bar-chart" title="Dashboard" />
           <LinkItem headerLink="/scorecard" to="/scorecard" iconName="fa-dashboard" title="Scorecard" />
           <LinkItem headerLink="/admin" to="/admin" iconName="fa-gear" title="Admin" />
@@ -61,6 +70,7 @@ class Sidebar extends React.Component {
           CAMPAIGNS
         </h5>
         {/* eslint-disable */}
+        {/*
         <ul className='sidebarLabels'>
           <li>
             <a href="#">
@@ -81,6 +91,7 @@ class Sidebar extends React.Component {
             </a>
           </li>
         </ul>
+        */}
         {/* eslint-enable */}
         <h5 className='navTitle'>
           RECENT
@@ -95,6 +106,7 @@ class Sidebar extends React.Component {
 
 function mapStateToProps(store) {
   return {
+    user: store.authentication.user,
     sidebarOpened: store.navigation && store.navigation.sidebarOpened,
     sidebarStatic: store.navigation && store.navigation.sidebarStatic,
     activeItem: store.navigation && store.navigation.activeItem,

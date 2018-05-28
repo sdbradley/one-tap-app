@@ -1,5 +1,7 @@
 import React from 'react';
 import {Router, Route, hashHistory, IndexRoute} from 'react-router';
+import { ROLE } from 'constants';
+import ensureHasRole from 'components/higher_order_components/ensure_has_role';
 
 import RequireAuth from 'containers/require_auth';
 import App from 'components/App';
@@ -8,6 +10,7 @@ import ForgotPassword from 'pages/ForgotPassword';
 import ResetPassword from 'pages/ResetPassword';
 import Dashboard from 'pages/dashboard';
 import AdminDashboard from 'components/admin/dashboard';
+import StakeholderDashboard from 'components/stakeholder/dashboard';
 import Scorecard from 'pages/scorecard';
 import Users from 'pages/users';
 import Notifications from 'pages/notifications';
@@ -44,8 +47,13 @@ const ROUTES = (
         <IndexRoute component={Datasheet}/>
       </Route>
 
+      {/* Stakeholder */}
+      <Route path="stakeholder" component={ensureHasRole(ROLE.STAKEHOLDER, App)}>
+        <IndexRoute component={StakeholderDashboard}/>
+      </Route>
+
       {/* Admin */}
-      <Route path="admin" component={App}>
+      <Route path="admin" component={ensureHasRole(ROLE.ADMIN, App)}>
         <IndexRoute component={AdminDashboard}/>
         <Route path="users" component={FetchUsers}>
           <IndexRoute component={Users}/>
