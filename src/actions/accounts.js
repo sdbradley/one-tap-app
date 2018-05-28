@@ -31,9 +31,9 @@ export function fetchAccountSuccess(key) {
   };
 }
 
-export function fetchAccounts(otp_client = false) {
+export function fetchAccounts(otp_client = false, list_partners = false) {
   return (dispatch, getState) => {
-    let url = otp_client ? `accounts` : `accounts?otp_client=1`
+    let url = otp_client ? `accounts?otp_client=1` : (list_partners ? `accounts?list_partners=1` : `accounts`);
     dispatch(fetchingAccounts());
     return API.get(url)
       .then((res) => dispatch(receivedNormalAPIResponse(res)))

@@ -12,17 +12,31 @@ import Statistics from 'components/statistics';
 import CampaignNews from 'components/campaign_news';
 import Account from 'components/dashboard/account';
 import { changeStartDate, changeEndDate } from 'actions/navigation';
+import changeRoute from 'util/changeRoute';
+import { ROLE } from 'constants';
 
 class PartnerDashboard extends Component {
 
   constructor(props, ownProps) {
     super(props);
     this.state = {
-        title: '',
-        sort: ''
+      title: '',
+      sort: ''
     }
     this.startDateChanged = this.startDateChanged.bind(this);
     this.endDateChanged = this.endDateChanged.bind(this);
+  }
+
+  componentWillMount() {
+    this.checkForPermissions();
+  }
+  componentWillUpdate() {
+    this.checkForPermissions();
+  }
+  checkForPermissions() {
+    if(this.props.user.hasRole(ROLE.STAKEHOLDER) && (this.props.location.query.partner_id == undefined)) {
+      changeRoute("/stakeholder");
+    }
   }
 
   startDateChanged(event) {
@@ -91,25 +105,22 @@ class PartnerDashboard extends Component {
       </div>
     )
   }
-  renderLastName(row, position) {
-    return (
-      <Link to={`/admin/students/${row.id}/enrollments`} blue>{row.lastName}</Link>
-    );
-  }
 }
 
 export default connect(
   (state, props) => {
-    let opportunities = state.opportunities.all();
+    let user = state.authentication.user;
+    let accountId = (user && user.accountId);
+    let partner_id = props.location.query.partner_id;
+    let opportunities = state.opportunities.findWhere(o => o.partner__c===partner_id)
     let statistics = state.statistics.all();
     let campaign_news = state.campaign_news.all();
-    let user = state.authentication.user;
-    let accountId = user && user.accountId;
     return {
+      user: user,
       opportunities: opportunities,
       statistics: statistics,
       campaign_news: campaign_news,
-      partner_id: accountId,
+      partner_id: ((partner_id === undefined) ? accountId : partner_id),
       stage: 'Upcoming',
       start_date: state.navigation && state.navigation.startDate,
       end_date: state.navigation && state.navigation.endDate

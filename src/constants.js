@@ -20,6 +20,7 @@ export const ROLE = {
   ADMIN: 'Admin',
   STUDENT: 'Student',
   TEACHER: 'Instructor',
+  STAKEHOLDER: 'Stakeholder'
 };
 
 // Gradebook Sorting

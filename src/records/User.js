@@ -56,7 +56,8 @@ User.fromApi = function deserialize(data, school_id) {
     accountId: data.account_id,
     firstName: data.first_name,
     lastName: data.last_name,
-    email: data.email_address
+    email: data.email_address,
+    _roles
   });
 };
 
