@@ -33,7 +33,7 @@ class StakeholderDashboard extends Component {
   renderAccount(item) {
     if(item) {
       return (
-        <Link to={`/?partner_id=${item.id}`} classic blue>{item.name}</Link>
+        <Link to={`/#/?partner_id=${item.id}`} hard classic blue>{item.name}</Link>
       )
     }
     return null;

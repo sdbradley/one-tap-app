@@ -4,7 +4,8 @@ import {
   CLOSE_SIDEBAR,
   CHANGE_START_DATE,
   CHANGE_END_DATE,
-  CHANGE_ACTIVE_SIDEBAR_ITEM } from 'actions/navigation';
+  CHANGE_ACTIVE_SIDEBAR_ITEM,
+  SET_PARTNER_ID } from 'actions/navigation';
 
 const initialState = {
   sidebarOpened: false,
@@ -62,6 +63,10 @@ export default function runtime(state = initialState, action) {
         }
       }
       break;
+    case SET_PARTNER_ID:
+      return Object.assign({}, state, {
+        partnerId: action.key
+      });
     default:
       return state;
   }
