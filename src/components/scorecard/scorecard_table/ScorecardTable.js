@@ -83,7 +83,7 @@ class ScorecardTable extends Component {
       return (result[0] ? result[0].total : 0);
     }
     renderAccount(account) {
-      return <Link classic blue to={`${account.partner__c}/opportunities`}>{account.name}</Link>;
+      return <Link classic hard to={`/#/scorecard/${account.partner__c}/opportunities`}>{account.name}</Link>;
     }
 }
 
