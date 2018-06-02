@@ -85,11 +85,12 @@ class PartnerScorecard extends Component {
 export default connect(
   (state, props) => {
     let user = state.authentication.user;
-    let accountId = user && user.accountId;
+    let accountId = (user && user.accountId);
+    let partner_id = props.location.query.partner_id;
     return {
-      partner_id: accountId,
+      partner_id: ((partner_id === undefined) ? accountId : partner_id),
       scorecard: state.scorecard.all(),
-      opportunities: state.opportunities.all(),
+      opportunities: state.opportunities.findWhere(o => o.partner__c===partner_id),
       start_date: state.navigation && state.navigation.startDate,
       end_date: state.navigation && state.navigation.endDate
     };

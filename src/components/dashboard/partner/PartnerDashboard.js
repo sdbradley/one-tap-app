@@ -11,7 +11,7 @@ import Opportunities from 'components/opportunities';
 import Statistics from 'components/statistics';
 import CampaignNews from 'components/campaign_news';
 import Account from 'components/dashboard/account';
-import { changeStartDate, changeEndDate } from 'actions/navigation';
+import { changeStartDate, changeEndDate, setPartner } from 'actions/navigation';
 import changeRoute from 'util/changeRoute';
 import { ROLE } from 'constants';
 
@@ -38,7 +38,11 @@ class PartnerDashboard extends Component {
       changeRoute("/stakeholder");
     }
   }
-
+  componentDidMount() {
+    if(this.props.partner_id) {
+      this.props.dispatch(setPartner(this.props.partner_id));
+    }
+  }
   startDateChanged(event) {
     const value = event.value;
     this.props.changeStartDate(value);

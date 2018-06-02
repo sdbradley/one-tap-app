@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Link from 'components/link';
 import LinkItem from 'components/link_item';
@@ -7,7 +7,7 @@ import { ROLE } from 'constants';
 import { openSidebar, closeSidebar, changeActiveSidebarItem } from 'actions/navigation';
 import './Sidebar.scss';
 
-class Sidebar extends React.Component {
+class Sidebar extends Component {
 
   static defaultProps = {
     sidebarStatic: false,
@@ -24,10 +24,7 @@ class Sidebar extends React.Component {
 
   onMouseEnter() {
     if (!this.props.sidebarStatic) {
-      //const paths = this.props.location.pathname.split('/');
-      //paths.pop();
       this.props.dispatch(openSidebar());
-      //this.props.dispatch(changeActiveSidebarItem(paths.join('/')));
     }
   }
 
@@ -40,7 +37,31 @@ class Sidebar extends React.Component {
 
   renderPartnersLink() {
     if(this.props.user.hasRole(ROLE.STAKEHOLDER)) {
-      return <LinkItem headerLink="/stakeholder" to="/stakeholder" iconName="fa-users" title="Partners" />;
+      return <LinkItem hard headerLink="/stakeholder" to="/stakeholder" iconName="fa-users" title="Partners" />;
+    }
+    return null;
+  }
+  renderDashboardLink() {
+    if(this.props.partnerId) {
+      return <LinkItem hard headerLink={this.dashboardURL()} to={this.dashboardURL()} iconName="fa-bar-chart" title="Dashboard" />
+    }
+    return <LinkItem hard headerLink="/" iconName="fa-bar-chart" title="Dashboard" />;
+  }
+  dashboardURL() {
+    return `/#/?partner_id=${this.props.partnerId}`;
+  }
+  scorecardURL() {
+    return `/#/scorecard/?partner_id=${this.props.partnerId}`;
+  }
+  renderScorecardLink() {
+    if(this.props.partnerId) {
+      return <LinkItem hard headerLink={this.scorecardURL()} to={this.scorecardURL()} iconName="fa-dashboard" title="Scorecard" />;
+    }
+    return <LinkItem hard headerLink="/scorecard" iconName="fa-dashboard" title="Scorecard" />;
+  }
+  renderAdminLink() {
+    if(this.props.user.hasRole(ROLE.ADMIN)) {
+      return <LinkItem hard headerLink="/admin" to="/admin" iconName="fa-gear" title="Admin" />;
     }
     return null;
   }
@@ -62,9 +83,9 @@ class Sidebar extends React.Component {
         </header>
         <ul className='Sidebar-nav'>
           {this.renderPartnersLink()}
-          <LinkItem headerLink="/" to="/" iconName="fa-bar-chart" title="Dashboard" />
-          <LinkItem headerLink="/scorecard" to="/scorecard" iconName="fa-dashboard" title="Scorecard" />
-          <LinkItem headerLink="/admin" to="/admin" iconName="fa-gear" title="Admin" />
+          {this.renderDashboardLink()}
+          {this.renderScorecardLink()}
+          {this.renderAdminLink()}
         </ul>
         <h5 className='navTitle'>
           CAMPAIGNS
@@ -104,13 +125,15 @@ class Sidebar extends React.Component {
   }
 }
 
-function mapStateToProps(store) {
-  return {
-    user: store.authentication.user,
-    sidebarOpened: store.navigation && store.navigation.sidebarOpened,
-    sidebarStatic: store.navigation && store.navigation.sidebarStatic,
-    activeItem: store.navigation && store.navigation.activeItem,
-  };
-}
-
-export default connect(mapStateToProps)(Sidebar);
+export default connect(
+  (state, props) => {
+    let user = state.authentication.user;
+    return {
+      user: user,
+      sidebarOpened: state.navigation && state.navigation.sidebarOpened,
+      sidebarStatic: state.navigation && state.navigation.sidebarStatic,
+      activeItem: state.navigation && state.navigation.activeItem,
+      partnerId: state.navigation && state.navigation.partnerId
+    };
+  }
+)(Sidebar);

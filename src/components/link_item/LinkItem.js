@@ -8,7 +8,7 @@ class LinkItem extends Component {
   render() {
     return (
         <li className='headerLink-item'>
-        <Link to={this.props.headerLink} className={this.getLinkClass()}>
+        <Link hard={this.props.hard} to={this.props.headerLink} className={this.getLinkClass()}>
             <span className='icon'>
             <i className={`fa ${this.props.iconName}`} />
             </span>

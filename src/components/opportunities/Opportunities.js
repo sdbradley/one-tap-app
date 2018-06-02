@@ -11,7 +11,7 @@ class Opportunities extends Component {
           <div className="Opportunities">
             <Table
               columns={[
-                { name: 'Name', property: 'name' },
+                { name: 'Name', renderer: this.renderName },
                 { name: 'Partner', renderer: this.renderPartner},
                 { name: 'Stage', property: 'stage_name'},
                 { name: 'Meeting Time', property: 'meeting_date_time__c', renderer: this.renderDateTime }
@@ -22,11 +22,13 @@ class Opportunities extends Component {
           </div>
         );
     }
-
+    renderName(opportunity) {
+      return <Link classic hard to={`/#/account/${opportunity.account_id}/opportunities/${opportunity.id}/datasheet`}>{opportunity.name}</Link>;
+    }
     renderPartner(opportunity) {
       if(opportunity.partner) {
         return (
-          <Link className="LoginForm-helpText" classic to={`/scorecard/${opportunity.partner__c}/opportunities`}>{opportunity.partner}</Link>
+          <Link classic hard to={`/#/scorecard/${opportunity.partner__c}/opportunities`}>{opportunity.partner}</Link>
         )
       }
       return null;
