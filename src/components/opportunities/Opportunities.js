@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Table from 'components/table';
 import Moment from 'react-moment';
 import Link from 'components/link';
+import { APP_ROOT } from 'constants';
 
 class Opportunities extends Component {
 
@@ -23,12 +24,12 @@ class Opportunities extends Component {
         );
     }
     renderName(opportunity) {
-      return <Link classic hard to={`/#/account/${opportunity.account_id}/opportunities/${opportunity.id}/datasheet`}>{opportunity.name}</Link>;
+      return <Link classic hard to={`${APP_ROOT}account/${opportunity.account_id}/opportunities/${opportunity.id}/datasheet`}>{opportunity.name}</Link>;
     }
     renderPartner(opportunity) {
       if(opportunity.partner) {
         return (
-          <Link classic hard to={`/#/scorecard/${opportunity.partner__c}/opportunities`}>{opportunity.partner}</Link>
+          <Link classic hard to={`${APP_ROOT}scorecard/${opportunity.partner__c}/opportunities`}>{opportunity.partner}</Link>
         )
       }
       return null;

@@ -5,6 +5,7 @@ import Widget from 'components/widget';
 import Link from 'components/link';
 import './css/stakeholder.scss';
 import FetchAccountPartners from 'containers/fetchers/fetch_account_partners';
+import { APP_ROOT } from 'constants';
 
 class StakeholderDashboard extends Component {
 
@@ -33,7 +34,7 @@ class StakeholderDashboard extends Component {
   renderAccount(item) {
     if(item) {
       return (
-        <Link to={`/#/?partner_id=${item.id}`} hard classic>{item.name}</Link>
+        <Link to={`${APP_ROOT}?partner_id=${item.id}`} hard classic>{item.name}</Link>
       )
     }
     return null;
