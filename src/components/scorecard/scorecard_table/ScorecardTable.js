@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Table from 'components/table';
 import Link from 'components/link';
 import jinqJs from 'jinq';
+import { APP_ROOT } from 'constants';
 
 class ScorecardTable extends Component {
 
@@ -83,7 +84,7 @@ class ScorecardTable extends Component {
       return (result[0] ? result[0].total : 0);
     }
     renderAccount(account) {
-      return <Link classic hard to={`/#/scorecard/${account.partner__c}/opportunities`}>{account.name}</Link>;
+      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities`}>{account.name}</Link>;
     }
 }
 

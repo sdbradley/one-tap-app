@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Link from 'components/link';
 import LinkItem from 'components/link_item';
 import classNames from 'classnames';
-import { ROLE } from 'constants';
+import { ROLE, APP_ROOT } from 'constants';
 import { openSidebar, closeSidebar, changeActiveSidebarItem } from 'actions/navigation';
 import './Sidebar.scss';
 
@@ -37,7 +37,7 @@ class Sidebar extends Component {
 
   renderPartnersLink() {
     if(this.props.user.hasRole(ROLE.STAKEHOLDER)) {
-      return <LinkItem hard headerLink="/stakeholder" to="/stakeholder" iconName="fa-users" title="Partners" />;
+      return <LinkItem hard headerLink={this.stakeholderURL()} to={this.stakeholderURL()} iconName="fa-users" title="Partners" />;
     }
     return null;
   }
@@ -47,11 +47,14 @@ class Sidebar extends Component {
     }
     return <LinkItem hard headerLink="/" iconName="fa-bar-chart" title="Dashboard" />;
   }
+  stakeholderURL() {
+    return `${APP_ROOT}/stakeholder`;
+  }
   dashboardURL() {
-    return `/#/?partner_id=${this.props.partnerId}`;
+    return `${APP_ROOT}?partner_id=${this.props.partnerId}`;
   }
   scorecardURL() {
-    return `/#/scorecard/?partner_id=${this.props.partnerId}`;
+    return `${APP_ROOT}scorecard/?partner_id=${this.props.partnerId}`;
   }
   renderScorecardLink() {
     if(this.props.partnerId) {
