@@ -32,9 +32,9 @@ class Feedback extends Component {
     return (
       <Form className='JoinClass-section' onSubmit={this.handleSubmit}>
         <h1 className='JoinClass-title'>Enter Feedback</h1>
-        <Field
-          type='text'
-          name='feedback'
+        <textarea
+          className="SG-input SG-input--admin SG-input--textarea"
+          name="feedback"
         />
         <Field type='hidden' name='opportunity_id' value={this.props.opportunity.id} />
         <Field type='hidden' name='feedback_type' value='Partner' />
