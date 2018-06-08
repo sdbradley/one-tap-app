@@ -7,6 +7,7 @@ import Table from 'components/table';
 import Icon from 'components/icon';
 import Link from 'components/link';
 import Moment from 'react-moment';
+import 'moment-timezone';
 import { changeStartDate, changeEndDate } from 'actions/navigation';
 
 class PartnerScorecard extends Component {
@@ -59,10 +60,10 @@ class PartnerScorecard extends Component {
               <div className="PartnerOpportunityTable">
                 <Table className="PartnerOpportunityTable-table"
                 columns={[
-                    { name: 'Account', renderer: this.renderAccount },
+                    { name: 'Account', className: "PartnerOpportunities-account", renderer: this.renderAccount },
                     { name: 'Meeting Time', renderer: this.renderMeetingTime},
                     { name: 'Status', property: 'stage_name'},
-                    { name: 'Feedback', className: "PartnerOpportunities-account", renderer: this.renderFeedback},
+                    { name: 'Feedback', renderer: this.renderFeedback},
                     { name: 'Deal Registered', renderer: this.renderDealRegistered},
                     { name: 'Recording Downloaded', renderer: this.renderDownloadDate}
                 ]}
@@ -89,7 +90,7 @@ class PartnerScorecard extends Component {
   renderMeetingTime(opp) {
     if(opp.meeting_date_time__c) {
       return (
-        <div><Moment format="ddd MMM DD, YYYY hh:mm a">{opp.meeting_date_time__c}</Moment></div>
+        <div><Moment format="ddd MMM DD, YYYY hh:mm a z" tz="America/New_York">{opp.meeting_date_time__c}</Moment></div>
       )
     }
     return null;
