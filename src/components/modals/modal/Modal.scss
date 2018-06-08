@@ -4,7 +4,7 @@
     position: relative;
     display: block;
     background: $Color-white;
-    width: 40rem;
+    width: auto;
     height: auto;
     min-height: 4rem;
     max-width: calc(100% - #{$Margin-rhythm--double});
