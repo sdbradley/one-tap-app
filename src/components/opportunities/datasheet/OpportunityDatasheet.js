@@ -9,6 +9,7 @@ import CallNotes from 'components/opportunities/datasheet/call_notes';
 import OpportunityContacts from 'components/opportunities/datasheet/opportunity_contacts';
 import Attachments from 'components/opportunities/datasheet/attachments';
 import Moment from 'react-moment';
+import 'moment-timezone';
 import Widget from 'components/widget';
 
 class OpportunityDatasheet extends Component {
@@ -21,7 +22,7 @@ class OpportunityDatasheet extends Component {
             <div className="Widget-full">
               <Widget title="Opportunity Datasheet">
                 <Account accountId={this.props.accountId} />
-                <div>Initial Discovery Call scheduled for: <Moment format="MM/DD/YYYY HH:mm a">{this.props.opportunity && this.props.opportunity.meeting_date_time__c}</Moment></div>
+                <div>Initial Discovery Call scheduled for: <Moment format="MM/DD/YYYY HH:mm a z" tz="America/New_York">{this.props.opportunity && this.props.opportunity.meeting_date_time__c}</Moment></div>
               </Widget>
               <div className="Widget-full">
                 <div className="Widget-half">

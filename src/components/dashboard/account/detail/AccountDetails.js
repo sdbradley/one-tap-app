@@ -7,6 +7,7 @@ class AccountDetail extends Component {
     return (
       <div>
         <div>{`Address: ${this.renderAddress()}`}</div>
+        <div>{this.renderIndustry()}</div>
         <div>{this.renderRevenue()}</div>
         <div>{this.renderWebsite()}</div>
       </div>
@@ -23,9 +24,19 @@ class AccountDetail extends Component {
     )
   }
 
+  renderIndustry() {
+    return (
+      <div>{`Industry: ${this.props.account.industry}`}</div>
+    )
+  }
+
   renderRevenue() {
     return (
-      <div>{`Revenue: ${this.props.account.annual_revenue}`}</div>
+      <div>{`Revenue: ${new Intl.NumberFormat('en-US', { 
+        style: 'currency', 
+        currency: 'USD',
+        minimumFractionDigits: 0, 
+        maximumFractionDigits: 0 }).format(this.props.account.annual_revenue)}`}</div>
     )
   }
 
