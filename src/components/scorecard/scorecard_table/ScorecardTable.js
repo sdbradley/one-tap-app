@@ -56,22 +56,22 @@ class ScorecardTable extends Component {
       return result;
     }
     getScorecardUpcoming(account) {
-      return this.getScorecardValue(account.partner__c, this.STAGE.UPCOMING);
+      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${this.STAGE.UPCOMING}`}>{this.getScorecardValue(account.partner__c, this.STAGE.UPCOMING)}</Link>;
     }
     getScorecardOccurred(account) {
-      return this.getScorecardValue(account.partner__c, this.STAGE.OCCURRED);
+      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${this.STAGE.OCCURRED}`}>{this.getScorecardValue(account.partner__c, this.STAGE.OCCURRED)}</Link>;
     }
     getScorecardNextStepsEstablished(account) {
-      return this.getScorecardValue(account.partner__c, this.STAGE.NEXT_STEPS);
+      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${this.STAGE.NEXT_STEPS}`}>{this.getScorecardValue(account.partner__c, this.STAGE.NEXT_STEPS)}</Link>;
     }
     getScorecardOnSiteMeetingSet(account) {
-      return this.getScorecardValue(account.partner__c, this.STAGE.ON_SITE);
+      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${this.STAGE.ON_SITE}`}>{this.getScorecardValue(account.partner__c, this.STAGE.ON_SITE)}</Link>;
     }
     getScorecardProposalPriceQuote(account) {
-      return this.getScorecardValue(account.partner__c, this.STAGE.PROPOSAL);
+      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${this.STAGE.PROPOSAL}`}>{this.getScorecardValue(account.partner__c, this.STAGE.PROPOSAL)}</Link>;
     }
     getScorecardClosedWon(account) {
-      return this.getScorecardValue(account.partner__c, this.STAGE.CLOSED);
+      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${this.STAGE.CLOSED}`}>{this.getScorecardValue(account.partner__c, this.STAGE.CLOSED)}</Link>;
     }
     getScorecardValue(partner__c, key){
       var result = new jinqJs()

@@ -134,9 +134,10 @@ class PartnerScorecard extends Component {
 
 export default connect(
   (state, props) => {
+    let stage = props.location.query.stage;
     return {
       partner_id: props.params.partner_id,
-      opportunities: state.opportunities.all(),
+      opportunities: (stage ? state.opportunities.findWhere(o => o.stage_name===stage) : state.opportunities.all()),
       start_date: state.navigation && state.navigation.startDate,
       end_date: state.navigation && state.navigation.endDate
     };
