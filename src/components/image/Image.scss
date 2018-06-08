@@ -6,7 +6,6 @@
     height: 100%;
     width: 100%;
     border: 1px solid $Color-catskillWhite;
-    background: $Color-alto;
     overflow: hidden;
     padding: 0 2rem;
 }
@@ -22,7 +21,7 @@
 }
 
 .Image-title {
-    @include center()
+    @include center();
     font-size: $Type-fontSize--epsilon;
     min-width: 100%;
     text-align: center;
