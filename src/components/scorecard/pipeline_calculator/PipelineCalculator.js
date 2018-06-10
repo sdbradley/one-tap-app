@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import jinqJs from 'jinq';
+import { STAGE } from 'constants';
 
 class PipelineCalculator extends Component {
-
-  STAGE = {
-    UPCOMING: "Upcoming",
-    OCCURRED: "Occurred",
-    NEXT_STEPS: "Next Steps Established",
-    ON_SITE: "On-Site Meeting Set",
-    PROPOSAL: "Proposal/Price Quote",
-    CLOSED: "Closed Won"
-  };
 
   constructor(props) {
     super(props);
@@ -22,8 +14,11 @@ class PipelineCalculator extends Component {
     };
   }
 
+  componentWillReceiveProps() {
+    this.calcTotals();
+  }
+
   renderCount(stage) {
-    console.log(JSON.stringify(this.props.data));
     if(this.props.data && this.props.data.length > 0) {
       let f = this.props.data.filter(item => item.stage_name===stage);
       if(f.length > 0)
@@ -34,6 +29,24 @@ class PipelineCalculator extends Component {
     return 0;
   }
 
+  renderAvgDealSize() {
+    return (
+      <span>{`x ${new Intl.NumberFormat('en-US', { 
+        style: 'currency', 
+        currency: 'USD',
+        minimumFractionDigits: 0, 
+        maximumFractionDigits: 0 }).format(this.state.avg_deal_size)}`}</span>
+    )
+  }
+  renderTotal() {
+    return (
+      <span>{`${new Intl.NumberFormat('en-US', { 
+        style: 'currency', 
+        currency: 'USD',
+        minimumFractionDigits: 0, 
+        maximumFractionDigits: 0 }).format(this.state.num_deals * this.state.avg_deal_size)}`}</span>
+    )
+  }
   render() {
     return (
       <div>
@@ -43,18 +56,18 @@ class PipelineCalculator extends Component {
             <div className="pipeline-calc-inner">
                 <div className="PipelineCalculator-container">
                     <div className="left">Agreed to Next Steps:</div>
-                    <div className="right calcValue">{this.renderCount(this.STAGE.NEXT_STEPS)}</div>
+                    <div className="right calcValue">{this.renderCount(STAGE.NEXT_STEPS)}</div>
                     <div className="clearfix"></div>
                 </div>
                 <div className="PipelineCalculator-container">
                     <div className="left">Average Deal Size:</div>
-                    <div className="right calcValue">x {this.state.avg_deal_size}</div>
+                    <div className="right calcValue">{this.renderAvgDealSize()}</div>
                     <div className="clearfix"></div>
                 </div>
                 <div className="PipelineCalculator-container--equals"></div>
                 <div className="PipelineCalculator-container--total">
                     <div className="left calcTotal">Total:</div>
-                    <div className="right calcTotal">{this.state.num_deals * this.state.avg_deal_size}</div>
+                    <div className="right calcTotal">{this.renderTotal()}</div>
                     <div className="clearfix"></div>
                 </div>
                 <div className="PipelineCalculator-footnote">* numbers based on information provided</div>
@@ -74,7 +87,7 @@ class PipelineCalculator extends Component {
     return result;
   }
   getScorecardNextSteps(partner__c) {
-    return this.getScorecardValue(partner__c, this.STAGE.NEXT_STEPS);
+    return this.getScorecardValue(partner__c, STAGE.NEXT_STEPS);
   }
   getScorecardValue(partner__c, key){
     var result = new jinqJs()
@@ -93,18 +106,17 @@ class PipelineCalculator extends Component {
       avg_deal_size: 0,
       total_deal_amount: 0
     };
-    this.props.data.forEach(item => {
-      //if ((item.stage_name === 'Next Steps Established') || (item.stage_name === 'On-Site Meeting Set') || (item.stage_name === 'Proposal/Price Quote')) {
-        totals.total_deal_amount += item.amount;
-        totals.num_deals += this.getScorecardNextSteps(item.account);
-      //}
+    totals.num_deals = this.renderCount(STAGE.NEXT_STEPS);
+    this.props.opportunities.forEach(item => {
+      if (item.amount) {
+        totals.total_deal_amount += parseInt(item.amount);
+      }
     });
     if(totals.num_deals > 0) {
       totals.avg_deal_size = (totals.total_deal_amount / totals.num_deals)
     }
     this.setState(totals);
   }
-
 }
 
 export default connect(null, null)(PipelineCalculator)

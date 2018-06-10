@@ -2,18 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {CirclePie} from 'react-simple-charts'
 import jinqJs from 'jinq';
+import { STAGE } from 'constants';
 
 class ConversionRateChart extends Component {
 
-  STAGE = {
-    UPCOMING: "Upcoming",
-    OCCURRED: "Occurred",
-    NEXT_STEPS: "Next Steps Established",
-    ON_SITE: "On-Site Meeting Set",
-    PROPOSAL: "Proposal/Price Quote",
-    CLOSED: "Closed Won"
-  };
-  
   getScorecardData(){
     var result = new jinqJs()
     .from(this.props.data)
@@ -22,7 +14,7 @@ class ConversionRateChart extends Component {
     return result;
   }
   getScorecardClosedWon(partner__c) {
-    return this.getScorecardValue(partner__c, this.STAGE.CLOSED);
+    return this.getScorecardValue(partner__c, STAGE.CLOSED);
   }
   getScorecardValue(partner__c, key){
     var result = new jinqJs()

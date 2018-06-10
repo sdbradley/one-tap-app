@@ -8,6 +8,7 @@ import PipelineCalculator from 'components/scorecard/pipeline_calculator';
 import Field from 'components/field';
 import Widget from 'components/widget';
 import { changeStartDate, changeEndDate } from 'actions/navigation';
+import { STAGE } from 'constants';
 
 class PartnerScorecard extends Component {
 
@@ -73,7 +74,7 @@ class PartnerScorecard extends Component {
           </div>
           <div className="Widget-half">
             <Widget title="Pipeline Calculator">
-              <PipelineCalculator data={this.props.scorecard} />
+              <PipelineCalculator data={this.props.scorecard} opportunities={this.props.opportunities} />
             </Widget>
           </div>
         </div>
