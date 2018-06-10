@@ -30,7 +30,7 @@ class ConversionRateChart extends Component {
     return (
       <div>
         {this.props.data
-          ? this.getScorecardData().map(item => <div key={item.id} className="ConversionRateChart-container"><CirclePie percent={this.getScorecardClosedWon(item.partner__c)}/><h3>{item.account}</h3></div>)
+          ? this.getScorecardData().map(item => <div key={item.partner__c} className="ConversionRateChart-container"><CirclePie percent={this.getScorecardClosedWon(item.partner__c)}/><h3>{item.account}</h3></div>)
           : null
         }
       </div>
