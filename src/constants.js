@@ -31,6 +31,16 @@ export const SORT_TYPE = {
   EMAIL: 'EMAIL'
 }
 
+// Stage
+export const STAGE = {
+  UPCOMING: "Upcoming",
+  OCCURRED: "Occurred",
+  NEXT_STEPS: "Next Steps Established",
+  ON_SITE: "On-Site Meeting Set",
+  PROPOSAL: "Proposal/Price Quote",
+  CLOSED: "Closed Won"
+}
+
 // Rights
 export const RIGHT = {
   ADMIN_DASHBOARD: 1,

@@ -4,17 +4,9 @@ import Table from 'components/table';
 import Link from 'components/link';
 import jinqJs from 'jinq';
 import { APP_ROOT } from 'constants';
+import { STAGE } from 'constants';
 
 class ScorecardTable extends Component {
-
-  STAGE = {
-    UPCOMING: "Upcoming",
-    OCCURRED: "Occurred",
-    NEXT_STEPS: "Next Steps Established",
-    ON_SITE: "On-Site Meeting Set",
-    PROPOSAL: "Proposal/Price Quote",
-    CLOSED: "Closed Won"
-  };
 
   constructor(props) {
     super(props);
@@ -56,22 +48,22 @@ class ScorecardTable extends Component {
       return result;
     }
     getScorecardUpcoming(account) {
-      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${this.STAGE.UPCOMING}`}>{this.getScorecardValue(account.partner__c, this.STAGE.UPCOMING)}</Link>;
+      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${STAGE.UPCOMING}`}>{this.getScorecardValue(account.partner__c, STAGE.UPCOMING)}</Link>;
     }
     getScorecardOccurred(account) {
-      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${this.STAGE.OCCURRED}`}>{this.getScorecardValue(account.partner__c, this.STAGE.OCCURRED)}</Link>;
+      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${STAGE.OCCURRED}`}>{this.getScorecardValue(account.partner__c, STAGE.OCCURRED)}</Link>;
     }
     getScorecardNextStepsEstablished(account) {
-      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${this.STAGE.NEXT_STEPS}`}>{this.getScorecardValue(account.partner__c, this.STAGE.NEXT_STEPS)}</Link>;
+      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${STAGE.NEXT_STEPS}`}>{this.getScorecardValue(account.partner__c, STAGE.NEXT_STEPS)}</Link>;
     }
     getScorecardOnSiteMeetingSet(account) {
-      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${this.STAGE.ON_SITE}`}>{this.getScorecardValue(account.partner__c, this.STAGE.ON_SITE)}</Link>;
+      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${STAGE.ON_SITE}`}>{this.getScorecardValue(account.partner__c, STAGE.ON_SITE)}</Link>;
     }
     getScorecardProposalPriceQuote(account) {
-      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${this.STAGE.PROPOSAL}`}>{this.getScorecardValue(account.partner__c, this.STAGE.PROPOSAL)}</Link>;
+      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${STAGE.PROPOSAL}`}>{this.getScorecardValue(account.partner__c, STAGE.PROPOSAL)}</Link>;
     }
     getScorecardClosedWon(account) {
-      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${this.STAGE.CLOSED}`}>{this.getScorecardValue(account.partner__c, this.STAGE.CLOSED)}</Link>;
+      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${STAGE.CLOSED}`}>{this.getScorecardValue(account.partner__c, STAGE.CLOSED)}</Link>;
     }
     getScorecardValue(partner__c, key){
       var result = new jinqJs()
