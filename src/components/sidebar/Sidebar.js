@@ -85,7 +85,6 @@ class Sidebar extends Component {
           <Link to="/">1Tap</Link>
         </header>
         <ul className='Sidebar-nav'>
-          {this.renderPartnersLink()}
           {this.renderDashboardLink()}
           {this.renderScorecardLink()}
           {this.renderAdminLink()}
