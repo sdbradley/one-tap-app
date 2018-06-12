@@ -10,8 +10,30 @@ import Opportunities from 'components/opportunities';
 import Campaigns from 'components/campaigns';
 import Statistics from 'components/statistics';
 import CampaignNews from 'components/campaign_news';
+import { APP_ROOT } from 'constants';
+import { downloadCSV } from 'actions/campaigns'
+import classNames from 'classnames'
+import Button from 'components/shared/button/button';
 
 class CampaignDashboard extends Component {
+
+  constructor(props) {
+    super(props)
+    this.handleDownload = this.handleDownload.bind(this)
+    this.state = {
+      downloading: false
+    }
+  }
+
+  handleDownload() {
+    if (this.state.downloading || !this.props.campaign) return
+    this.setState({ downloading: true }, () =>
+      this.props
+        .downloadCSV(this.props.campaign.id)
+        .catch(e => console.error(e))
+        .then(() => this.setState({ downloading: false }))
+    )
+  }
 
   render() {
     return (
@@ -36,12 +58,21 @@ class CampaignDashboard extends Component {
           </div>
           <div className="Widget-full">
             <Widget title="Upcoming Opportunities">
-                <Opportunities data={this.props.opportunities} />
+              <Opportunities data={this.props.opportunities} />
+              {this.renderDownloadLink()}
             </Widget>
           </div>
         </div>
       </FetchCampaign>
     )
+  }
+
+  renderDownloadLink() {
+    if (this.props.campaign) {
+      return <Button className='Gradebook-footerButton' disabled={this.state.downloading} onClick={this.handleDownload}>
+        Export to CSV
+      </Button>
+    }
   }
 }
 
@@ -58,5 +89,6 @@ export default connect(
       start_date: state.navigation && state.navigation.startDate,
       end_date: state.navigation && state.navigation.endDate
     };
-  }
+  },
+  { downloadCSV }
 )(CampaignDashboard);

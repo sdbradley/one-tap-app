@@ -1,5 +1,6 @@
-  import API from 'util/API';
+import API from 'util/API';
 import { receivedNormalAPIResponse } from 'actions/api';
+import { download } from 'util/funcs'
 
 export const FETCH_CAMPAIGN_SUCCESS = 'FETCH_CAMPAIGN_SUCCESS';
 export const FETCHING_CAMPAIGN = 'FETCHING_CAMPAIGN';
@@ -44,6 +45,14 @@ export function fetchCampaign(id) {
         .then((res) => dispatch(receivedNormalAPIResponse(res)))
         .then(() => dispatch(fetchCampaignSuccess(key)));
     }
+  }
+}
+export function downloadCSV(id) {
+  return (dispatch, getState) => {
+    return API.get(`campaigns/${id}/opportunities/export`, {
+        accept: 'text/plain'
+      })
+      .then(body => download('opportunities.csv', 'text/csv', body))
   }
 }
 
