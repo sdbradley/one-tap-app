@@ -38,7 +38,6 @@ export function fetchCampaignNews(partner, start, end) {
 export function fetchCampaign(id) {
   return (dispatch, getState) => {
     let key = `id:${id}`;
-    console.log('fetchCampaign: ' + key);
     if(id) {
       dispatch(fetchingCampaign(key));
       return API.get(`campaigns/${id}`)

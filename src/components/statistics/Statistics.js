@@ -6,7 +6,6 @@ import { setPrecision } from 'util/funcs';
 class Statistics extends Component {
 
     render() {
-        console.log('Statistics: ' + JSON.stringify(this.props.data));
         return (
           <div className="Statistics">
             <Table className="Statistics-table"
