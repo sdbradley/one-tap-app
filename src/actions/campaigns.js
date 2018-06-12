@@ -1,8 +1,27 @@
   import API from 'util/API';
 import { receivedNormalAPIResponse } from 'actions/api';
 
+export const FETCH_CAMPAIGN_SUCCESS = 'FETCH_CAMPAIGN_SUCCESS';
+export const FETCHING_CAMPAIGN = 'FETCHING_CAMPAIGN';
+export const FETCH_CAMPAIGNS_SUCCESS = 'FETCH_CAMPAIGNS_SUCCESS';
+export const FETCHING_CAMPAIGNS = 'FETCHING_CAMPAIGNS';
 export const FETCH_CAMPAIGN_NEWS_SUCCESS = 'FETCH_CAMPAIGN_NEWS_SUCCESS';
 export const FETCHING_CAMPAIGN_NEWS = 'FETCHING_CAMPAIGN_NEWS';
+
+export function fetchCampaigns(partner, start, end) {
+  return (dispatch, getState) => {
+    let key = `partner:${partner}:start_date:${start}`;
+    if(partner) {
+      dispatch(fetchingCampaigns(key));
+      let url = `campaigns?partner__c=${partner}`;
+      url += (start && `&start_date=${start}`) || '';
+      url += (end && `&end_date=${end}`) || '';
+      return API.get(url)
+        .then((res) => dispatch(receivedNormalAPIResponse(res)))
+        .then(() => dispatch(fetchCampaignsSuccess(key)));
+    }
+  }
+}
 
 export function fetchCampaignNews(partner, start, end) {
   return (dispatch, getState) => {
@@ -14,6 +33,45 @@ export function fetchCampaignNews(partner, start, end) {
         .then(() => dispatch(fetchCampaignNewsSuccess(key)));
     }
   }
+}
+
+export function fetchCampaign(id) {
+  return (dispatch, getState) => {
+    let key = `id:${id}`;
+    console.log('fetchCampaign: ' + key);
+    if(id) {
+      dispatch(fetchingCampaign(key));
+      return API.get(`campaigns/${id}`)
+        .then((res) => dispatch(receivedNormalAPIResponse(res)))
+        .then(() => dispatch(fetchCampaignSuccess(key)));
+    }
+  }
+}
+
+export function fetchingCampaign() {
+  return {
+    type: FETCHING_CAMPAIGN
+  };
+}
+
+export function fetchCampaignSuccess(key) {
+  return {
+    type: FETCH_CAMPAIGN_SUCCESS,
+    key: key
+  };
+}
+
+export function fetchingCampaigns() {
+  return {
+    type: FETCHING_CAMPAIGNS
+  };
+}
+
+export function fetchCampaignsSuccess(key) {
+  return {
+    type: FETCH_CAMPAIGNS_SUCCESS,
+    key: key
+  };
 }
 
 export function fetchingCampaignNews() {

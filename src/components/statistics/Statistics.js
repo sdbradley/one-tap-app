@@ -6,6 +6,7 @@ import { setPrecision } from 'util/funcs';
 class Statistics extends Component {
 
     render() {
+        console.log('Statistics: ' + JSON.stringify(this.props.data));
         return (
           <div className="Statistics">
             <Table className="Statistics-table"
@@ -14,10 +15,10 @@ class Statistics extends Component {
                 { name: 'Lead Actual', renderer: this.renderNumberOfOpportunities},
                 { name: '% To Goal', renderer: this.renderPercent}
               ]}
-              data={this.props.data}
+              data={this.props.data && [this.props.data]}
               emptyState='No results'
             />
-            {this.renderProgress(this.props.data[0])}
+            {this.renderProgress(this.props.data)}
           </div>
         );
     }

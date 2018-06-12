@@ -11,7 +11,9 @@ import ResetPassword from 'pages/ResetPassword';
 import Dashboard from 'pages/dashboard';
 import AdminDashboard from 'components/admin/dashboard';
 import StakeholderDashboard from 'components/stakeholder/dashboard';
+import CampaignDashboard from 'components/campaigns/dashboard';
 import Scorecard from 'pages/scorecard';
+import Campaigns from 'pages/campaigns';
 import Users from 'pages/users';
 import Notifications from 'pages/notifications';
 import OpportunityDetails from 'pages/opportunity_detail';
@@ -45,6 +47,10 @@ const ROUTES = (
 
       <Route path="account/:accountId/opportunities/:opportunityId/datasheet">
         <IndexRoute component={Datasheet}/>
+      </Route>
+
+      <Route path="campaigns/:campaignId">
+        <IndexRoute component={Campaigns}/>
       </Route>
 
       {/* Stakeholder */}
