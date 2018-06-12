@@ -6,6 +6,7 @@ import modal from './modal';
 import navigation from './navigation';
 import opportunities from './opportunities';
 import statistics from './statistics';
+import campaigns from './campaigns';
 import campaign_news from './campaign_news';
 import accounts from './accounts';
 import scorecard from './scorecard';
@@ -18,6 +19,7 @@ const appReducer = combineReducers({
   modal,
   navigation,
   opportunities,
+  campaigns,
   statistics,
   campaign_news,
   accounts,

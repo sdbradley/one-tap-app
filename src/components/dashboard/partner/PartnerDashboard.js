@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FetchOpportunities from 'containers/fetchers/fetch_opportunities';
+import FetchCampaigns from 'containers/fetchers/fetch_campaigns';
 import FetchStatistics from 'containers/fetchers/fetch_statistics';
 import FetchCampaignNews from 'containers/fetchers/fetch_campaign_news';
 import FetchAccount from 'containers/fetchers/fetch_account';
@@ -8,6 +9,7 @@ import Field from 'components/field';
 import Widget from 'components/widget';
 import Link from 'components/link';
 import Opportunities from 'components/opportunities';
+import Campaigns from 'components/campaigns';
 import Statistics from 'components/statistics';
 import CampaignNews from 'components/campaign_news';
 import Account from 'components/dashboard/account';
@@ -119,9 +121,11 @@ export default connect(
     let opportunities = state.opportunities.findWhere(o => o.partner__c===partner_id)
     let statistics = state.statistics.all();
     let campaign_news = state.campaign_news.all();
+    let campaigns = state.campaigns.all();
     return {
       user: user,
       opportunities: opportunities,
+      campaigns: campaigns,
       statistics: statistics,
       campaign_news: campaign_news,
       partner_id: ((partner_id === undefined) ? accountId : partner_id),

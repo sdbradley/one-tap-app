@@ -14,10 +14,10 @@ class Statistics extends Component {
                 { name: 'Lead Actual', renderer: this.renderNumberOfOpportunities},
                 { name: '% To Goal', renderer: this.renderPercent}
               ]}
-              data={this.props.data}
+              data={this.props.data && [this.props.data]}
               emptyState='No results'
             />
-            {this.renderProgress(this.props.data[0])}
+            {this.renderProgress(this.props.data)}
           </div>
         );
     }
