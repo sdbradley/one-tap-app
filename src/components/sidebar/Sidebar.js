@@ -35,38 +35,34 @@ class Sidebar extends Component {
     }
   }
 
-  renderPartnersLink() {
-    if(this.props.user.hasRole(ROLE.STAKEHOLDER)) {
-      return <LinkItem hard headerLink={this.stakeholderURL()} to={this.stakeholderURL()} iconName="fa-users" title="Partners" />;
-    }
-    return null;
+  renderCampaignsLink() {
+    return <LinkItem hard headerLink={this.stakeholderURL()} to={this.stakeholderURL()} iconName="fa-users" title="Campaigns" />;
   }
   renderDashboardLink() {
-    if(this.props.partnerId) {
-      return <LinkItem hard headerLink={this.dashboardURL()} to={this.dashboardURL()} iconName="fa-bar-chart" title="Dashboard" />
-    }
-    return <LinkItem hard headerLink="/" iconName="fa-bar-chart" title="Dashboard" />;
-  }
-  stakeholderURL() {
-    return `${APP_ROOT}/stakeholder`;
-  }
-  dashboardURL() {
-    return `${APP_ROOT}?partner_id=${this.props.partnerId}`;
-  }
-  scorecardURL() {
-    return `${APP_ROOT}scorecard/?partner_id=${this.props.partnerId}`;
+    if (!this.props.campaignId) return null;
+    return <LinkItem hard headerLink={this.dashboardURL()} to={this.dashboardURL()} iconName="fa-bar-chart" title="Dashboard" />
   }
   renderScorecardLink() {
-    if(this.props.partnerId) {
-      return <LinkItem hard headerLink={this.scorecardURL()} to={this.scorecardURL()} iconName="fa-dashboard" title="Scorecard" />;
-    }
-    return <LinkItem hard headerLink="/scorecard" iconName="fa-dashboard" title="Scorecard" />;
+    if (!this.props.campaignId) return null;
+    return <LinkItem hard headerLink={this.scorecardURL()} to={this.scorecardURL()} iconName="fa-dashboard" title="Scorecard" />;
   }
   renderAdminLink() {
     if(this.props.user.hasRole(ROLE.ADMIN)) {
-      return <LinkItem hard headerLink="/admin" to="/admin" iconName="fa-gear" title="Admin" />;
+      return <LinkItem hard headerLink={this.adminURL()} to={this.adminURL()} iconName="fa-gear" title="Admin" />;
     }
     return null;
+  }
+  stakeholderURL() {
+    return `${APP_ROOT}stakeholder`;
+  }
+  dashboardURL() {
+    return `${APP_ROOT}campaigns/${this.props.campaignId}`;
+  }
+  scorecardURL() {
+    return `${APP_ROOT}campaigns/${this.props.campaignId}/scorecard`;
+  }
+  adminURL() {
+    return `${APP_ROOT}admin`;
   }
 
   render() {
@@ -85,6 +81,7 @@ class Sidebar extends Component {
           <Link to="/">1Tap</Link>
         </header>
         <ul className='Sidebar-nav'>
+          {this.renderCampaignsLink()}
           {this.renderDashboardLink()}
           {this.renderScorecardLink()}
           {this.renderAdminLink()}
@@ -135,7 +132,8 @@ export default connect(
       sidebarOpened: state.navigation && state.navigation.sidebarOpened,
       sidebarStatic: state.navigation && state.navigation.sidebarStatic,
       activeItem: state.navigation && state.navigation.activeItem,
-      partnerId: state.navigation && state.navigation.partnerId
+      partnerId: state.navigation && state.navigation.partnerId,
+      campaignId: state.navigation && state.navigation.campaignId
     };
   }
 )(Sidebar);

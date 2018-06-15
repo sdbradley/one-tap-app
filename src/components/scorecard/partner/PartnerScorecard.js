@@ -32,29 +32,6 @@ class PartnerScorecard extends Component {
     return (
       <div>
         <div className="Widget-full">
-          <div className="Widget-half"></div>
-          <div className="Widget-half Dashboard-date--container">
-            <Field
-              type='date'
-              name='start_date'
-              label='Start Date'
-              placeholder='mm/dd/yyyy'
-              className="Dashboard-date"
-              value={this.props.start_date && this.props.start_date*1000}
-              onChange={this.startDateChanged}
-            />
-            <Field
-              type='date'
-              name='end_date'
-              label='End Date'
-              placeholder='mm/dd/yyyy'
-              className="Dashboard-date"
-              value={this.props.end_date && this.props.end_date*1000}
-              onChange={this.endDateChanged}
-            />
-          </div>
-        </div>
-        <div className="Widget-full">
           <Widget title="Scorecard">
             <Scorecard data={this.props.scorecard} />
           </Widget>

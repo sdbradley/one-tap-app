@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { setCampaign } from 'actions/navigation';
 
 class Scorecard extends Component {
+
+  componentDidMount() {
+    if(this.props.campaignId) {
+      this.props.dispatch(setCampaign(this.props.campaignId));
+    }
+  }
 
   renderCount(stage) {
     if(this.props.data && this.props.data.length > 0) {
@@ -81,8 +88,10 @@ export default connect(
   (state, props) => {
     let user = state.authentication.user;
     let accountId = user && user.accountId;
+    let campaignId = props.campaignId;
     return {
-      partner_id: accountId
+      partner_id: accountId,
+      campaignId: campaignId
     };
   }
 )(Scorecard);

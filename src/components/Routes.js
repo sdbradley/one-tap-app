@@ -51,6 +51,9 @@ const ROUTES = (
 
       <Route path="campaigns/:campaignId">
         <IndexRoute component={Campaigns}/>
+        <Route path="scorecard">
+          <IndexRoute component={Scorecard}/>
+        </Route>
       </Route>
 
       {/* Stakeholder */}
