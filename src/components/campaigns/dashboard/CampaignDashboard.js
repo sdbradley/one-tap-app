@@ -14,6 +14,7 @@ import { APP_ROOT } from 'constants';
 import { downloadCSV } from 'actions/campaigns'
 import classNames from 'classnames'
 import Button from 'components/shared/button/button';
+import { setCampaign } from 'actions/navigation';
 
 class CampaignDashboard extends Component {
 
@@ -22,6 +23,12 @@ class CampaignDashboard extends Component {
     this.handleDownload = this.handleDownload.bind(this)
     this.state = {
       downloading: false
+    }
+  }
+
+  componentDidMount() {
+    if(this.props.campaign) {
+      this.props.dispatch(setCampaign(this.props.campaign.id));
     }
   }
 

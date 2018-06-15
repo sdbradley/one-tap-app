@@ -5,7 +5,8 @@ import {
   CHANGE_START_DATE,
   CHANGE_END_DATE,
   CHANGE_ACTIVE_SIDEBAR_ITEM,
-  SET_PARTNER_ID } from 'actions/navigation';
+  SET_PARTNER_ID,
+  SET_CAMPAIGN_ID } from 'actions/navigation';
 
 const initialState = {
   sidebarOpened: false,
@@ -66,6 +67,10 @@ export default function runtime(state = initialState, action) {
     case SET_PARTNER_ID:
       return Object.assign({}, state, {
         partnerId: action.key
+      });
+    case SET_CAMPAIGN_ID:
+      return Object.assign({}, state, {
+        campaignId: action.key
       });
     default:
       return state;

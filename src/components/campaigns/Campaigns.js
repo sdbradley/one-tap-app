@@ -56,4 +56,11 @@ class Campaigns extends Component {
     }
 }
 
-export default connect()(Campaigns);
+export default connect(
+  (state, props) => {
+    let user = state.authentication.user;
+    return {
+      user: user
+    };
+  }
+)(Campaigns);

@@ -15,8 +15,15 @@ function Scorecard ({ user, ...props }) {
   return <App {...props}>{content}</App>
 }
 
-const mapStateToProps = (state) => ({
-  user: state.authentication.user
-});
-
-export default connect(mapStateToProps)(Scorecard);
+export default connect(
+  (state, props) => {
+    let user = state.authentication.user;
+    let accountId = user && user.accountId;
+    let campaignId = props.params.campaignId;
+    return {
+      user: user,
+      partner_id: accountId,
+      campaignId: campaignId
+    };
+  }
+)(Scorecard);
