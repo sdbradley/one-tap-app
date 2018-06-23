@@ -86,39 +86,6 @@ class Sidebar extends Component {
           {this.renderScorecardLink()}
           {this.renderAdminLink()}
         </ul>
-        <h5 className='navTitle'>
-          CAMPAIGNS
-        </h5>
-        {/* eslint-disable */}
-        {/*
-        <ul className='sidebarLabels'>
-          <li>
-            <a href="#">
-              <i className="fa fa-circle text-primary mr-2"/>
-              <span className='labelName'>AMC Dell</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i className="fa fa-circle text-primary mr-2"/>
-              <span className='labelName'>EC2 Standard</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i className="fa fa-circle text-primary mr-2"/>
-              <span className='labelName'>Dell USA</span>
-            </a>
-          </li>
-        </ul>
-        */}
-        {/* eslint-enable */}
-        <h5 className='navTitle'>
-          RECENT
-          <a className='actionLink'>
-            <i className='glyphiconSm glyphicon glyphicon-plus float-right' />
-          </a>
-        </h5>
       </nav>
     );
   }
