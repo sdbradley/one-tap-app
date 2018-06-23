@@ -9,14 +9,12 @@ export const FETCHING_CAMPAIGNS = 'FETCHING_CAMPAIGNS';
 export const FETCH_CAMPAIGN_NEWS_SUCCESS = 'FETCH_CAMPAIGN_NEWS_SUCCESS';
 export const FETCHING_CAMPAIGN_NEWS = 'FETCHING_CAMPAIGN_NEWS';
 
-export function fetchCampaigns(partner, start, end) {
+export function fetchCampaigns(partner) {
   return (dispatch, getState) => {
-    let key = `partner:${partner}:start_date:${start}`;
+    let key = `partner:${partner}`;
     if(partner) {
       dispatch(fetchingCampaigns(key));
       let url = `campaigns?partner__c=${partner}`;
-      url += (start && `&start_date=${start}`) || '';
-      url += (end && `&end_date=${end}`) || '';
       return API.get(url)
         .then((res) => dispatch(receivedNormalAPIResponse(res)))
         .then(() => dispatch(fetchCampaignsSuccess(key)));

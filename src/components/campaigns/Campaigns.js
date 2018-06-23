@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Table from 'components/table';
 import Moment from 'react-moment';
+import Widget from 'components/widget';
 import Link from 'components/link';
+import FetchCampaigns from 'containers/fetchers/fetch_campaigns';
 import { APP_ROOT } from 'constants';
 import { setPrecision } from 'util/funcs';
 
@@ -10,20 +12,24 @@ class Campaigns extends Component {
 
     render() {
         return (
-          <div className="Campaigns">
-            <Table
-              columns={[
-                { name: 'Name', renderer: this.renderName },
-                { name: 'Type', property: 'type'},
-                { name: 'Status', property: 'status'},
-                { name: 'Start', renderer: this.renderStartDate},
-                { name: 'End', renderer: this.renderEndDate},
-                { name: '% to Goal', renderer: this.renderProgress }
-              ]}
-              data={this.props.data}
-              emptyState='No results'
-            />
-          </div>
+          <FetchCampaigns partner_id={this.props.partner_id}>
+            <Widget title="Campaigns">
+              <div className="Campaigns">
+                <Table
+                  columns={[
+                    { name: 'Name', renderer: this.renderName },
+                    { name: 'Type', property: 'type'},
+                    { name: 'Status', property: 'status'},
+                    { name: 'Start', renderer: this.renderStartDate},
+                    { name: 'End', renderer: this.renderEndDate},
+                    { name: '% to Goal', renderer: this.renderProgress }
+                  ]}
+                  data={this.props.campaigns}
+                  emptyState='No results'
+                />
+              </div>
+            </Widget>
+          </FetchCampaigns>
         );
     }
     renderName(campaign) {
@@ -59,8 +65,12 @@ class Campaigns extends Component {
 export default connect(
   (state, props) => {
     let user = state.authentication.user;
+    let partner_id = (user && user.accountId);
+    let campaigns = state.campaigns.all();
     return {
-      user: user
+      user: user,
+      campaigns: campaigns,
+      partner_id: partner_id
     };
   }
 )(Campaigns);
