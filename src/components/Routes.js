@@ -14,6 +14,7 @@ import StakeholderDashboard from 'components/stakeholder/dashboard';
 import CampaignDashboard from 'components/campaigns/dashboard';
 import Scorecard from 'pages/scorecard';
 import Campaigns from 'pages/campaigns';
+import Campaign from 'pages/campaign';
 import Users from 'pages/users';
 import Notifications from 'pages/notifications';
 import OpportunityDetails from 'pages/opportunity_detail';
@@ -37,7 +38,7 @@ const ROUTES = (
   <Router history={hashHistory} onUpdate={update}>
     <Route path="/" component={RequireAuth}>
       {/* App */}
-      <IndexRoute component={Dashboard}/>
+      <IndexRoute component={Campaigns}/>
       <Route path="scorecard" component={Scorecard} />
 
       <Route path="scorecard">
@@ -50,15 +51,15 @@ const ROUTES = (
       </Route>
 
       <Route path="campaigns/:campaignId">
-        <IndexRoute component={Campaigns}/>
+        <IndexRoute component={Campaign}/>
         <Route path="scorecard">
           <IndexRoute component={Scorecard}/>
         </Route>
       </Route>
 
       {/* Stakeholder */}
-      <Route path="stakeholder" component={ensureHasRole(ROLE.STAKEHOLDER, App)}>
-        <IndexRoute component={StakeholderDashboard}/>
+      <Route path="campaigns">
+        <IndexRoute component={Campaigns}/>
       </Route>
 
       {/* Admin */}

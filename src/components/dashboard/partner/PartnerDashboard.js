@@ -36,9 +36,9 @@ class PartnerDashboard extends Component {
     this.checkForPermissions();
   }
   checkForPermissions() {
-    if(this.props.user.hasRole(ROLE.STAKEHOLDER) && (this.props.location.query.partner_id == undefined)) {
+    //if(this.props.user.hasRole(ROLE.STAKEHOLDER) && (this.props.location.query.partner_id == undefined)) {
       changeRoute("/stakeholder");
-    }
+    //}
   }
   componentDidMount() {
     if(this.props.partner_id) {

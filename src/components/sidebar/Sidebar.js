@@ -53,7 +53,7 @@ class Sidebar extends Component {
     return null;
   }
   stakeholderURL() {
-    return `${APP_ROOT}stakeholder`;
+    return `${APP_ROOT}`;
   }
   dashboardURL() {
     return `${APP_ROOT}campaigns/${this.props.campaignId}`;
