@@ -15,8 +15,6 @@ export function fetchCampaigns(partner) {
     if(partner) {
       dispatch(fetchingCampaigns(key));
       let url = `campaigns?partner__c=${partner}`;
-      //url += (start && `&start_date=${start}`) || '';
-      //url += (end && `&end_date=${end}`) || '';
       return API.get(url)
         .then((res) => dispatch(receivedNormalAPIResponse(res)))
         .then(() => dispatch(fetchCampaignsSuccess(key)));
@@ -39,7 +37,6 @@ export function fetchCampaignNews(partner, start, end) {
 export function fetchCampaign(id) {
   return (dispatch, getState) => {
     let key = `id:${id}`;
-    console.log('fetchCampaign: ' + id);
     if(id) {
       dispatch(fetchingCampaign(key));
       return API.get(`campaigns/${id}`)
