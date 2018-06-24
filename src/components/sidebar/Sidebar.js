@@ -36,33 +36,33 @@ class Sidebar extends Component {
   }
 
   renderCampaignsLink() {
-    return <LinkItem hard headerLink={this.stakeholderURL()} to={this.stakeholderURL()} iconName="fa-users" title="Campaigns" />;
+    return <LinkItem headerLink={this.stakeholderURL()} to={this.stakeholderURL()} iconName="fa-users" title="Campaigns" />;
   }
   renderDashboardLink() {
     if (!this.props.campaignId) return null;
-    return <LinkItem hard headerLink={this.dashboardURL()} to={this.dashboardURL()} iconName="fa-bar-chart" title="Dashboard" />
+    return <LinkItem headerLink={this.dashboardURL()} to={this.dashboardURL()} iconName="fa-bar-chart" title="Dashboard" />
   }
   renderScorecardLink() {
     if (!this.props.campaignId) return null;
-    return <LinkItem hard headerLink={this.scorecardURL()} to={this.scorecardURL()} iconName="fa-dashboard" title="Scorecard" />;
+    return <LinkItem headerLink={this.scorecardURL()} to={this.scorecardURL()} iconName="fa-dashboard" title="Scorecard" />;
   }
   renderAdminLink() {
     if(this.props.user.hasRole(ROLE.ADMIN)) {
-      return <LinkItem hard headerLink={this.adminURL()} to={this.adminURL()} iconName="fa-gear" title="Admin" />;
+      return <LinkItem headerLink={this.adminURL()} to={this.adminURL()} iconName="fa-gear" title="Admin" />;
     }
     return null;
   }
   stakeholderURL() {
-    return `${APP_ROOT}`;
+    return `/`;
   }
   dashboardURL() {
-    return `${APP_ROOT}campaigns/${this.props.campaignId}`;
+    return `/campaigns/${this.props.campaignId}`;
   }
   scorecardURL() {
-    return `${APP_ROOT}campaigns/${this.props.campaignId}/scorecard`;
+    return `/campaigns/${this.props.campaignId}/scorecard`;
   }
   adminURL() {
-    return `${APP_ROOT}admin`;
+    return `/admin`;
   }
 
   render() {
