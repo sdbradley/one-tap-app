@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Table from 'components/table';
 import Moment from 'react-moment';
+import { API_ROOT } from 'constants';
 import { downloadRecording } from 'actions/attachments';
 
 class Attachments extends Component {
@@ -29,9 +30,9 @@ class Attachments extends Component {
 
   renderAttachmentLink(attachment) {
     if(attachment) {
-      let url = `https://s3.amazonaws.com/1tap-otp/attachments/${attachment.name}`;
+      let url = `${API_ROOT}/api/v2/attachments/${attachment.id}/download/${this.props.user.id}`;
       return (
-        <div><a href={url} download data-id={attachment.id} onClick={this.recordingDownloaded}>{attachment.name}</a></div>
+        <div><a href={url} download data-id={attachment.id}>{attachment.name}</a></div>
       )
     }
     return null;
@@ -43,9 +44,9 @@ class Attachments extends Component {
   }
 
   renderDownloaded(attachment) {
-    if(attachment && attachment.recording_downloaded_date > 0) {
+    if(attachment && attachment.downloads && attachment.downloads.length > 0) {
       return (
-        <Moment unix format="ddd MMM DD, YYYY hh:mm a">{attachment.recording_downloaded_date}</Moment>
+        <Moment unix format="ddd MMM DD, YYYY hh:mm a">{attachment.downloads[0].download_date}</Moment>
       )
     }
     return "Not yet downloaded";
@@ -54,8 +55,10 @@ class Attachments extends Component {
 
 export default connect(
   (state, props) => {
-      let attachments = props.opportunity && props.opportunity.attachments;
+    let user = state.authentication.user;
+    let attachments = props.opportunity && props.opportunity.attachments;
     return {
+      user: user,
       attachments: attachments
     };
   },
