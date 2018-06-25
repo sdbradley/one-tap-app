@@ -19,6 +19,7 @@ import Users from 'pages/users';
 import Notifications from 'pages/notifications';
 import OpportunityDetails from 'pages/opportunity_detail';
 import Datasheet from 'pages/datasheet';
+import Profile from 'pages/profile';
 import unauthed from 'components/higher_order_components/unauthed';
 import FetchUsers from 'containers/fetchers/fetch_users';
 import FetchNotifications from 'containers/fetchers/fetch_notifications';
@@ -61,6 +62,9 @@ const ROUTES = (
       <Route path="campaigns">
         <IndexRoute component={Campaigns}/>
       </Route>
+
+      {/* User */}
+      <Route path="profile" component={Profile} />
 
       {/* Admin */}
       <Route path="admin" component={ensureHasRole(ROLE.ADMIN, App)}>
