@@ -5,7 +5,7 @@ class CallNotes extends Component {
 
   render() {
     return (
-      <div>
+      <div className="CallNotes-body">
         <div dangerouslySetInnerHTML={this.createMarkup()} />
       </div>
     )
