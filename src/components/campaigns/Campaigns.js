@@ -7,12 +7,13 @@ import Link from 'components/link';
 import FetchCampaigns from 'containers/fetchers/fetch_campaigns';
 import { APP_ROOT } from 'constants';
 import { setPrecision } from 'util/funcs';
+import { ROLE } from 'constants';
 
 class Campaigns extends Component {
 
     render() {
         return (
-          <FetchCampaigns partner_id={this.props.partner_id}>
+          <FetchCampaigns id={this.props.id} role={this.props.role}>
             <Widget title="Campaigns">
               <div className="Campaigns">
                 <Table
@@ -65,12 +66,14 @@ class Campaigns extends Component {
 export default connect(
   (state, props) => {
     let user = state.authentication.user;
-    let partner_id = (user && user.accountId);
+    let id = (user && user.accountId);
     let campaigns = state.campaigns.all();
+    let role = (user.hasRole(ROLE.STAKEHOLDER) ? ROLE.STAKEHOLDER : (user.hasRole(ROLE.ADMIN) ? ROLE.ADMIN : ROLE.PARTNER));
     return {
       user: user,
       campaigns: campaigns,
-      partner_id: partner_id
+      id: id,
+      role: role
     };
   }
 )(Campaigns);
