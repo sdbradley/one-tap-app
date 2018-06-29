@@ -34,7 +34,7 @@ class OpportunityContacts extends Component {
 
 export default connect(
   (state, props) => {
-      let contacts = props.opportunity && props.opportunity.contacts;
+      let contacts = props.data;
     return {
       contacts: contacts
     };
