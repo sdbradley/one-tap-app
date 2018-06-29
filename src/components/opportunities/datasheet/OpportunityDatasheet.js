@@ -40,7 +40,7 @@ class OpportunityDatasheet extends Component {
                 <div>{this.props.account && this.props.account.description}</div>
               </Widget>
               <Widget title="Contacts">
-                <OpportunityContacts opportunity={this.props.opportunity} />
+                <OpportunityContacts data={this.props.account && this.props.account.contacts} />
               </Widget>
               <Widget title="Intelligence Questions">
                 <IntelligenceQuestions opportunity={this.props.opportunity} />

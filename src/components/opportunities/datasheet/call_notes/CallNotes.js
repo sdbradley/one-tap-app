@@ -18,7 +18,7 @@ class CallNotes extends Component {
 
 export default connect(
   (state, props) => {
-      let notes = props.opportunity && props.opportunity.notes && props.opportunity.notes.length > 0 && props.opportunity.notes[0].body;
+      let notes = ((props.opportunity && props.opportunity.notes && props.opportunity.notes.length > 0 && props.opportunity.notes[0].body) || '');
     return {
         notes: notes
     };
