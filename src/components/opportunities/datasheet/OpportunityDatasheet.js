@@ -11,6 +11,7 @@ import Attachments from 'components/opportunities/datasheet/attachments';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import Widget from 'components/widget';
+import { API_LOCATION } from 'constants';
 
 class OpportunityDatasheet extends Component {
 
@@ -20,10 +21,15 @@ class OpportunityDatasheet extends Component {
         <FetchAccount accountId={this.props.accountId}>
           <FetchOpportunity opportunityId={this.props.opportunityId}>
             <div className="Widget-full">
-              <Widget title="Opportunity Datasheet">
-                <Account accountId={this.props.accountId} />
-                <div>Initial Discovery Call scheduled for: <Moment format="MM/DD/YYYY HH:mm a z" tz="America/New_York">{this.props.opportunity && this.props.opportunity.meeting_date_time__c}</Moment></div>
-              </Widget>
+              <div className="Widget-half">
+                <Widget title="Opportunity Datasheet">
+                  <Account accountId={this.props.accountId} />
+                  <div>Initial Discovery Call scheduled for: <Moment format="MM/DD/YYYY HH:mm a z" tz="America/New_York">{this.props.opportunity && this.props.opportunity.meeting_date_time__c}</Moment></div>
+                </Widget>
+              </div>
+              <div className="Widget-half">
+                <div className="Widget-actions"><a href={`${API_LOCATION}/v2/account/${this.props.accountId}/opportunities/${this.props.opportunity && this.props.opportunity.id}/print.pdf`} download target="_new">Export to PDF</a></div>
+              </div>
               <div className="Widget-full">
                 <div className="Widget-half">
                   <Widget title="Company Information">
