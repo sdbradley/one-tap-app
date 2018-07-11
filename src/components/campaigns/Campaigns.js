@@ -39,14 +39,14 @@ class Campaigns extends Component {
     renderStartDate(c) {
       if(c.start_date) {
         return (
-          <Moment unix format="MM/DD/YYYY">{c.start_date}</Moment>
+          <Moment format="MM/DD/YYYY">{c.start_date}</Moment>
         )
       }
     }
     renderEndDate(c) {
       if(c.end_date) {
         return (
-          <Moment unix format="MM/DD/YYYY">{c.end_date}</Moment>
+          <Moment format="MM/DD/YYYY">{c.end_date}</Moment>
         )
       }
     }
