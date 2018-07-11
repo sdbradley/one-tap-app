@@ -14,7 +14,6 @@ class Users extends Component {
             <Table className="Users-table"
             columns={[
               { name: 'User name', property: 'user_name' },
-              { name: 'Account', renderer: this.renderAccount },
               { name: 'Email', property: 'email_address'},
               { name: 'Actions', renderer: this.renderActions }
             ]}
