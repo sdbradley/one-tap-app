@@ -5,7 +5,7 @@ import FetchUsers from 'containers/fetchers/fetch_users';
 import FetchAccounts from 'containers/fetchers/fetch_accounts';
 
 function UsersPage ({ user, ...props }) {
-  return <FetchAccounts><FetchUsers><Users {...props} /></FetchUsers></FetchAccounts>
+  return <FetchUsers><Users {...props} /></FetchUsers>
 }
 
 const mapStateToProps = (state) => ({
