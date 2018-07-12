@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Table from 'components/table';
-import Widget from 'components/widget';
-import Link from 'components/link';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import Table from 'components/table'
+import Widget from 'components/widget'
+import Link from 'components/link'
+import Form from 'components/Form'
+import Field from 'components/field'
+import Button from 'components/shared/button/button'
+import { searchUsers } from 'actions/users'
 
 class Users extends Component {
 
@@ -10,7 +14,19 @@ class Users extends Component {
       return (
         <div className="Users">
           <Widget title="Users">
-            <Link icon='plus' modal="editUser">Add New User</Link>
+            <div className="Widget-full">
+              <div className="Widget-half">
+                <Form className="Search" onSubmit={this.props.onSearch} errorsOnTop>
+                  <Field type="text" label="SEARCH FOR" name="search_term" inline />
+                  <Button submit disabled={this.props.searching}>
+                    Search
+                  </Button>
+                </Form>
+              </div>
+              <div className="Widget-half Widget-right">
+                <Link className="Widget-button--right" icon="plus" modal="editUser">Add New User</Link>
+              </div>
+            </div>
             <Table className="Users-table"
             columns={[
               { name: 'User name', property: 'user_name' },
@@ -43,10 +59,9 @@ class Users extends Component {
 }
 
 export default connect(
-    (state, props) => {
-      let users = state.users.all();
-      return {
-        users: users
-      };
-    }
-  )(Users);
+  state => ({
+    users: state.users.findAll(state.users.getMeta('searchResults').toArray()),
+    searching: state.users.getMeta('searching')
+  }),
+  { onSearch: searchUsers }
+)(Users)
