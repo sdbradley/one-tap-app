@@ -133,7 +133,7 @@ export function searchUsers(params) {
   params.search_term = encodePlus(params.search_term)
   return dispatch => {
     dispatch({ type: SEARCH_USERS_START })
-    _fetch(params).then(res => {
+    API.admin.get(`/users?search_term=${params.search_term}`).then(res => {
       dispatch({
         type: RECEIVED_SEARCH_RESULTS,
         ids: (res.users || []).map(user => user.id)

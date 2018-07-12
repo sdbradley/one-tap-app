@@ -34,7 +34,7 @@ class Users extends Component {
               { name: 'Actions', renderer: this.renderActions }
             ]}
             data={this.props.users}
-            emptyState='No results'
+            emptyState='No results. Enter Search Criteria above to filter.'
             />
           </Widget>
         </div>
