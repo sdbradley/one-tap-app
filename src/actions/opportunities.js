@@ -64,6 +64,7 @@ export function fetchOpportunitySuccess(key) {
 
 export function leaveFeedback({ opportunity_id, feedback, feedback_type }) {
   return (dispatch) => API.post(`opportunities/${opportunity_id}/feedback`, { opportunity_id, feedback, feedback_type })
+    .then((res) => dispatch(receivedNormalAPIResponse(res)))
     .then((res) => dispatch(leaveFeedbackSuccess(res)))
     .catch((response) => dispatch(leaveFeedbackFailed(new Error('An unknown error occured'))));
 }
