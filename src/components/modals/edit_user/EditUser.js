@@ -20,7 +20,7 @@ function EditUser({
   createUser
 } = {}) {
   return (
-    <FetchAccounts>
+    <FetchAccounts onlyOTPClients={true}>
         <Modal closeAction={user ? USER_UPDATE_SUCCESS : USER_CREATE_SUCCESS}>
             <div className='EditUser'>
             <Form className='EditUser-form' onSubmit={user ? updateUser : createUser}>
@@ -54,7 +54,7 @@ function EditUser({
                 type='select'
                 label='Account'
                 name='account_id'
-                value={user && user.account && user.account.account_id}
+                value={user && user.account_id}
                 >
                 {accounts.map(a => <option key={a.id} value={a.id} label={a.name}/>)}
                 </Field>
