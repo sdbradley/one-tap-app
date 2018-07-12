@@ -1,5 +1,6 @@
 import API from 'util/API';
 import { receivedNormalAPIResponse } from 'actions/api';
+import { encodePlus } from 'util/funcs'
 
 export const FETCHING_USERS = 'FETCHING_USERS';
 export const FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS';
@@ -7,6 +8,8 @@ export const USER_CREATE_SUCCESS = 'USER_CREATE_SUCCESS';
 export const USER_UPDATE_SUCCESS = 'USER_UPDATE_SUCCESS';
 export const DELETE_USER_SUCCESS = 'DELETE_USER_SUCCESS';
 export const SET_PASSWORD_SUCCESS = 'SET_PASSWORD_SUCCESS'
+export const RECEIVED_SEARCH_RESULTS = 'RECEIVED_SEARCH_RESULTS'
+export const SEARCH_USERS_START = 'SEARCH_USERS_START'
 
 export function fetchUsers() {
   return (dispatch, getState) => {
@@ -118,4 +121,28 @@ export function setPassword({ id, email, password }) {
         }
         throw new Error('Server error. Try again later.')
       })
+}
+
+export function searchUsers(params) {
+  if (params.search_term === undefined) {
+    throw new Error('Please include a search_term.')
+  }
+  if (params.search_term.length < 2) {
+    throw new Error('Must include at least 2 characters in your search')
+  }
+  params.search_term = encodePlus(params.search_term)
+  return dispatch => {
+    dispatch({ type: SEARCH_USERS_START })
+    API.admin.get(`/users?search_term=${params.search_term}`).then(res => {
+      dispatch({
+        type: RECEIVED_SEARCH_RESULTS,
+        ids: (res.users || []).map(user => user.id)
+      })
+      dispatch(receivedNormalAPIResponse(res))
+    })
+  }
+}
+
+function _fetch(params) {
+  return API.admin.get(`/users`, { params })
 }

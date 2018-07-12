@@ -88,3 +88,6 @@ export function setPrecision(float, numberOfDigits) {
   return Math.round(float * modifier) / modifier;
 }
 
+export function encodePlus(string) {
+  return string.replace('+', '%2B')
+}

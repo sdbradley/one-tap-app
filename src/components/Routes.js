@@ -69,7 +69,7 @@ const ROUTES = (
       {/* Admin */}
       <Route path="admin" component={ensureHasRole(ROLE.ADMIN, App)}>
         <IndexRoute component={AdminDashboard}/>
-        <Route path="users" component={FetchUsers}>
+        <Route path="users">
           <IndexRoute component={Users}/>
         </Route>
         <Route path="notifications" component={FetchNotifications}>
