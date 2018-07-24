@@ -1,27 +1,27 @@
-import API from 'util/API';
-import { receivedNormalAPIResponse } from 'actions/api';
+import API from "util/API";
+import { receivedNormalAPIResponse } from "actions/api";
 
-export const FETCH_OPPORTUNITIES_SUCCESS = 'FETCH_OPPORTUNITIES_SUCCESS';
-export const FETCHING_OPPORTUNITIES = 'FETCHING_OPPORTUNITIES';
-export const FETCH_OPPORTUNITY_SUCCESS = 'FETCH_OPPORTUNITY_SUCCESS';
-export const FETCHING_OPPORTUNITY = 'FETCHING_OPPORTUNITY';
-export const LEAVE_FEEDBACK_SUCCESS = 'LEAVE_FEEDBACK_SUCCESS';
-export const LEAVE_FEEDBACK_FAILED = 'LEAVE_FEEDBACK_FAILED';
+export const FETCH_OPPORTUNITIES_SUCCESS = "FETCH_OPPORTUNITIES_SUCCESS";
+export const FETCHING_OPPORTUNITIES = "FETCHING_OPPORTUNITIES";
+export const FETCH_OPPORTUNITY_SUCCESS = "FETCH_OPPORTUNITY_SUCCESS";
+export const FETCHING_OPPORTUNITY = "FETCHING_OPPORTUNITY";
+export const LEAVE_FEEDBACK_SUCCESS = "LEAVE_FEEDBACK_SUCCESS";
+export const LEAVE_FEEDBACK_FAILED = "LEAVE_FEEDBACK_FAILED";
 
-export function fetchOpportunities(partner, stage, start, end) {
+export function fetchOpportunities(campaign) {
   return (dispatch, getState) => {
-    let key = `partner:${partner}:stage:${stage}:start_date:${start}`;
-    if(partner) {
+    let key = `campaign:${campaign}`;
+    if (campaign) {
       dispatch(fetchingOpportunities(key));
-      let url = `opportunities?partner__c=${partner}`;
-      url += (stage && `&stage_name=${stage}`) || '';
-      url += (start && `&start_date=${start}`) || '';
-      url += (end && `&end_date=${end}`) || '';
+      let url = `opportunities?campaign_id=${campaign}`;
+      //url += (stage && `&stage_name=${stage}`) || '';
+      //url += (start && `&start_date=${start}`) || '';
+      //url += (end && `&end_date=${end}`) || '';
       return API.get(url)
-        .then((res) => dispatch(receivedNormalAPIResponse(res)))
+        .then(res => dispatch(receivedNormalAPIResponse(res)))
         .then(() => dispatch(fetchOpportunitiesSuccess(key)));
     }
-  }
+  };
 }
 
 export function fetchingOpportunities() {
@@ -40,13 +40,13 @@ export function fetchOpportunitiesSuccess(key) {
 export function fetchOpportunity(id) {
   return (dispatch, getState) => {
     let key = `id:${id}`;
-    if(id) {
+    if (id) {
       dispatch(fetchingOpportunity(key));
       return API.get(`opportunities/${id}`)
-        .then((res) => dispatch(receivedNormalAPIResponse(res)))
+        .then(res => dispatch(receivedNormalAPIResponse(res)))
         .then(() => dispatch(fetchOpportunitySuccess(key)));
     }
-  }
+  };
 }
 
 export function fetchingOpportunity() {
@@ -63,10 +63,17 @@ export function fetchOpportunitySuccess(key) {
 }
 
 export function leaveFeedback({ opportunity_id, feedback, feedback_type }) {
-  return (dispatch) => API.post(`opportunities/${opportunity_id}/feedback`, { opportunity_id, feedback, feedback_type })
-    .then((res) => dispatch(receivedNormalAPIResponse(res)))
-    .then((res) => dispatch(leaveFeedbackSuccess(res)))
-    .catch((response) => dispatch(leaveFeedbackFailed(new Error('An unknown error occured'))));
+  return dispatch =>
+    API.post(`opportunities/${opportunity_id}/feedback`, {
+      opportunity_id,
+      feedback,
+      feedback_type
+    })
+      .then(res => dispatch(receivedNormalAPIResponse(res)))
+      .then(res => dispatch(leaveFeedbackSuccess(res)))
+      .catch(response =>
+        dispatch(leaveFeedbackFailed(new Error("An unknown error occured")))
+      );
 }
 
 export function leaveFeedbackSuccess(data) {
