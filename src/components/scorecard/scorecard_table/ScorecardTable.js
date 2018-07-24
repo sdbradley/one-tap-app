@@ -1,83 +1,164 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Table from 'components/table';
-import Link from 'components/link';
-import jinqJs from 'jinq';
-import { APP_ROOT } from 'constants';
-import { STAGE } from 'constants';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Table from "components/table";
+import Link from "components/link";
+import jinqJs from "jinq";
+import { APP_ROOT } from "constants";
+import { STAGE } from "constants";
+import FetchOpportunities from "containers/fetchers/fetch_opportunities";
+import { setPrecision } from "util/funcs";
 
 class ScorecardTable extends Component {
-
   constructor(props) {
     super(props);
+    this.getScorecardTotal = this.getScorecardTotal.bind(this);
     this.getScorecardValue = this.getScorecardValue.bind(this);
+    this.getPartnerPercentage = this.getPartnerPercentage.bind(this);
     this.getScorecardData = this.getScorecardData.bind(this);
     this.getScorecardUpcoming = this.getScorecardUpcoming.bind(this);
     this.getScorecardOccurred = this.getScorecardOccurred.bind(this);
-    this.getScorecardNextStepsEstablished = this.getScorecardNextStepsEstablished.bind(this);
-    this.getScorecardOnSiteMeetingSet = this.getScorecardOnSiteMeetingSet.bind(this);
-    this.getScorecardProposalPriceQuote = this.getScorecardProposalPriceQuote.bind(this);
+    this.getScorecardNextStepsEstablished = this.getScorecardNextStepsEstablished.bind(
+      this
+    );
+    this.getScorecardOnSiteMeetingSet = this.getScorecardOnSiteMeetingSet.bind(
+      this
+    );
+    this.getScorecardProposalPriceQuote = this.getScorecardProposalPriceQuote.bind(
+      this
+    );
     this.getScorecardClosedWon = this.getScorecardClosedWon.bind(this);
   }
 
   render() {
-      return (
+    return (
+      <FetchOpportunities campaignId={this.props.campaignId}>
         <div className="ScorecardTable">
-          <Table className="ScorecardTable-table"
+          <Table
+            className="ScorecardTable-table"
             columns={[
-              { name: 'Partner', property: 'account', renderer: this.renderAccount },
-              { name: 'Upcoming', property: 'account', renderer: this.getScorecardUpcoming},
-              { name: 'Occurred', property: 'account', renderer: this.getScorecardOccurred},
-              { name: 'Next Steps', property: 'account', renderer: this.getScorecardNextStepsEstablished},
-              { name: 'On-Site', property: 'account', renderer: this.getScorecardOnSiteMeetingSet},
-              { name: 'Proposal', property: 'account', renderer: this.getScorecardProposalPriceQuote},
-              { name: 'Closed Won', property: 'account', renderer: this.getScorecardClosedWon},
-              { name: 'Total', property: 'account'}
+              {
+                name: "Partner",
+                property: "account",
+                className: "ScorecardTable-account",
+                renderer: this.renderAccount
+              },
+              {
+                name: "Upcoming",
+                property: "account",
+                renderer: this.getScorecardUpcoming
+              },
+              {
+                name: "Occurred",
+                property: "account",
+                renderer: this.getScorecardOccurred
+              },
+              {
+                name: "Next Steps",
+                property: "account",
+                renderer: this.getScorecardNextStepsEstablished
+              },
+              {
+                name: "On-Site",
+                property: "account",
+                renderer: this.getScorecardOnSiteMeetingSet
+              },
+              {
+                name: "Proposal",
+                property: "account",
+                renderer: this.getScorecardProposalPriceQuote
+              },
+              {
+                name: "Closed Won",
+                property: "account",
+                renderer: this.getScorecardClosedWon
+              },
+              {
+                name: "Conv. %",
+                property: "account",
+                renderer: this.getPartnerPercentage
+              }
             ]}
-            data={this.getScorecardData()}
-            emptyState='No results'
+            data={this.props.data}
+            emptyState="No results"
           />
         </div>
-      );
-    }
-    getScorecardData(){
-      var result = new jinqJs()
+      </FetchOpportunities>
+    );
+  }
+  getScorecardData() {
+    var result = new jinqJs()
       .from(this.props.data)
-      .distinct("partner__c", "name")
-      .select();
-      return result;
-    }
-    getScorecardUpcoming(account) {
-      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${STAGE.UPCOMING}`}>{this.getScorecardValue(account.partner__c, STAGE.UPCOMING)}</Link>;
-    }
-    getScorecardOccurred(account) {
-      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${STAGE.OCCURRED}`}>{this.getScorecardValue(account.partner__c, STAGE.OCCURRED)}</Link>;
-    }
-    getScorecardNextStepsEstablished(account) {
-      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${STAGE.NEXT_STEPS}`}>{this.getScorecardValue(account.partner__c, STAGE.NEXT_STEPS)}</Link>;
-    }
-    getScorecardOnSiteMeetingSet(account) {
-      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${STAGE.ON_SITE}`}>{this.getScorecardValue(account.partner__c, STAGE.ON_SITE)}</Link>;
-    }
-    getScorecardProposalPriceQuote(account) {
-      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${STAGE.PROPOSAL}`}>{this.getScorecardValue(account.partner__c, STAGE.PROPOSAL)}</Link>;
-    }
-    getScorecardClosedWon(account) {
-      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities?stage=${STAGE.CLOSED}`}>{this.getScorecardValue(account.partner__c, STAGE.CLOSED)}</Link>;
-    }
-    getScorecardValue(partner__c, key){
-      var result = new jinqJs()
+      .distinct("name", "partner__c")
+      .select("name");
+    return result;
+  }
+  getScorecardUpcoming(account) {
+    return (
+      <div>{this.getScorecardValue(account.partner__c, STAGE.UPCOMING)}</div>
+    );
+  }
+  getScorecardOccurred(account) {
+    return (
+      <div>{this.getScorecardValue(account.partner__c, STAGE.OCCURRED)}</div>
+    );
+  }
+  getScorecardNextStepsEstablished(account) {
+    return (
+      <div>{this.getScorecardValue(account.partner__c, STAGE.NEXT_STEPS)}</div>
+    );
+  }
+  getScorecardOnSiteMeetingSet(account) {
+    return (
+      <div>{this.getScorecardValue(account.partner__c, STAGE.ON_SITE)}</div>
+    );
+  }
+  getScorecardProposalPriceQuote(account) {
+    return (
+      <div>{this.getScorecardValue(account.partner__c, STAGE.PROPOSAL)}</div>
+    );
+  }
+  getScorecardClosedWon(account) {
+    return (
+      <div>{this.getScorecardValue(account.partner__c, STAGE.CLOSED)}</div>
+    );
+  }
+  getScorecardValue(partner__c, key) {
+    var result = new jinqJs()
       .from(this.props.data)
       .distinct("partner__c", "stage_name", "total")
       .where(function(row, index) {
-        return (row.stage_name === key && row.partner__c === partner__c); 
+        return row.stage_name === key && row.partner__c === partner__c;
       })
       .select();
-      return (result[0] ? result[0].total : 0);
-    }
-    renderAccount(account) {
-      return <Link classic hard to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities`}>{account.name}</Link>;
-    }
+    return result[0] ? result[0].total : 0;
+  }
+  getScorecardTotal(account) {
+    var result = new jinqJs()
+      .from(this.props.data)
+      .distinct("partner__c", "stage_name", "total")
+      .where(function(row, index) {
+        return row.partner__c === account.partner__c;
+      })
+      .select();
+    return result[0] ? result[0].total : 0;
+  }
+  getPartnerPercentage(account) {
+    var won = this.getScorecardValue(account.partner__c, STAGE.CLOSED);
+    var total = this.getScorecardTotal(account);
+    var pct = total > 0 ? setPrecision((won / total) * 100, 1) : 0;
+    return <div>{pct}%</div>;
+  }
+  renderAccount(account) {
+    return (
+      <Link
+        classic
+        hard
+        to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities`}
+      >
+        {account.name}
+      </Link>
+    );
+  }
 }
 
 export default connect()(ScorecardTable);
