@@ -153,7 +153,7 @@ class ScorecardTable extends Component {
       <Link
         classic
         hard
-        to={`${APP_ROOT}scorecard/${account.partner__c}/opportunities`}
+        to={`${APP_ROOT}account/${account.partner__c}/opportunities`}
       >
         {account.name}
       </Link>
