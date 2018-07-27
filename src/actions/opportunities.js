@@ -24,6 +24,19 @@ export function fetchOpportunities(campaign) {
   };
 }
 
+export function fetchAccountOpportunities(accountId) {
+  return (dispatch, getState) => {
+    let key = `accountId:${accountId}`;
+    if (accountId) {
+      dispatch(fetchingOpportunities(key));
+      let url = `opportunities?partner__c=${accountId}`;
+      return API.get(url)
+        .then(res => dispatch(receivedNormalAPIResponse(res)))
+        .then(() => dispatch(fetchOpportunitiesSuccess(key)));
+    }
+  };
+}
+
 export function fetchingOpportunities() {
   return {
     type: FETCHING_OPPORTUNITIES
