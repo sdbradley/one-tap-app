@@ -27,6 +27,7 @@ class ScorecardTable extends Component {
       this
     );
     this.getScorecardClosedWon = this.getScorecardClosedWon.bind(this);
+    this.renderAccount = this.renderAccount.bind(this);
   }
 
   render() {
@@ -94,32 +95,92 @@ class ScorecardTable extends Component {
   }
   getScorecardUpcoming(account) {
     return (
-      <div>{this.getScorecardValue(account.partner__c, STAGE.UPCOMING)}</div>
+      <Link
+        classic
+        hard
+        to={`${APP_ROOT}account/${
+          account.partner__c
+        }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
+          STAGE.UPCOMING
+        }`}
+      >
+        {this.getScorecardValue(account.partner__c, STAGE.UPCOMING)}
+      </Link>
     );
   }
   getScorecardOccurred(account) {
     return (
-      <div>{this.getScorecardValue(account.partner__c, STAGE.OCCURRED)}</div>
+      <Link
+        classic
+        hard
+        to={`${APP_ROOT}account/${
+          account.partner__c
+        }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
+          STAGE.OCCURRED
+        }`}
+      >
+        {this.getScorecardValue(account.partner__c, STAGE.OCCURRED)}
+      </Link>
     );
   }
   getScorecardNextStepsEstablished(account) {
     return (
-      <div>{this.getScorecardValue(account.partner__c, STAGE.NEXT_STEPS)}</div>
+      <Link
+        classic
+        hard
+        to={`${APP_ROOT}account/${
+          account.partner__c
+        }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
+          STAGE.NEXT_STEPS
+        }`}
+      >
+        {this.getScorecardValue(account.partner__c, STAGE.NEXT_STEPS)}
+      </Link>
     );
   }
   getScorecardOnSiteMeetingSet(account) {
     return (
-      <div>{this.getScorecardValue(account.partner__c, STAGE.ON_SITE)}</div>
+      <Link
+        classic
+        hard
+        to={`${APP_ROOT}account/${
+          account.partner__c
+        }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
+          STAGE.ON_SITE
+        }`}
+      >
+        {this.getScorecardValue(account.partner__c, STAGE.ON_SITE)}
+      </Link>
     );
   }
   getScorecardProposalPriceQuote(account) {
     return (
-      <div>{this.getScorecardValue(account.partner__c, STAGE.PROPOSAL)}</div>
+      <Link
+        classic
+        hard
+        to={`${APP_ROOT}account/${
+          account.partner__c
+        }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
+          STAGE.PROPOSAL
+        }`}
+      >
+        {this.getScorecardValue(account.partner__c, STAGE.PROPOSAL)}
+      </Link>
     );
   }
   getScorecardClosedWon(account) {
     return (
-      <div>{this.getScorecardValue(account.partner__c, STAGE.CLOSED)}</div>
+      <Link
+        classic
+        hard
+        to={`${APP_ROOT}account/${
+          account.partner__c
+        }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
+          STAGE.CLOSED
+        }`}
+      >
+        {this.getScorecardValue(account.partner__c, STAGE.CLOSED)}
+      </Link>
     );
   }
   getScorecardValue(partner__c, key) {
@@ -153,7 +214,9 @@ class ScorecardTable extends Component {
       <Link
         classic
         hard
-        to={`${APP_ROOT}account/${account.partner__c}/opportunities`}
+        to={`${APP_ROOT}account/${
+          account.partner__c
+        }/opportunities?campaign_id=${this.props.campaignId}`}
       >
         {account.name}
       </Link>

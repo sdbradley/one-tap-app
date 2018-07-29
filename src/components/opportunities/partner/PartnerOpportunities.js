@@ -14,7 +14,11 @@ class PartnerOpportunities extends Component {
     return (
       <div>
         <div className="Widget-full">
-          <FetchAccountOpportunities accountId={this.props.accountId}>
+          <FetchAccountOpportunities
+            accountId={this.props.accountId}
+            campaignId={this.props.campaignId}
+            stage={this.props.stage}
+          >
             <Widget title="Partner Opportunity Detail">
               <div className="PartnerOpportunityTable">
                 <Table
@@ -131,10 +135,23 @@ class PartnerOpportunities extends Component {
 
 export default connect((state, props) => {
   let accountId = props.params.accountId;
+  let campaignId = props.location.query.campaign_id;
+  let stage = props.location.query.stage_name;
+  let opportunities = [];
+  if (stage) {
+    opportunities = state.opportunities.findWhere(
+      o =>
+        o.partner_account_assigned__c === accountId &&
+        (stage && o.stage_name === stage)
+    );
+  } else {
+    opportunities = state.opportunities.findWhere(
+      o => o.partner_account_assigned__c === accountId
+    );
+  }
   return {
     accountId: accountId,
-    opportunities: state.opportunities.findWhere(
-      o => o.partner__c === accountId
-    )
+    campaignId: campaignId,
+    opportunities: opportunities
   };
 })(PartnerOpportunities);
