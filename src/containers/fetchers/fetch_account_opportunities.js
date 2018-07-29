@@ -6,6 +6,7 @@ export default createFetcher(
     state.opportunities
       .getMeta("fetched")
       .includes(`accountId:${props.accountId}`) === false,
-  props => fetchAccountOpportunities(props.accountId),
+  props =>
+    fetchAccountOpportunities(props.accountId, props.campaignId, props.stage),
   { showLoader: true }
 );

@@ -24,12 +24,18 @@ export function fetchOpportunities(campaign) {
   };
 }
 
-export function fetchAccountOpportunities(accountId) {
+export function fetchAccountOpportunities(accountId, campaignId, stage) {
   return (dispatch, getState) => {
     let key = `accountId:${accountId}`;
     if (accountId) {
       dispatch(fetchingOpportunities(key));
-      let url = `opportunities?partner__c=${accountId}`;
+      let url = `opportunities?account_id=${accountId}`;
+      if (campaignId) {
+        url += `&campaign_id=${campaignId}`;
+      }
+      if (stage) {
+        url += `&stage_name=${stage}`;
+      }
       return API.get(url)
         .then(res => dispatch(receivedNormalAPIResponse(res)))
         .then(() => dispatch(fetchOpportunitiesSuccess(key)));
