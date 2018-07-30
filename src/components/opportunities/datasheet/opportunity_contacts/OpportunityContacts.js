@@ -26,7 +26,7 @@ class OpportunityContacts extends Component {
   }
 
   renderPrimary(contact) {
-    if (contact && contact.is_primary) {
+    if (contact && contact.is_primary_email_recipient__c) {
       return <div>X</div>;
     }
     return null;
