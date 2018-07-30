@@ -205,8 +205,16 @@ class ScorecardTable extends Component {
   }
   getPartnerPercentage(account) {
     var won = this.getScorecardValue(account.partner__c, STAGE.CLOSED);
+    var proposal = this.getScorecardValue(account.partner__c, STAGE.PROPOSAL);
+    var onsite = this.getScorecardValue(account.partner__c, STAGE.ON_SITE);
+    var nextsteps = this.getScorecardValue(
+      account.partner__c,
+      STAGE.NEXT_STEPS
+    );
+    var occurred = this.getScorecardValue(account.partner__c, STAGE.OCCURRED);
+    var stage_total = won + proposal + onsite + nextsteps + occurred;
     var total = this.getScorecardTotal(account);
-    var pct = total > 0 ? setPrecision((won / total) * 100, 1) : 0;
+    var pct = total > 0 ? setPrecision((stage_total / total) * 100, 1) : 0;
     return <div>{pct}%</div>;
   }
   renderAccount(account) {
