@@ -79,7 +79,7 @@ class ScorecardTable extends Component {
                 renderer: this.getPartnerPercentage
               }
             ]}
-            data={this.props.data}
+            data={this.getScorecardData()}
             emptyState="No results"
           />
         </div>
@@ -90,98 +90,136 @@ class ScorecardTable extends Component {
     var result = new jinqJs()
       .from(this.props.data)
       .distinct("name", "partner__c")
-      .select("name");
+      .select("name", "partner__c", "stage_name", "total");
     return result;
   }
   getScorecardUpcoming(account) {
-    return (
-      <Link
-        classic
-        hard
-        to={`${APP_ROOT}account/${
-          account.partner__c
-        }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
-          STAGE.UPCOMING
-        }`}
-      >
-        {this.getScorecardValue(account.partner__c, STAGE.UPCOMING)}
-      </Link>
-    );
+    if (!account.partner__c) {
+      return (
+        <div>{this.getScorecardValue(account.partner__c, STAGE.UPCOMING)}</div>
+      );
+    } else {
+      return (
+        <Link
+          classic
+          hard
+          to={`${APP_ROOT}account/${
+            account.partner__c
+          }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
+            STAGE.UPCOMING
+          }`}
+        >
+          {this.getScorecardValue(account.partner__c, STAGE.UPCOMING)}
+        </Link>
+      );
+    }
   }
   getScorecardOccurred(account) {
-    return (
-      <Link
-        classic
-        hard
-        to={`${APP_ROOT}account/${
-          account.partner__c
-        }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
-          STAGE.OCCURRED
-        }`}
-      >
-        {this.getScorecardValue(account.partner__c, STAGE.OCCURRED)}
-      </Link>
-    );
+    if (!account.partner__c) {
+      return (
+        <div>{this.getScorecardValue(account.partner__c, STAGE.OCCURRED)}</div>
+      );
+    } else {
+      return (
+        <Link
+          classic
+          hard
+          to={`${APP_ROOT}account/${
+            account.partner__c
+          }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
+            STAGE.OCCURRED
+          }`}
+        >
+          {this.getScorecardValue(account.partner__c, STAGE.OCCURRED)}
+        </Link>
+      );
+    }
   }
   getScorecardNextStepsEstablished(account) {
-    return (
-      <Link
-        classic
-        hard
-        to={`${APP_ROOT}account/${
-          account.partner__c
-        }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
-          STAGE.NEXT_STEPS
-        }`}
-      >
-        {this.getScorecardValue(account.partner__c, STAGE.NEXT_STEPS)}
-      </Link>
-    );
+    if (!account.partner__c) {
+      return (
+        <div>
+          {this.getScorecardValue(account.partner__c, STAGE.NEXT_STEPS)}
+        </div>
+      );
+    } else {
+      return (
+        <Link
+          classic
+          hard
+          to={`${APP_ROOT}account/${
+            account.partner__c
+          }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
+            STAGE.NEXT_STEPS
+          }`}
+        >
+          {this.getScorecardValue(account.partner__c, STAGE.NEXT_STEPS)}
+        </Link>
+      );
+    }
   }
   getScorecardOnSiteMeetingSet(account) {
-    return (
-      <Link
-        classic
-        hard
-        to={`${APP_ROOT}account/${
-          account.partner__c
-        }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
-          STAGE.ON_SITE
-        }`}
-      >
-        {this.getScorecardValue(account.partner__c, STAGE.ON_SITE)}
-      </Link>
-    );
+    if (!account.partner__c) {
+      return (
+        <div>{this.getScorecardValue(account.partner__c, STAGE.ON_SITE)}</div>
+      );
+    } else {
+      return (
+        <Link
+          classic
+          hard
+          to={`${APP_ROOT}account/${
+            account.partner__c
+          }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
+            STAGE.ON_SITE
+          }`}
+        >
+          {this.getScorecardValue(account.partner__c, STAGE.ON_SITE)}
+        </Link>
+      );
+    }
   }
   getScorecardProposalPriceQuote(account) {
-    return (
-      <Link
-        classic
-        hard
-        to={`${APP_ROOT}account/${
-          account.partner__c
-        }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
-          STAGE.PROPOSAL
-        }`}
-      >
-        {this.getScorecardValue(account.partner__c, STAGE.PROPOSAL)}
-      </Link>
-    );
+    if (!account.partner__c) {
+      return (
+        <div>{this.getScorecardValue(account.partner__c, STAGE.PROPOSAL)}</div>
+      );
+    } else {
+      return (
+        <Link
+          classic
+          hard
+          to={`${APP_ROOT}account/${
+            account.partner__c
+          }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
+            STAGE.PROPOSAL
+          }`}
+        >
+          {this.getScorecardValue(account.partner__c, STAGE.PROPOSAL)}
+        </Link>
+      );
+    }
   }
   getScorecardClosedWon(account) {
-    return (
-      <Link
-        classic
-        hard
-        to={`${APP_ROOT}account/${
-          account.partner__c
-        }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
-          STAGE.CLOSED
-        }`}
-      >
-        {this.getScorecardValue(account.partner__c, STAGE.CLOSED)}
-      </Link>
-    );
+    if (!account.partner__c) {
+      return (
+        <div>{this.getScorecardValue(account.partner__c, STAGE.CLOSED)}</div>
+      );
+    } else {
+      return (
+        <Link
+          classic
+          hard
+          to={`${APP_ROOT}account/${
+            account.partner__c
+          }/opportunities?campaign_id=${this.props.campaignId}&stage_name=${
+            STAGE.CLOSED
+          }`}
+        >
+          {this.getScorecardValue(account.partner__c, STAGE.CLOSED)}
+        </Link>
+      );
+    }
   }
   getScorecardValue(partner__c, key) {
     var result = new jinqJs()
@@ -212,8 +250,9 @@ class ScorecardTable extends Component {
       STAGE.NEXT_STEPS
     );
     var occurred = this.getScorecardValue(account.partner__c, STAGE.OCCURRED);
+    var upcoming = this.getScorecardValue(account.partner__c, STAGE.UPCOMING);
     var stage_total = won + proposal + onsite + nextsteps + occurred;
-    var total = this.getScorecardTotal(account);
+    var total = stage_total + upcoming;
     var pct = total > 0 ? setPrecision((stage_total / total) * 100, 1) : 0;
     return <div>{pct}%</div>;
   }
