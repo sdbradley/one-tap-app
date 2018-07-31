@@ -71,10 +71,12 @@ export default connect(
     let accountId = user && user.accountId;
     let partner_id = props.location.query.partner_id;
     let campaignId = props.campaignId;
+    let scorecard = state.scorecard.all();
+
     return {
       partner_id: partner_id === undefined ? accountId : partner_id,
       campaignId: campaignId,
-      scorecard: state.scorecard.all(),
+      scorecard: scorecard,
       opportunities: state.opportunities.findWhere(
         o => o.campaign_id === campaignId
       ),
