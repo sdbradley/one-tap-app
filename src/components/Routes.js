@@ -7,6 +7,7 @@ import RequireAuth from "containers/require_auth";
 import App from "components/App";
 import Login from "pages/Login";
 import ForgotPassword from "pages/ForgotPassword";
+import ForcePassword from "pages/ForcePassword";
 import ResetPassword from "pages/ResetPassword";
 import Dashboard from "pages/dashboard";
 import AdminDashboard from "components/admin/dashboard";
@@ -91,6 +92,9 @@ const ROUTES = (
     <Route path="/forgot-password">
       <IndexRoute component={unauthed(ForgotPassword)} />
       <Route path=":email/:token" component={unauthed(ResetPassword)} />
+    </Route>
+    <Route path="/force-password">
+      <IndexRoute component={unauthed(ForcePassword)} />
     </Route>
   </Router>
 );
