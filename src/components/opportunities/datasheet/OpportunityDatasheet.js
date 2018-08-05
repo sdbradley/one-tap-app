@@ -25,7 +25,7 @@ class OpportunityDatasheet extends Component {
                   <Account accountId={this.props.accountId} />
                   <div>
                     Initial Discovery Call scheduled for:{" "}
-                    <Moment format="MM/DD/YYYY HH:mm a z" tz="America/New_York">
+                    <Moment format="MM/DD/YYYY hh:mm a z" tz="America/New_York">
                       {this.props.opportunity &&
                         this.props.opportunity.meeting_date_time__c}
                     </Moment>
@@ -91,12 +91,7 @@ class OpportunityDatasheet extends Component {
 
   renderLeadId() {
     if (this.props.opportunity && this.props.opportunity.lead_id__c) {
-      return (
-        <div>
-          Lead ID:
-          {this.props.opportunity.lead_id__c}
-        </div>
-      );
+      return <div>Lead ID: {this.props.opportunity.lead_id__c}</div>;
     } else {
       return null;
     }
