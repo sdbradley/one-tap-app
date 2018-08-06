@@ -1,1 +1,2 @@
-export { default } from './OpportunityContacts';
+export { default } from "./OpportunityContacts";
+import "./OpportunityContacts.scss";
