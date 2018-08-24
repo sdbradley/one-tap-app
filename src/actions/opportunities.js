@@ -17,9 +17,9 @@ export function fetchOpportunities(campaign) {
       //url += (stage && `&stage_name=${stage}`) || '';
       //url += (start && `&start_date=${start}`) || '';
       //url += (end && `&end_date=${end}`) || '';
-      return API.get(url)
-        .then(res => dispatch(receivedNormalAPIResponse(res)))
-        .then(() => dispatch(fetchOpportunitiesSuccess(key)));
+      return API.get(url).then(data =>
+        dispatch(fetchOpportunitiesSuccess(key, data))
+      );
     }
   };
 }
@@ -36,23 +36,25 @@ export function fetchAccountOpportunities(accountId, campaignId, stage) {
       if (stage) {
         url += `&stage_name=${stage}`;
       }
-      return API.get(url)
-        .then(res => dispatch(receivedNormalAPIResponse(res)))
-        .then(() => dispatch(fetchOpportunitiesSuccess(key)));
+      return API.get(url).then(data =>
+        dispatch(fetchOpportunitiesSuccess(key, data))
+      );
     }
   };
 }
 
-export function fetchingOpportunities() {
+export function fetchingOpportunities(key) {
   return {
-    type: FETCHING_OPPORTUNITIES
+    type: FETCHING_OPPORTUNITIES,
+    key: key
   };
 }
 
-export function fetchOpportunitiesSuccess(key) {
+export function fetchOpportunitiesSuccess(key, data) {
   return {
     type: FETCH_OPPORTUNITIES_SUCCESS,
-    key: key
+    key: key,
+    payload: data
   };
 }
 

@@ -29,18 +29,18 @@ class PartnerScorecard extends Component {
 
   render() {
     return (
-      <div>
-        <div className="Widget-full">
-          <Widget title="Scorecard">
-            <Scorecard data={this.props.scorecard} />
-          </Widget>
-        </div>
-        <div className="Widget-full">
-          <FetchScorecard
-            campaign_id={this.props.campaignId}
-            start_date={this.props.start_date}
-            end_date={this.props.end_date}
-          >
+      <FetchScorecard
+        campaign_id={this.props.campaignId}
+        start_date={this.props.start_date}
+        end_date={this.props.end_date}
+      >
+        <div>
+          <div className="Widget-full">
+            <Widget title="Scorecard">
+              <Scorecard data={this.props.scorecard} />
+            </Widget>
+          </div>
+          <div className="Widget-full">
             <Widget title="Partner Scorecard">
               <ScorecardTable
                 data={this.props.scorecard}
@@ -48,19 +48,19 @@ class PartnerScorecard extends Component {
                 campaignId={this.props.campaignId}
               />
             </Widget>
-          </FetchScorecard>
-        </div>
-        <div className="Widget-full">
-          <div className="Widget-half">
-            <Widget title="Pipeline Calculator">
-              <PipelineCalculator
-                data={this.props.scorecard}
-                opportunities={this.props.opportunities}
-              />
-            </Widget>
+          </div>
+          <div className="Widget-full">
+            <div className="Widget-half">
+              <Widget title="Pipeline Calculator">
+                <PipelineCalculator
+                  data={this.props.scorecard}
+                  opportunities={this.props.opportunities}
+                />
+              </Widget>
+            </div>
           </div>
         </div>
-      </div>
+      </FetchScorecard>
     );
   }
 }
