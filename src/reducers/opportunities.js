@@ -17,11 +17,10 @@ const opportunities = (list = INITIAL_STATE, action) => {
   let fetched = list.getMeta("fetched");
   switch (action.type) {
     case FETCHING_OPPORTUNITIES:
-      return list.setMeta("fetched", fetched.push(action.key)).clear();
+      return list.setMeta("fetched", fetched.push(action.key));
     case FETCH_OPPORTUNITIES_SUCCESS:
       return list
         .setMeta("fetched", fetched.push(action.key))
-        .clear()
         .saveAll(action.payload.opportunities);
     case FETCHING_OPPORTUNITY:
     case FETCH_OPPORTUNITY_SUCCESS:
