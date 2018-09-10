@@ -96,7 +96,15 @@ class ScorecardTable extends Component {
   getScorecardUpcoming(account) {
     if (!account.partner__c) {
       return (
-        <div>{this.getScorecardValue(account.partner__c, STAGE.UPCOMING)}</div>
+        <Link
+          classic
+          hard
+          to={`${APP_ROOT}opportunities?campaign_id=${
+            this.props.campaignId
+          }&stage_name=${STAGE.UPCOMING}`}
+        >
+          {this.getScorecardValue(account.partner__c, STAGE.UPCOMING)}
+        </Link>
       );
     } else {
       return (
@@ -117,7 +125,15 @@ class ScorecardTable extends Component {
   getScorecardOccurred(account) {
     if (!account.partner__c) {
       return (
-        <div>{this.getScorecardValue(account.partner__c, STAGE.OCCURRED)}</div>
+        <Link
+          classic
+          hard
+          to={`${APP_ROOT}opportunities?campaign_id=${
+            this.props.campaignId
+          }&stage_name=${STAGE.OCCURRED}`}
+        >
+          {this.getScorecardValue(account.partner__c, STAGE.OCCURRED)}
+        </Link>
       );
     } else {
       return (
@@ -138,9 +154,15 @@ class ScorecardTable extends Component {
   getScorecardNextStepsEstablished(account) {
     if (!account.partner__c) {
       return (
-        <div>
+        <Link
+          classic
+          hard
+          to={`${APP_ROOT}opportunities?campaign_id=${
+            this.props.campaignId
+          }&stage_name=${STAGE.NEXT_STEPS}`}
+        >
           {this.getScorecardValue(account.partner__c, STAGE.NEXT_STEPS)}
-        </div>
+        </Link>
       );
     } else {
       return (
@@ -161,7 +183,15 @@ class ScorecardTable extends Component {
   getScorecardOnSiteMeetingSet(account) {
     if (!account.partner__c) {
       return (
-        <div>{this.getScorecardValue(account.partner__c, STAGE.ON_SITE)}</div>
+        <Link
+          classic
+          hard
+          to={`${APP_ROOT}opportunities?campaign_id=${
+            this.props.campaignId
+          }&stage_name=${STAGE.ON_SITE}`}
+        >
+          {this.getScorecardValue(account.partner__c, STAGE.ON_SITE)}
+        </Link>
       );
     } else {
       return (
@@ -182,7 +212,15 @@ class ScorecardTable extends Component {
   getScorecardProposalPriceQuote(account) {
     if (!account.partner__c) {
       return (
-        <div>{this.getScorecardValue(account.partner__c, STAGE.PROPOSAL)}</div>
+        <Link
+          classic
+          hard
+          to={`${APP_ROOT}opportunities?campaign_id=${
+            this.props.campaignId
+          }&stage_name=${STAGE.PROPOSAL}`}
+        >
+          {this.getScorecardValue(account.partner__c, STAGE.PROPOSAL)}
+        </Link>
       );
     } else {
       return (
@@ -203,7 +241,15 @@ class ScorecardTable extends Component {
   getScorecardClosedWon(account) {
     if (!account.partner__c) {
       return (
-        <div>{this.getScorecardValue(account.partner__c, STAGE.CLOSED)}</div>
+        <Link
+          classic
+          hard
+          to={`${APP_ROOT}opportunities?campaign_id=${
+            this.props.campaignId
+          }&stage_name=${STAGE.CLOSED}`}
+        >
+          {this.getScorecardValue(account.partner__c, STAGE.CLOSED)}
+        </Link>
       );
     } else {
       return (
@@ -257,17 +303,29 @@ class ScorecardTable extends Component {
     return <div>{pct}%</div>;
   }
   renderAccount(account) {
-    return (
-      <Link
-        classic
-        hard
-        to={`${APP_ROOT}account/${
-          account.partner__c
-        }/opportunities?campaign_id=${this.props.campaignId}`}
-      >
-        {account.name}
-      </Link>
-    );
+    if (account.name) {
+      return (
+        <Link
+          classic
+          hard
+          to={`${APP_ROOT}account/${
+            account.partner__c
+          }/opportunities?campaign_id=${this.props.campaignId}`}
+        >
+          {account.name}
+        </Link>
+      );
+    } else {
+      return (
+        <Link
+          classic
+          hard
+          to={`${APP_ROOT}opportunities?campaign_id=${this.props.campaignId}`}
+        >
+          {"Unassigned Partner"}
+        </Link>
+      );
+    }
   }
 }
 
