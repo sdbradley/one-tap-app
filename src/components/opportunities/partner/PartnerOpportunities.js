@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import FetchAccountOpportunities from "containers/fetchers/fetch_account_opportunities";
+import FetchOpportunities from "containers/fetchers/fetch_opportunities";
 import Field from "components/field";
 import Widget from "components/widget";
 import Table from "components/table";
@@ -13,43 +14,84 @@ class PartnerOpportunities extends Component {
   render() {
     return (
       <div>
-        <div className="Widget-full">
-          <FetchAccountOpportunities
-            accountId={this.props.accountId}
-            campaignId={this.props.campaignId}
-            stage={this.props.stage}
-          >
-            <Widget title="Partner Opportunity Detail">
-              <div className="PartnerOpportunityTable">
-                <Table
-                  className="PartnerOpportunityTable-table"
-                  columns={[
-                    {
-                      name: "Account",
-                      className: "PartnerOpportunities-account",
-                      renderer: this.renderAccount
-                    },
-                    { name: "Meeting Time", renderer: this.renderMeetingTime },
-                    { name: "Status", property: "stage_name" },
-                    { name: "Feedback", renderer: this.renderFeedback },
-                    {
-                      name: "Deal Registered",
-                      renderer: this.renderDealRegistered
-                    },
-                    {
-                      name: "Recording Downloaded",
-                      renderer: this.renderDownloadDate
-                    }
-                  ]}
-                  data={this.props.opportunities}
-                  emptyState="No results"
-                />
-              </div>
-            </Widget>
-          </FetchAccountOpportunities>
-        </div>
+        <div className="Widget-full">{this.renderOpportunities()}</div>
       </div>
     );
+  }
+
+  renderOpportunities() {
+    if (this.props.accountId) {
+      return (
+        <FetchAccountOpportunities
+          accountId={this.props.accountId}
+          campaignId={this.props.campaignId}
+          stage={this.props.stage}
+        >
+          <Widget title="Partner Opportunity Detail">
+            <div className="PartnerOpportunityTable">
+              <Table
+                className="PartnerOpportunityTable-table"
+                columns={[
+                  {
+                    name: "Account",
+                    className: "PartnerOpportunities-account",
+                    renderer: this.renderAccount
+                  },
+                  { name: "Meeting Time", renderer: this.renderMeetingTime },
+                  { name: "Status", property: "stage_name" },
+                  { name: "Feedback", renderer: this.renderFeedback },
+                  {
+                    name: "Deal Registered",
+                    renderer: this.renderDealRegistered
+                  },
+                  {
+                    name: "Recording Downloaded",
+                    renderer: this.renderDownloadDate
+                  }
+                ]}
+                data={this.props.opportunities}
+                emptyState="No results"
+              />
+            </div>
+          </Widget>
+        </FetchAccountOpportunities>
+      );
+    } else {
+      return (
+        <FetchOpportunities
+          campaignId={this.props.campaignId}
+          stage={this.props.stage}
+        >
+          <Widget title="Unassigned Partner Opportunity Detail">
+            <div className="PartnerOpportunityTable">
+              <Table
+                className="PartnerOpportunityTable-table"
+                columns={[
+                  {
+                    name: "Account",
+                    className: "PartnerOpportunities-account",
+                    renderer: this.renderAccount
+                  },
+                  { name: "Meeting Time", renderer: this.renderMeetingTime },
+                  { name: "Status", property: "stage_name" },
+                  { name: "Feedback", renderer: this.renderFeedback },
+                  {
+                    name: "Deal Registered",
+                    renderer: this.renderDealRegistered
+                  },
+                  {
+                    name: "Recording Downloaded",
+                    renderer: this.renderDownloadDate
+                  }
+                ]}
+                data={this.props.opportunities}
+                emptyState="No results"
+              />
+            </div>
+          </Widget>
+        </FetchOpportunities>
+      );
+    }
   }
 
   renderAccount(opportunity) {
@@ -139,15 +181,27 @@ export default connect((state, props) => {
   let stage = props.location.query.stage_name;
   let opportunities = [];
   if (stage) {
-    opportunities = state.opportunities.findWhere(
-      o =>
-        o.partner_account_assigned__c === accountId &&
-        (stage && o.stage_name === stage)
-    );
+    if (accountId) {
+      opportunities = state.opportunities.findWhere(
+        o =>
+          o.partner_account_assigned__c === accountId &&
+          (stage && o.stage_name === stage)
+      );
+    } else {
+      opportunities = state.opportunities.findWhere(
+        o => o.campaign_id === campaignId && (stage && o.stage_name === stage)
+      );
+    }
   } else {
-    opportunities = state.opportunities.findWhere(
-      o => o.partner_account_assigned__c === accountId
-    );
+    if (accountId) {
+      opportunities = state.opportunities.findWhere(
+        o => o.partner_account_assigned__c === accountId
+      );
+    } else {
+      opportunities = state.opportunities.findWhere(
+        o => o.campaign_id === campaignId
+      );
+    }
   }
   return {
     accountId: accountId,

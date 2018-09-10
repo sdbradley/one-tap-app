@@ -60,6 +60,10 @@ const ROUTES = (
         </Route>
       </Route>
 
+      <Route path="opportunities">
+        <IndexRoute component={OpportunityDetails} />
+      </Route>
+
       <Route path="campaigns/:campaignId">
         <IndexRoute component={Campaign} />
         <Route path="scorecard">
